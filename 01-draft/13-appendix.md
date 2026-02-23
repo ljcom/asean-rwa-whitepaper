@@ -28,7 +28,8 @@
 - funding model classification and risk disclosures (debt/profit participation/sukuk/crowdfunding)
 - for escrow-based debt offerings: minimum close threshold, deadline, partial-close borrower option, and refund mechanics if cancelled
 - liquidity disclosure: engineered pathways; no guarantee; fragmentation expected
-- fees, conflicts, and related-party arrangements
+- fees and cost allocation (including escrow/rails, venue, custody, valuation/audit, and any on-chain transaction cost policy)
+- conflicts and related-party arrangements (including role combinations and fee setting/review governance)
 - valuation/NAV methodology and reporting cadence
 - transfer restrictions and resale limitations by jurisdiction
 - privacy notice and data handling summary (UU PDP / PDPA alignment)

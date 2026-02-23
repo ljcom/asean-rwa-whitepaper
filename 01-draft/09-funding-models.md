@@ -10,6 +10,26 @@ This section describes how different funding models can be supported using the s
 
 Each model must be documented and categorized with appropriate disclosures and governance. The framework is not intended to blur regulatory categories; it is intended to support regulated implementation.
 
+## Indonesia Legal Wrapper Options (High-Level, Illustrative)
+
+This whitepaper separates **legal wrappers** (which define rights, governance, disclosures, and enforceability) from **token representation** (which supports controlled administration and auditability). For Indonesian underlying assets, wrapper selection should be made with Indonesian counsel and regulator engagement as needed.
+
+The table below is illustrative and intentionally high-level. The same economic rights can be represented in different wrappers depending on product design and permitted distribution channels.
+
+| Funding model | Typical Indonesian wrapper patterns (illustrative) | Economic rights emphasis | Key operational implications |
+| --- | --- | --- | --- |
+| Debt | Project/loan SPV with contractual debt documentation; note/participation documentation tied to servicing | repayment waterfall and credit monitoring | servicing discipline, covenants, default process, escrow close controls |
+| Profit participation (REIT-like) | Collective investment style wrapper (e.g., DIRE/KIK-like patterns) or structured participation agreements (as applicable) | distributable cash flows (e.g., rental income) and reporting | valuation/NAV governance, disclosures cadence, conflicts and related-party controls |
+| Sukuk | Sukuk documentation set (e.g., ijarah-based) with Shariah governance artifacts | asset-backed participation return (rental yield / participation return) | Shariah oversight, use-of-proceeds governance, structure-specific evidence retention |
+| Crowdfunding | Regulated crowdfunding wrapper patterns (platform/channel dependent) with caps and investor protections | capped participation rights (debt-like or profit-participation-like) | strict cap enforcement, suitability/disclosure controls, restricted transferability |
+
+Wrapper selection does not remove the need for:
+
+- off-chain KYC/AML and eligibility verification
+- jurisdiction-aware selling restrictions and whitelist enforcement
+- escrow and settlement controls (including close thresholds for debt offerings)
+- auditability, evidence packs, and governance approvals
+
 ## Comparative Overview (Illustrative)
 
 | Model | Economic rights represented | Typical cash flow basis | Key governance needs | Investor protection and compliance focus |
@@ -18,6 +38,51 @@ Each model must be documented and categorized with appropriate disclosures and g
 | Profit participation (REIT-like) | contractual participation in distributable cash flows | net operating income and asset performance | governance, reporting, valuation oversight, related-party controls | disclosures, valuation integrity, conflicts, eligibility |
 | Sukuk | asset-backed participation (e.g., ijarah) | rental yield / participation return | Shariah oversight, asset-backing governance | structure disclosure, Shariah compliance evidence |
 | Crowdfunding | capped participation rights | distributions per terms; may be periodic | platform controls, caps, suitability | retail limits (where permitted), transparency, reporting |
+
+## Token Economics (Fees, Cash Flows, and Cost Allocation)
+
+In this program, “token economics” refers to **cash flow mechanics and fees** tied to the economic-rights instrument (debt-like repayments, profit participation distributions, sukuk participation returns, or crowdfunding entitlements). It does not refer to speculative token price mechanics.
+
+### Fee Stack (Illustrative, Wrapper-Dependent)
+
+Fees must be defined in the legal wrapper documents and disclosed clearly. Typical fee categories include:
+
+- **origination/arrangement fees** (often debt/project-finance contexts)
+- **management/administration fees** (registry/transfer agent, reporting, governance operations)
+- **servicing fees** (loan servicing, collections, covenant monitoring)
+- **custody and safeguarding fees** (where custody is required)
+- **valuation and audit fees** (independent valuation inputs, assurance)
+- **venue and trading fees** (where secondary trading occurs; venue fee schedules apply)
+- **escrow and payment rail fees** (collection, disbursement, refunds)
+- **FX and cross-border processing fees** (in later ASEAN rollout phases)
+
+Fee disclosures should include the payer (borrower vs investor vs issuer), timing, calculation basis, and any caps.
+
+### Cash Flow Waterfall (High-Level)
+
+For each product model, the wrapper should define a waterfall (priority of payments), including:
+
+- gross cash inflows (rental collections, repayments, participation returns)
+- reserves (if any) and reserve release rules
+- fees and expenses (with priority order)
+- net amounts available for investor entitlements
+
+### On-Chain vs Off-Chain Costs (Gas and Operations)
+
+Because compliance and settlement are hybrid:
+
+- **on-chain costs** (transaction fees) should be assigned explicitly: issuer-subsidized vs investor-paid vs venue-paid, with an operational policy for retail usability.
+- **off-chain operational costs** (KYC, escrow, reporting, audits) should be reflected in the fee stack and evidenced through invoices/contracts and governance approvals.
+
+This program avoids “hidden token fees”. Any transfer fees, protocol fees, or operator fees must be documented and disclosed.
+
+### Conflicts of Interest and Related-Party Arrangements
+
+If the platform or affiliates act in multiple roles (originator, servicer, valuation provider, market maker, distributor), the wrapper must disclose:
+
+- the role combinations and potential conflicts
+- governance controls and approval requirements
+- how fees are set and reviewed
 
 ## 1) Debt Model (Fixed-Income Style)
 

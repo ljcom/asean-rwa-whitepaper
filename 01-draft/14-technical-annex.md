@@ -393,6 +393,108 @@ Evidence packs must be reproducible and structured. Each pack should include (as
 - on-chain transaction receipts and event exports
 - exception approvals and their scope/expiry
 
+## Corporate Actions, Statements, and Entitlement Calculations
+
+Corporate actions are the primary mechanism by which token holders receive the economic entitlements defined in the legal wrapper. In a hybrid model, calculation and evidence are typically off-chain, while on-chain is used for restricted token administration and tamper-evident logs.
+
+### Corporate Action Types (Illustrative)
+
+- distributions (periodic payments, rental distributions, repayment flows)
+- redemption/buyback windows (if offered)
+- notices and terms updates (only under governed, disclosed processes)
+- enforcement actions (holds/freezes) and related notices
+
+### Record Dates, Snapshots, and Register Integrity
+
+To prevent disputes, the system should define:
+
+- **record date:** the timestamp at which eligibility for a corporate action is determined
+- **snapshot reference:** a reproducible reference to the token holder set at record date (on-chain state reference + off-chain registry reference)
+- **reconciliation window:** time allowed to resolve breaks between on-chain balances and the off-chain register before finalizing entitlements
+
+Where a regulated venue is used, venue trade reporting and settlement timing should be factored into the record date and reconciliation window.
+
+### Entitlement Calculation (High-Level)
+
+The calculation engine should:
+
+- ingest cash flow inputs (servicer reports, rental collections, repayment schedules)
+- apply the documented waterfall (fees, reserves, seniority/tranching if applicable)
+- compute entitlements per **Investor ID** (identity-centric), then allocate to bound wallet addresses according to documented rules
+- generate a calculation report and attach supporting evidence references
+
+### Statements and Investor Communications
+
+Minimum capabilities:
+
+- investor statements per period (holdings, entitlements, paid/unpaid status, fees)
+- notices for corporate actions (record dates, payment dates, pricing references, gates/suspensions if applicable)
+- dispute intake workflow (time-bounded, with evidence)
+
+For multi-wallet investors, statements should consolidate positions across all bound wallets under the same Investor ID.
+
+### Payout Execution (Fiat Rails)
+
+Because settlement is fiat-driven in the Indonesia-first pilot:
+
+- payout instructions should be derived from verified investor payout profiles (off-chain)
+- payouts should be executed through controlled rails with dual authorization where appropriate
+- payout execution receipts must be attached to the evidence pack
+
+### Evidence Pack Additions (Corporate Actions)
+
+Corporate action evidence packs should include:
+
+- record date definition and snapshot references
+- reconciliation reports and break resolutions (if any)
+- calculation report (inputs, waterfall steps, outputs)
+- approvals (who approved, policy version, exception approvals if any)
+- payout execution receipts and investor statement artifacts
+
+### Monitoring (Corporate Actions)
+
+Minimum monitoring indicators:
+
+- late notices / missed record dates
+- entitlement calculation exceptions (rate and root causes)
+- payout failure rates and SLA breaches
+- investor complaint/dispute volumes and resolution time
+
+## Fee Computation and Waterfall Implementation (Technical Controls)
+
+Fee and waterfall mechanics must be implemented as controlled, auditable calculations aligned to the legal wrapper. This section specifies technical control outcomes, not accounting standards.
+
+### Inputs and Source-of-Truth
+
+Calculation inputs should be sourced from controlled systems and retained as evidence, for example:
+
+- servicer reports (collections, repayments, arrears, recoveries)
+- property operating reports (rental collections, operating expenses)
+- escrow/payout statements (cash movements)
+- fee schedules and contracts (management/servicing/venue/custody)
+- approved policy versions and exception approvals (if any)
+
+### Calculation Controls
+
+Minimum controls:
+
+- deterministic calculation runs (same inputs → same outputs) with a unique run ID
+- dual control approvals for publishing entitlements and initiating payouts
+- segregation of duties between data preparation and approval
+- reconciliation checks (cash available vs payouts + reserves + fees)
+- explicit handling of rounding, minimum payout thresholds, and carry-over rules
+
+### Outputs and Evidence
+
+Each calculation run should produce:
+
+- an entitlement ledger per Investor ID (then allocated to bound wallets if needed for on-chain signaling)
+- a fee ledger (category, basis, amount, payee)
+- a reserves ledger (opening/closing, movements, triggers)
+- a summary report suitable for governance review
+
+All outputs must be linked into the evidence pack for the corresponding corporate action.
+
 ## Pilot Configuration Summary (Indonesia-First)
 
 To reduce ambiguity during implementation, the pilot should explicitly declare:
