@@ -14,6 +14,7 @@ OUT_HTML="${BUILD_DIR}/whitepaper.html"
 OUT_PDF="${BUILD_DIR}/whitepaper.pdf"
 
 DATE_STR="$(date +%Y-%m-%d)"
+STRICT_MERMAID="${STRICT_MERMAID:-0}"
 
 cat > "${OUT_MD}" <<EOF
 % A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN
@@ -134,6 +135,7 @@ pandoc "${RENDER_SOURCE}" \
   --toc \
   --toc-depth=3 \
   --metadata toc-title="Daftar Isi" \
+  --resource-path="${BUILD_DIR}" \
   -o "${OUT_DOCX}"
 
 echo "Generating HTML..."
@@ -144,6 +146,7 @@ pandoc "${RENDER_SOURCE}" \
   --toc \
   --toc-depth=3 \
   --metadata toc-title="Daftar Isi" \
+  --resource-path="${BUILD_DIR}" \
   -o "${OUT_HTML}"
 
 PDF_ENGINE=""
