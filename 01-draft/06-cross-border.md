@@ -6,6 +6,8 @@ The objective of the cross-border design is to enable **ASEAN-regulated particip
 
 Reference diagram: `02-figures/diagrams/cross-border-jurisdiction-controls.md`.
 
+This whitepaper assumes an **Indonesia-first pilot** (domestic distribution and settlement) followed by phased rollout to additional ASEAN jurisdictions. Cross-border controls are therefore specified as reusable design requirements that can be activated jurisdiction-by-jurisdiction once legal pathways and operating partners are in place.
+
 ## Jurisdictional Constraints Informing the Approach
 
 Cross-border design in ASEAN is shaped by three recurring realities:
@@ -94,7 +96,14 @@ Fiat on/off ramps are treated as part of the off-chain compliance and settlement
 
 **Indonesia currency constraint:** domestic payment and settlement flows in Indonesia are designed around Rupiah usage requirements and central-bank payment system rules. This reinforces the hybrid approach: settlement for Indonesian flows is handled through regulated fiat rails and escrow, while on-chain components focus on controlled token administration and auditability.
 
-**ASEAN implication:** cross-border subscriptions may require local collection and FX processes via regulated intermediaries, with evidence retention and jurisdiction-aware eligibility controls.
+**ASEAN implication (phased rollout):** when extending beyond an Indonesia-first pilot, cross-border subscriptions may require local collection and FX processes via regulated intermediaries, with evidence retention and jurisdiction-aware eligibility controls.
+
+### Escrow Strategy for Phased Rollout (High-Level)
+
+To reduce operational complexity in the pilot while keeping the model extensible:
+
+- **Pilot default:** a single Indonesian escrow/segregated account structure is used as the closing gate for Indonesian underlying assets.
+- **Cross-border extension (later):** add jurisdiction-specific collection and payout partners (local rails) and, only where required, local escrow arrangements—while maintaining the same evidence and approval standards across all flows.
 
 ## Regulatory Design Constraints (ASEAN Minimum, High-Level)
 

@@ -48,7 +48,8 @@ Readiness gates:
 Deliverables:
 
 - execute a pilot issuance using a **single Indonesian issuance vehicle (single SPV)** to validate end-to-end controls before scaling
-- limit participation to eligible investors (e.g., institutional) under a controlled distribution channel
+- run the pilot as **Indonesia-first** (domestic distribution and settlement) to validate controls with reduced cross-border complexity
+- support early retail adoption only where permitted, with conservative caps, suitability/disclosure controls, and strict whitelist enforcement
 - validate escrow and closing procedures for debt offerings (minimum close thresholds, partial-close decision flow, refunds if cancelled)
 - produce evidence packages for issuance, onboarding, and corporate actions
 - test end-to-end reconciliation between on-chain logs and off-chain registry

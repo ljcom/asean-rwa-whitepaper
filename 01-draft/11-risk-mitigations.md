@@ -160,5 +160,6 @@ Risk management must be implemented with jurisdiction awareness. Key implication
 - controls and disclosures may need to vary by jurisdiction and venue
 - liquidity and market conduct controls are venue-specific
 - privacy governance must cover cross-border data handling and accountability
+- settlement and escrow patterns may need to evolve from an Indonesia-first pilot to jurisdiction-specific collection/escrow arrangements as rollout expands
 
 The framework’s mitigation approach is to make controls explicit, auditable, and aligned with regulator expectations, rather than assuming uniformity across ASEAN.

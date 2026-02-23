@@ -5,6 +5,7 @@ This document lists working assumptions used to draft the whitepaper. It is not 
 ## Market and Program Assumptions
 
 - Minimum scope is ASEAN, with phased expansion by jurisdiction (Indonesia, Singapore, Malaysia at minimum).
+- Pilot phase begins in Indonesia (domestic distribution and settlement) before cross-border rollout.
 - Underlying real estate assets remain in Indonesia; no land title transfer via blockchain.
 - Token represents economic rights only, defined by issuance documents and enforced off-chain.
 - Distribution and secondary trading occur only through regulated pathways (where permitted).

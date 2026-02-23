@@ -35,6 +35,8 @@ Primary objectives:
 - **Document and disclosure vault:** offering docs, investor notices, certificates, versioned disclosures.
 - **Corporate actions engine:** schedules and executes distributions, redemptions, notices, and approvals.
 - **Fiat settlement and ramp integration (escrow plane):** segregated escrow accounts, controlled releases (dual authorization), refunds, and payout rails; supports local currency constraints (e.g., Rupiah settlement for Indonesian flows) and cross-border collection via regulated intermediaries.
+  - Pilot default: Indonesian escrow and domestic settlement rails (Indonesia-first distribution and evidence validation).
+  - Cross-border extension: add jurisdiction-specific collection/payout partners and, where required, local escrow arrangements without weakening approvals, evidence retention, or reconciliation discipline.
 - **Valuation and reporting module:** NAV inputs, periodic statements, audit exports.
 - **Audit and regulator reporting interface:** read-only reports, event logs, and evidence packages.
 
