@@ -7,7 +7,7 @@ flowchart TD
   A["Investor applies (ASEAN)"] --> B["KYC/AML + eligibility checks (off-chain)"]
   B --> C["Assign pseudonymous Investor ID (off-chain)"]
   C --> D["Investor proves wallet control"]
-  D --> E["Bind wallet ↔ Investor ID + jurisdiction tags + eligibility class"]
+  D --> E["Bind wallet <-> Investor ID + jurisdiction tags + eligibility class"]
   E --> F["Whitelist grant (segmented by jurisdiction/product/venue rules)"]
 
   F --> G{"Transfer / trade request"}

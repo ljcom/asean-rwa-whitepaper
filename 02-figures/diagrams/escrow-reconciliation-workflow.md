@@ -5,7 +5,7 @@ This diagram illustrates daily reconciliation and close-day controls for escrow-
 ```mermaid
 flowchart TD
   A["Escrow/bank statement feed"] --> B["Import + normalize transactions"]
-  B --> C["Match deposits ↔ subscriptions (references/timestamps)"]
+  B --> C["Match deposits <-> subscriptions (references/timestamps)"]
   C --> D{"Unmatched items?"}
   D -- "Yes" --> E["Ops review + exception ticket + remediation"]
   D -- "No" --> F["Reconciliation report (balances, matches, exceptions)"]

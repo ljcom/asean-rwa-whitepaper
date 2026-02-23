@@ -1,13 +1,21 @@
-% ASEAN Real Estate Tokenization Whitepaper
+% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN
 % (Working Draft)
-% 2026-02-23
+% 2026-02-24
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
 
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Executive Summary
 
@@ -93,7 +101,7 @@ Each model requires explicit alignment to local regulatory categories and licens
 
 ## Liquidity Engineering (Not Automatic Liquidity)
 
-Tokenization does not automatically create liquidity. Liquidity must be engineered through market design, regulated venues, and investor protection mechanisms.
+Liquidity must be engineered through market design, regulated venues, and investor protection mechanisms; tokenization alone is insufficient.
 
 This framework emphasizes liquidity engineering through the following components:
 
@@ -135,9 +143,17 @@ This whitepaper proposes a staged approach designed to support regulator engagem
 
 The remainder of this whitepaper details the problem statement, regulatory boundaries, architecture, cross-border design, privacy model, liquidity strategy, supported funding models (including Shariah-compliant structures), risks, mitigations, and an implementation roadmap for ASEAN deployment with Indonesian underlying assets.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Problem Statement
 
@@ -215,9 +231,17 @@ Cross-border participation is expected to remain heterogeneous across ASEAN. The
 - Venue-specific controls to manage liquidity fragmentation across jurisdictions
 - Modular compliance controls to support evolving guidance without redesigning the underlying economic-rights model
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Scope and Non-Scope
 
@@ -301,9 +325,17 @@ To maintain regulatory clarity and prevent misinterpretation, the following item
 - Secure key management and access controls for privileged actions.
 - Integrity and audit logging across both on-chain and off-chain components.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Stakeholders and Roles
 
@@ -346,6 +378,24 @@ The platform does not “set regulation” or override country rules. It impleme
 | Regulator interface (read-only) | Program governance | structured reporting and evidence access | evidence packs, reconciliations, supervisory reports |
 
 Data controller/processor responsibilities for personal data must be explicitly assigned in the operating model, including for cross-border processing and evidence retention.
+
+## Legal Accountability Mapping (Illustrative)
+
+The table below makes legal accountability explicit. Final role allocation and liability scope depend on the selected Indonesian wrapper, licensing pathway, contracts, and jurisdiction-specific requirements. This framework does not shift legal accountability to software; it makes accountability auditable.
+
+| Role | Legal status (illustrative) | Liability scope (high-level) |
+| --- | --- | --- |
+| Issuer vehicle (SPV / DIRE / KIK) | Indonesian entity / Indonesian regulated wrapper (as applicable) | asset holding and enforceability; issuance terms; disclosures; investor entitlements as documented |
+| Originator / sponsor | Indonesian company or project sponsor (as applicable) | asset sourcing, representations, ongoing obligations as contracted; conflicts disclosures |
+| Manager / fund manager / asset manager (if applicable) | Licensed/authorized entity (jurisdiction- and wrapper-specific) | financial structuring (where applicable); governance; portfolio oversight; reporting cadence and valuation governance |
+| Servicer (debt) / property manager (income) | Contracted service provider (may require licensing depending on function) | collections, servicing actions, covenant monitoring, default process execution per mandate; reporting to issuer/governance |
+| Compliance operator (control plane) | Licensed/contracted entity (KYC provider + compliance function + operator roles) | KYC/AML enforcement; eligibility classification; whitelist governance; evidence retention for compliance decisions |
+| Escrow agent / bank / payment rail provider | Regulated financial institution / contracted escrow agent | segregated accounts; release/refund controls; settlement records and statements |
+| Custodian (where required) | Regulated custodian | safeguarding; access controls; custody reporting; incident response as contracted |
+| Trading venue (where permitted) | Regulated venue / exchange | market conduct controls; surveillance; participant/venue rule enforcement; trade reporting where applicable |
+| Valuer / appraiser | Independent professional firm (as applicable) | valuation inputs; methodology integrity; update cadence per mandate |
+| Auditor / assurance | Independent auditor/assurance provider | assurance over financials and/or controls; findings and remediation tracking |
+| Platform (technology operator/orchestrator) | Contracted technology operator (may be licensed depending on activities) | system operation; policy enforcement as configured; audit logging/traceability; incident management; does not replace regulated accountabilities |
 
 ## Core Stakeholders
 
@@ -424,19 +474,109 @@ The framework assumes clear accountability for:
 - Incident response and dispute resolution
 - Change management for token terms and system policies (under controlled governance)
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Architecture (Hybrid On-Chain / Off-Chain Compliance)
 
 ## Architecture Objectives
 
-The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**, not compliance-bypassing.
+The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**.
 
 Reference diagram: `02-figures/diagrams/hybrid-compliance-architecture.md`.
 
 This whitepaper assumes scale is achieved through **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) under Indonesian jurisdiction, with the platform operating a common compliance control plane rather than concentrating all exposures into a single vehicle. For the pilot stage, a single-SPV deployment can be used to validate the orchestration and evidence model before expanding to multiple vehicles.
+
+## Why a Hybrid Blockchain Architecture?
+
+This framework uses blockchain selectively to strengthen traceability and control outcomes within a regulated operating model.
+
+### Tamper-Evident Audit Trail
+
+On-chain event logs provide an immutable, tamper-evident record of key lifecycle events (issuance, transfers, corporate actions signaling, and enforcement actions where applicable). This reduces ambiguity during audits and dispute resolution by providing a consistent reference that can be reconciled against off-chain records.
+
+### Enforceable Transfer Restrictions
+
+Transfer restrictions are enforced through a combination of off-chain eligibility decisions and on-chain execution controls. The result is that resale and transfer rules (whitelists, lock-ups, venue-only rules where used) can be enforced consistently, with traceable outcomes (allowed/blocked) and governed exception handling.
+
+### Cross-Border Consistency (ASEAN Minimum)
+
+ASEAN participation requires jurisdiction-aware rules and controlled channels. A hybrid architecture supports consistent enforcement patterns across jurisdictions and venues while allowing jurisdiction-specific policy sets to be activated gradually during phased rollout.
+
+### Evidence Portability
+
+Because issuers, distributors, venues, auditors, and regulators may need to review evidence, the model emphasizes portable evidence packs. On-chain references and event logs support evidence portability by providing stable, verifiable anchors that can be shared without disclosing personal data on-chain.
+
+### High-Level Architecture (Visual)
+
+```mermaid
+flowchart LR
+  %% Actors
+  INV["Investor (ASEAN eligible)"]
+  BOR["Borrower / Project SPV (Indonesia)"]
+  REG["Regulator / Auditor (read-only)"]
+
+  %% Off-chain compliance plane
+  subgraph OFF["Off-chain Compliance & Operations Plane"]
+    AUDITLOG["Audit logs + traceability ledger (append-only)"]
+    KYC["KYC/AML + eligibility checks"]
+    REGISTRY["Investor registry + wallet binding"]
+    POLICY["Jurisdiction policy engine (selling restrictions)"]
+    DISC["Disclosure vault + acknowledgement logs"]
+    ESCROW["Escrow / segregated accounts (subscription & release controls)"]
+    CORP["Corporate actions engine (distributions, redemption windows)"]
+    VAL["Valuation/NAV + reporting module"]
+    EVID["Evidence pack generator (audit exports)"]
+    RBAC["RBAC + sequential approvals"]
+  end
+
+  %% On-chain execution plane
+  subgraph ON["On-chain Execution Plane"]
+    TOKEN["Economic-rights token contract(s)"]
+    WHITELIST["Whitelist / transfer restriction hooks"]
+    EVENTS["Event log (issuance, transfers, corporate actions)"]
+  end
+
+  %% Flows
+  INV --> KYC
+  KYC --> AUDITLOG
+  AUDITLOG --> REGISTRY
+  POLICY --> WHITELIST
+  REGISTRY --> WHITELIST
+  DISC --> INV
+  DISC --> AUDITLOG
+  INV --> ESCROW
+  ESCROW --> AUDITLOG
+
+  RBAC --> TOKEN
+  WHITELIST --> TOKEN
+  TOKEN --> EVENTS
+
+  %% Corporate actions and reporting
+  VAL --> CORP
+  VAL --> AUDITLOG
+  CORP --> RBAC
+  CORP --> TOKEN
+  CORP --> AUDITLOG
+
+  %% Asset side
+  BOR --> VAL
+  ESCROW --> BOR
+
+  %% Audit / regulator visibility
+  EVENTS --> EVID
+  AUDITLOG --> EVID
+  EVID --> REG
+```
 
 Primary objectives:
 
@@ -506,6 +646,29 @@ Critical actions (e.g., mint/issue, corporate action execution, emergency freeze
 - Investor completes KYC/AML and eligibility assessment off-chain.
 - Approved investors are assigned one or more permitted wallet addresses.
 - The whitelist is updated through a governed workflow with audit logs.
+
+Reference diagram: `02-figures/diagrams/issuance-lifecycle.md`.
+
+```mermaid
+flowchart TD
+  A["Product terms + disclosures prepared (wrapper)"] --> B["Investor onboarding (KYC/AML + eligibility)"]
+  B --> C["Wallet binding + whitelist segmentation"]
+  C --> D["Offering window (subscriptions)"]
+  D --> E["Funds to segregated escrow"]
+  E --> F{"Minimum close threshold met?"}
+
+  F -- "No" --> G["Borrower: accept partial close or cancel"]
+  G -- "Cancel" --> H["Refund from escrow; offering void"]
+
+  G -- "Partial accepted" --> I["Finalize allocation (partial)"]
+  F -- "Yes" --> J["Finalize allocation (full)"]
+
+  I --> K["Conditions precedent satisfied (incl. collateral/security docs as applicable)"]
+  J --> K
+  K --> L["Dual authorization: escrow release to borrower"]
+  L --> M["Issuance executed (mint/allocate) with transfer restrictions"]
+  M --> N["Statements + corporate actions + monitoring + evidence packs"]
+```
 
 ## Whitelist, KYC, and Identity Controls (Off-Chain)
 
@@ -630,6 +793,8 @@ Typical governance bodies and responsibilities:
 - **Risk committee:** reviews credit/market/operational risk posture, concentration limits, liquidity disclosures, and stress indicators (as applicable).
 - **Change control board:** approves system changes that affect controls (smart contract changes, policy engine updates, data model changes), including rollback and evidence impacts.
 
+Accountability is treated explicitly. See the legal accountability mapping in `01-draft/04-stakeholders.md`.
+
 ### Policy and Control Versioning
 
 Because cross-border rules and venue requirements can evolve, policies are treated as controlled artifacts:
@@ -679,9 +844,17 @@ Independent assurance can include:
 
 Assurance scope and cadence depend on product scale, investor category, and jurisdiction/venue expectations.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Cross-Border Design (ASEAN Minimum)
 
@@ -692,6 +865,28 @@ The objective of the cross-border design is to enable **ASEAN-regulated particip
 Reference diagram: `02-figures/diagrams/cross-border-jurisdiction-controls.md`.
 
 This whitepaper assumes an **Indonesia-first pilot** (domestic distribution and settlement) followed by phased rollout to additional ASEAN jurisdictions. Cross-border controls are therefore specified as reusable design requirements that can be activated jurisdiction-by-jurisdiction once legal pathways and operating partners are in place.
+
+## Cross-Border Control Flow (Visual)
+
+```mermaid
+flowchart TD
+  A["Investor onboarding (off-chain)"] --> B["Jurisdiction tagging + investor classification"]
+  B --> C["Jurisdiction-aware whitelist segmentation"]
+  C --> D["Policy-controlled transfer rules"]
+
+  D --> E{"Transfer / trade request"}
+  E --> F["Allowed (meets eligibility + selling restrictions)"]
+  E --> G["Blocked (policy violation)"]
+
+  F --> H["Venue-specific controls (where trading permitted)"]
+  H --> I["Regulated venue surveillance + reporting hooks"]
+
+  D --> J["Evidence retention (disclosures, approvals, logs)"]
+  G --> J
+  I --> J
+
+  J --> K["Audit / regulator review (read-only)"]
+```
 
 ## Jurisdictional Constraints Informing the Approach
 
@@ -867,9 +1062,17 @@ Personal data remains off-chain and is managed through controlled access; on-cha
 
 These limitations are treated as design inputs and are addressed through venue selection, phased rollout, and robust compliance operations.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Privacy and Personal Data (Indonesia UU PDP and ASEAN PDPA)
 
@@ -978,9 +1181,17 @@ Cross-border participation increases privacy risk surface area due to more parti
 
 Residual risk remains and must be managed through governance, audits, and ongoing compliance monitoring.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Liquidity Engineering
 
@@ -996,7 +1207,7 @@ In this program, “liquidity” refers to two distinct requirements that should
 
 This whitepaper treats investor exit liquidity as market- and venue-dependent, while origination liquidity can be engineered through primary-market design and operating controls.
 
-## Principle: Tokenization ≠ Automatic Liquidity
+## Principle: Tokenization Is Not Automatic Liquidity
 
 Tokenization can improve transferability and operational efficiency, but it does not automatically create liquidity. Real estate exposures remain subject to:
 
@@ -1199,9 +1410,17 @@ Cross-border liquidity is structurally constrained by:
 
 As a result, liquidity is expected to be **fragmented** rather than unified. The framework manages this through jurisdiction-aware whitelists, venue-specific controls, and staged expansion rather than assuming a single ASEAN-wide pooled market from day one.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Funding Models (Debt, Profit Participation, Sukuk, Crowdfunding)
 
@@ -1411,9 +1630,17 @@ Across all models, the following controls are treated as common requirements:
 
 Liquidity expectations must be explicitly stated per model. Tokenization supports engineered pathways, but it does not guarantee liquidity.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Shariah Considerations (Sukuk and Shariah-Aligned Offerings)
 
@@ -1497,7 +1724,7 @@ Shariah alignment does not reduce the need for securities regulation compliance.
 - investor eligibility and selling restrictions
 - market conduct and surveillance rules where secondary trading is permitted
 
-Tokenization is not used to bypass regulation; it is used to improve administration and auditability within regulated constraints.
+Shariah-aligned offerings should reuse the same control plane (KYC/whitelist/escrow/auditability) with additional Shariah governance, rather than introducing parallel or weaker controls.
 
 ## Liquidity Considerations
 
@@ -1509,9 +1736,17 @@ Liquidity expectations for sukuk-style offerings must be stated conservatively:
 
 Cross-border liquidity fragmentation across ASEAN jurisdictions is expected and managed through venue-specific controls.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Risks and Mitigations
 
@@ -1702,9 +1937,17 @@ Risk management must be implemented with jurisdiction awareness. Key implication
 
 The framework’s mitigation approach is to make controls explicit, auditable, and aligned with regulator expectations, rather than assuming uniformity across ASEAN.
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Roadmap and Sandbox Strategy
 
@@ -1837,9 +2080,17 @@ As the program expands into credit-bearing products and larger retail participat
 - asset disposition and recovery waterfall procedures consistent with Indonesian law and the chosen wrapper
 - operational runbooks and evidence pack templates for default events and recoveries
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Appendix (Illustrative)
 
@@ -1887,6 +2138,7 @@ See `03-references/sources.md` for a working list of source categories and place
 
 - Hybrid architecture: `02-figures/diagrams/hybrid-compliance-architecture.md`
 - Cross-border controls: `02-figures/diagrams/cross-border-jurisdiction-controls.md`
+- Issuance lifecycle: `02-figures/diagrams/issuance-lifecycle.md`
 - Privacy boundary: `02-figures/diagrams/privacy-data-boundary.md`
 - Liquidity engineering: `02-figures/diagrams/liquidity-engineering-map.md`
 - Secondary market & exit pathways: `02-figures/diagrams/secondary-market-and-exit-pathways.md`
@@ -1902,9 +2154,17 @@ See `03-references/sources.md` for a working list of source categories and place
 
 See `01-draft/14-technical-annex.md` for an implementation-oriented specification (technical controls, logging, policy engine, escrow, on-chain scope, key management, monitoring, and evidence packs).
 
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
 
+```{=latex}
+\newpage
+```
 
-ewpage
+```{=html}
+<div style="page-break-before: always;"></div>
+```
 
 # Technical Annex (Implementation Specification – Working Draft)
 
@@ -1953,7 +2213,7 @@ Design requirements:
 
 Derived read models (non-exhaustive):
 
-- investor registry (investor ID ↔ wallets, eligibility class, jurisdiction tags)
+- investor registry (investor ID <-> wallets, eligibility class, jurisdiction tags)
 - whitelist state per policy version
 - subscription/allocation state (including escrow status)
 - corporate action ledgers (distribution schedules, entitlements)
@@ -2194,21 +2454,21 @@ Roles should be explicit and mapped to off-chain governance:
 
 Where feasible, critical actions should require sequential approvals off-chain and be executed on-chain only after an approval window is opened and evidenced.
 
-#### Minimal Function/Control Catalogue (Illustrative)
+#### Compliance Enforcement Layer (Conceptual)
 
-| Capability | On-chain function family (illustrative) | Who can initiate | Preconditions (off-chain) | Required event logging |
-| --- | --- | --- | --- | --- |
-| Issuance (mint/allocate) | `mint`, `allocate`, `issue` | operations executor | escrow settled; close decision approved; disclosures acknowledged; whitelist ready | issuance event + doc/evidence reference ID |
-| Transfers (secondary or off-venue) | `transfer`, `transferFrom` (restricted) | token holder | sender/receiver whitelisted; lock-ups/caps satisfied | transfer allowed event; blocked attempts recorded where feasible |
-| Whitelist updates (on-chain mirror) | `setWhitelistStatus` (if mirrored) | compliance approver | KYC/eligibility approved; policy version active | whitelist change event + approval reference |
-| Holds/freezes | `freeze`, `hold`, `unfreeze` | emergency operator | documented trigger; approval workflow; time-bound where possible | enforcement event + reason code reference |
-| Corporate action signaling | `announceDistribution`, `recordSnapshot`, `openRedemptionWindow` | operations executor | calculation approved; funding confirmed; notices issued | corporate action event + policy/evidence reference |
-| Upgrade (if upgradeable) | `upgradeTo` / admin upgrade | change control + ops | change ticket approved; audit plan; time-delay; rollback plan | upgrade event + change ticket reference |
+The following table illustrates control pathways at a functional level. Specific implementation details are intentionally abstracted to preserve technology neutrality.
 
-Notes:
+| Control function | Operational purpose | Governance mechanism |
+| --- | --- | --- |
+| Issuance control | Prevent unauthorized minting | Dual-role approval (Issuer + Compliance) |
+| Transfer restriction | Ensure only approved participants can transact | Jurisdiction-aware whitelist |
+| Distribution logic | Allocate income according to defined entitlement | Rule-based automated execution |
+| Emergency pause | Enable supervisory intervention | Multi-signature authority |
+| Role assignment | Segregate operational powers | Permissioned access model |
 
-- Any off-chain policy engine decisions should be traceable to the on-chain events via references (IDs/hashes) without exposing personal data on-chain.
-- “Blocked attempts” logging may be limited by standard token interfaces; at minimum, policy-controlled transfers should produce off-chain decision logs and on-chain logs for successful transfers.
+Implementation note:
+
+- Off-chain policy decisions (eligibility, selling restrictions, exceptions) should be traceable to on-chain outcomes via references without exposing personal data on-chain.
 - The contract surface should avoid introducing permissionless liquidity mechanics (no AMM hooks assumed).
 
 ## Blockchain Network Selection (Implementation Choice)

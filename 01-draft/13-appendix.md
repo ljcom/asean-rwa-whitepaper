@@ -44,6 +44,7 @@ See `03-references/sources.md` for a working list of source categories and place
 
 - Hybrid architecture: `02-figures/diagrams/hybrid-compliance-architecture.md`
 - Cross-border controls: `02-figures/diagrams/cross-border-jurisdiction-controls.md`
+- Issuance lifecycle: `02-figures/diagrams/issuance-lifecycle.md`
 - Privacy boundary: `02-figures/diagrams/privacy-data-boundary.md`
 - Liquidity engineering: `02-figures/diagrams/liquidity-engineering-map.md`
 - Secondary market & exit pathways: `02-figures/diagrams/secondary-market-and-exit-pathways.md`

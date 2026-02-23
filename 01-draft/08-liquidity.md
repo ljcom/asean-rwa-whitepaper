@@ -12,7 +12,7 @@ In this program, “liquidity” refers to two distinct requirements that should
 
 This whitepaper treats investor exit liquidity as market- and venue-dependent, while origination liquidity can be engineered through primary-market design and operating controls.
 
-## Principle: Tokenization ≠ Automatic Liquidity
+## Principle: Tokenization Is Not Automatic Liquidity
 
 Tokenization can improve transferability and operational efficiency, but it does not automatically create liquidity. Real estate exposures remain subject to:
 

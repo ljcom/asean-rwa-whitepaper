@@ -40,6 +40,24 @@ The platform does not “set regulation” or override country rules. It impleme
 
 Data controller/processor responsibilities for personal data must be explicitly assigned in the operating model, including for cross-border processing and evidence retention.
 
+## Legal Accountability Mapping (Illustrative)
+
+The table below makes legal accountability explicit. Final role allocation and liability scope depend on the selected Indonesian wrapper, licensing pathway, contracts, and jurisdiction-specific requirements. This framework does not shift legal accountability to software; it makes accountability auditable.
+
+| Role | Legal status (illustrative) | Liability scope (high-level) |
+| --- | --- | --- |
+| Issuer vehicle (SPV / DIRE / KIK) | Indonesian entity / Indonesian regulated wrapper (as applicable) | asset holding and enforceability; issuance terms; disclosures; investor entitlements as documented |
+| Originator / sponsor | Indonesian company or project sponsor (as applicable) | asset sourcing, representations, ongoing obligations as contracted; conflicts disclosures |
+| Manager / fund manager / asset manager (if applicable) | Licensed/authorized entity (jurisdiction- and wrapper-specific) | financial structuring (where applicable); governance; portfolio oversight; reporting cadence and valuation governance |
+| Servicer (debt) / property manager (income) | Contracted service provider (may require licensing depending on function) | collections, servicing actions, covenant monitoring, default process execution per mandate; reporting to issuer/governance |
+| Compliance operator (control plane) | Licensed/contracted entity (KYC provider + compliance function + operator roles) | KYC/AML enforcement; eligibility classification; whitelist governance; evidence retention for compliance decisions |
+| Escrow agent / bank / payment rail provider | Regulated financial institution / contracted escrow agent | segregated accounts; release/refund controls; settlement records and statements |
+| Custodian (where required) | Regulated custodian | safeguarding; access controls; custody reporting; incident response as contracted |
+| Trading venue (where permitted) | Regulated venue / exchange | market conduct controls; surveillance; participant/venue rule enforcement; trade reporting where applicable |
+| Valuer / appraiser | Independent professional firm (as applicable) | valuation inputs; methodology integrity; update cadence per mandate |
+| Auditor / assurance | Independent auditor/assurance provider | assurance over financials and/or controls; findings and remediation tracking |
+| Platform (technology operator/orchestrator) | Contracted technology operator (may be licensed depending on activities) | system operation; policy enforcement as configured; audit logging/traceability; incident management; does not replace regulated accountabilities |
+
 ## Core Stakeholders
 
 ### Regulators and Supervisory Authorities

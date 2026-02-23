@@ -8,11 +8,12 @@ DRAFT_DIR="${ROOT_DIR}/01-draft"
 OUT_MD="${BUILD_DIR}/whitepaper.generated.md"
 OUT_DOCX="${BUILD_DIR}/whitepaper.docx"
 OUT_HTML="${BUILD_DIR}/whitepaper.html"
+OUT_PDF="${BUILD_DIR}/whitepaper.pdf"
 
 DATE_STR="$(date +%Y-%m-%d)"
 
 cat > "${OUT_MD}" <<EOF
-% ASEAN Real Estate Tokenization Whitepaper
+% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN
 % (Working Draft)
 % ${DATE_STR}
 
@@ -42,7 +43,21 @@ for file in "${SECTION_FILES[@]}"; do
     echo "Missing section file: ${file}" >&2
     exit 1
   fi
-  printf "\n\n\\newpage\n\n" >> "${OUT_MD}"
+  cat >> "${OUT_MD}" <<'EOF'
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+```{=latex}
+\newpage
+```
+
+```{=html}
+<div style="page-break-before: always;"></div>
+```
+
+EOF
   cat "${file}" >> "${OUT_MD}"
 done
 
@@ -66,12 +81,32 @@ pandoc "${OUT_MD}" \
   --metadata toc-title="Daftar Isi" \
   -o "${OUT_HTML}"
 
+PDF_ENGINE=""
+if command -v xelatex >/dev/null 2>&1; then
+  PDF_ENGINE="xelatex"
+elif [[ -x "/Library/TeX/texbin/xelatex" ]]; then
+  PDF_ENGINE="/Library/TeX/texbin/xelatex"
+fi
+
+if [[ -n "${PDF_ENGINE}" ]]; then
+  echo "Generating PDF..."
+  pandoc "${OUT_MD}" \
+    --from=markdown \
+    --pdf-engine="${PDF_ENGINE}" \
+    --toc \
+    --toc-depth=3 \
+    -o "${OUT_PDF}"
+else
+  echo "Skipping PDF: xelatex not found."
+fi
+
 cat <<EOF
 Build complete:
 - ${OUT_MD}
 - ${OUT_DOCX}
 - ${OUT_HTML}
+- ${OUT_PDF}
 
 Note:
-- PDF generation requires a PDF engine (e.g., xelatex). Mermaid diagrams remain as code blocks unless rendered separately.
+- Mermaid diagrams remain as code blocks unless rendered separately.
 EOF

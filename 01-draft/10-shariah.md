@@ -80,7 +80,7 @@ Shariah alignment does not reduce the need for securities regulation compliance.
 - investor eligibility and selling restrictions
 - market conduct and surveillance rules where secondary trading is permitted
 
-Tokenization is not used to bypass regulation; it is used to improve administration and auditability within regulated constraints.
+Shariah-aligned offerings should reuse the same control plane (KYC/whitelist/escrow/auditability) with additional Shariah governance, rather than introducing parallel or weaker controls.
 
 ## Liquidity Considerations
 

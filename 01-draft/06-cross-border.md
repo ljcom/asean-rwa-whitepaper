@@ -8,6 +8,28 @@ Reference diagram: `02-figures/diagrams/cross-border-jurisdiction-controls.md`.
 
 This whitepaper assumes an **Indonesia-first pilot** (domestic distribution and settlement) followed by phased rollout to additional ASEAN jurisdictions. Cross-border controls are therefore specified as reusable design requirements that can be activated jurisdiction-by-jurisdiction once legal pathways and operating partners are in place.
 
+## Cross-Border Control Flow (Visual)
+
+```mermaid
+flowchart TD
+  A["Investor onboarding (off-chain)"] --> B["Jurisdiction tagging + investor classification"]
+  B --> C["Jurisdiction-aware whitelist segmentation"]
+  C --> D["Policy-controlled transfer rules"]
+
+  D --> E{"Transfer / trade request"}
+  E --> F["Allowed (meets eligibility + selling restrictions)"]
+  E --> G["Blocked (policy violation)"]
+
+  F --> H["Venue-specific controls (where trading permitted)"]
+  H --> I["Regulated venue surveillance + reporting hooks"]
+
+  D --> J["Evidence retention (disclosures, approvals, logs)"]
+  G --> J
+  I --> J
+
+  J --> K["Audit / regulator review (read-only)"]
+```
+
 ## Jurisdictional Constraints Informing the Approach
 
 Cross-border design in ASEAN is shaped by three recurring realities:

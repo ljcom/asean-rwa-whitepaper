@@ -45,7 +45,7 @@ Design requirements:
 
 Derived read models (non-exhaustive):
 
-- investor registry (investor ID ↔ wallets, eligibility class, jurisdiction tags)
+- investor registry (investor ID <-> wallets, eligibility class, jurisdiction tags)
 - whitelist state per policy version
 - subscription/allocation state (including escrow status)
 - corporate action ledgers (distribution schedules, entitlements)
@@ -286,21 +286,21 @@ Roles should be explicit and mapped to off-chain governance:
 
 Where feasible, critical actions should require sequential approvals off-chain and be executed on-chain only after an approval window is opened and evidenced.
 
-#### Minimal Function/Control Catalogue (Illustrative)
+#### Compliance Enforcement Layer (Conceptual)
 
-| Capability | On-chain function family (illustrative) | Who can initiate | Preconditions (off-chain) | Required event logging |
-| --- | --- | --- | --- | --- |
-| Issuance (mint/allocate) | `mint`, `allocate`, `issue` | operations executor | escrow settled; close decision approved; disclosures acknowledged; whitelist ready | issuance event + doc/evidence reference ID |
-| Transfers (secondary or off-venue) | `transfer`, `transferFrom` (restricted) | token holder | sender/receiver whitelisted; lock-ups/caps satisfied | transfer allowed event; blocked attempts recorded where feasible |
-| Whitelist updates (on-chain mirror) | `setWhitelistStatus` (if mirrored) | compliance approver | KYC/eligibility approved; policy version active | whitelist change event + approval reference |
-| Holds/freezes | `freeze`, `hold`, `unfreeze` | emergency operator | documented trigger; approval workflow; time-bound where possible | enforcement event + reason code reference |
-| Corporate action signaling | `announceDistribution`, `recordSnapshot`, `openRedemptionWindow` | operations executor | calculation approved; funding confirmed; notices issued | corporate action event + policy/evidence reference |
-| Upgrade (if upgradeable) | `upgradeTo` / admin upgrade | change control + ops | change ticket approved; audit plan; time-delay; rollback plan | upgrade event + change ticket reference |
+The following table illustrates control pathways at a functional level. Specific implementation details are intentionally abstracted to preserve technology neutrality.
 
-Notes:
+| Control function | Operational purpose | Governance mechanism |
+| --- | --- | --- |
+| Issuance control | Prevent unauthorized minting | Dual-role approval (Issuer + Compliance) |
+| Transfer restriction | Ensure only approved participants can transact | Jurisdiction-aware whitelist |
+| Distribution logic | Allocate income according to defined entitlement | Rule-based automated execution |
+| Emergency pause | Enable supervisory intervention | Multi-signature authority |
+| Role assignment | Segregate operational powers | Permissioned access model |
 
-- Any off-chain policy engine decisions should be traceable to the on-chain events via references (IDs/hashes) without exposing personal data on-chain.
-- “Blocked attempts” logging may be limited by standard token interfaces; at minimum, policy-controlled transfers should produce off-chain decision logs and on-chain logs for successful transfers.
+Implementation note:
+
+- Off-chain policy decisions (eligibility, selling restrictions, exceptions) should be traceable to on-chain outcomes via references without exposing personal data on-chain.
 - The contract surface should avoid introducing permissionless liquidity mechanics (no AMM hooks assumed).
 
 ## Blockchain Network Selection (Implementation Choice)

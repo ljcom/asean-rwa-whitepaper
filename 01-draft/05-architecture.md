@@ -2,11 +2,93 @@
 
 ## Architecture Objectives
 
-The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**, not compliance-bypassing.
+The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**.
 
 Reference diagram: `02-figures/diagrams/hybrid-compliance-architecture.md`.
 
 This whitepaper assumes scale is achieved through **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) under Indonesian jurisdiction, with the platform operating a common compliance control plane rather than concentrating all exposures into a single vehicle. For the pilot stage, a single-SPV deployment can be used to validate the orchestration and evidence model before expanding to multiple vehicles.
+
+## Why a Hybrid Blockchain Architecture?
+
+This framework uses blockchain selectively to strengthen traceability and control outcomes within a regulated operating model.
+
+### Tamper-Evident Audit Trail
+
+On-chain event logs provide an immutable, tamper-evident record of key lifecycle events (issuance, transfers, corporate actions signaling, and enforcement actions where applicable). This reduces ambiguity during audits and dispute resolution by providing a consistent reference that can be reconciled against off-chain records.
+
+### Enforceable Transfer Restrictions
+
+Transfer restrictions are enforced through a combination of off-chain eligibility decisions and on-chain execution controls. The result is that resale and transfer rules (whitelists, lock-ups, venue-only rules where used) can be enforced consistently, with traceable outcomes (allowed/blocked) and governed exception handling.
+
+### Cross-Border Consistency (ASEAN Minimum)
+
+ASEAN participation requires jurisdiction-aware rules and controlled channels. A hybrid architecture supports consistent enforcement patterns across jurisdictions and venues while allowing jurisdiction-specific policy sets to be activated gradually during phased rollout.
+
+### Evidence Portability
+
+Because issuers, distributors, venues, auditors, and regulators may need to review evidence, the model emphasizes portable evidence packs. On-chain references and event logs support evidence portability by providing stable, verifiable anchors that can be shared without disclosing personal data on-chain.
+
+### High-Level Architecture (Visual)
+
+```mermaid
+flowchart LR
+  %% Actors
+  INV["Investor (ASEAN eligible)"]
+  BOR["Borrower / Project SPV (Indonesia)"]
+  REG["Regulator / Auditor (read-only)"]
+
+  %% Off-chain compliance plane
+  subgraph OFF["Off-chain Compliance & Operations Plane"]
+    AUDITLOG["Audit logs + traceability ledger (append-only)"]
+    KYC["KYC/AML + eligibility checks"]
+    REGISTRY["Investor registry + wallet binding"]
+    POLICY["Jurisdiction policy engine (selling restrictions)"]
+    DISC["Disclosure vault + acknowledgement logs"]
+    ESCROW["Escrow / segregated accounts (subscription & release controls)"]
+    CORP["Corporate actions engine (distributions, redemption windows)"]
+    VAL["Valuation/NAV + reporting module"]
+    EVID["Evidence pack generator (audit exports)"]
+    RBAC["RBAC + sequential approvals"]
+  end
+
+  %% On-chain execution plane
+  subgraph ON["On-chain Execution Plane"]
+    TOKEN["Economic-rights token contract(s)"]
+    WHITELIST["Whitelist / transfer restriction hooks"]
+    EVENTS["Event log (issuance, transfers, corporate actions)"]
+  end
+
+  %% Flows
+  INV --> KYC
+  KYC --> AUDITLOG
+  AUDITLOG --> REGISTRY
+  POLICY --> WHITELIST
+  REGISTRY --> WHITELIST
+  DISC --> INV
+  DISC --> AUDITLOG
+  INV --> ESCROW
+  ESCROW --> AUDITLOG
+
+  RBAC --> TOKEN
+  WHITELIST --> TOKEN
+  TOKEN --> EVENTS
+
+  %% Corporate actions and reporting
+  VAL --> CORP
+  VAL --> AUDITLOG
+  CORP --> RBAC
+  CORP --> TOKEN
+  CORP --> AUDITLOG
+
+  %% Asset side
+  BOR --> VAL
+  ESCROW --> BOR
+
+  %% Audit / regulator visibility
+  EVENTS --> EVID
+  AUDITLOG --> EVID
+  EVID --> REG
+```
 
 Primary objectives:
 
@@ -76,6 +158,29 @@ Critical actions (e.g., mint/issue, corporate action execution, emergency freeze
 - Investor completes KYC/AML and eligibility assessment off-chain.
 - Approved investors are assigned one or more permitted wallet addresses.
 - The whitelist is updated through a governed workflow with audit logs.
+
+Reference diagram: `02-figures/diagrams/issuance-lifecycle.md`.
+
+```mermaid
+flowchart TD
+  A["Product terms + disclosures prepared (wrapper)"] --> B["Investor onboarding (KYC/AML + eligibility)"]
+  B --> C["Wallet binding + whitelist segmentation"]
+  C --> D["Offering window (subscriptions)"]
+  D --> E["Funds to segregated escrow"]
+  E --> F{"Minimum close threshold met?"}
+
+  F -- "No" --> G["Borrower: accept partial close or cancel"]
+  G -- "Cancel" --> H["Refund from escrow; offering void"]
+
+  G -- "Partial accepted" --> I["Finalize allocation (partial)"]
+  F -- "Yes" --> J["Finalize allocation (full)"]
+
+  I --> K["Conditions precedent satisfied (incl. collateral/security docs as applicable)"]
+  J --> K
+  K --> L["Dual authorization: escrow release to borrower"]
+  L --> M["Issuance executed (mint/allocate) with transfer restrictions"]
+  M --> N["Statements + corporate actions + monitoring + evidence packs"]
+```
 
 ## Whitelist, KYC, and Identity Controls (Off-Chain)
 
@@ -199,6 +304,8 @@ Typical governance bodies and responsibilities:
 - **Compliance committee:** approves policy rules (selling restrictions, eligibility, whitelist governance), exception handling, and jurisdiction-specific control changes.
 - **Risk committee:** reviews credit/market/operational risk posture, concentration limits, liquidity disclosures, and stress indicators (as applicable).
 - **Change control board:** approves system changes that affect controls (smart contract changes, policy engine updates, data model changes), including rollback and evidence impacts.
+
+Accountability is treated explicitly. See the legal accountability mapping in `01-draft/04-stakeholders.md`.
 
 ### Policy and Control Versioning
 

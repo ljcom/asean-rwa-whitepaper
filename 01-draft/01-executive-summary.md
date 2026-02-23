@@ -82,7 +82,7 @@ Each model requires explicit alignment to local regulatory categories and licens
 
 ## Liquidity Engineering (Not Automatic Liquidity)
 
-Tokenization does not automatically create liquidity. Liquidity must be engineered through market design, regulated venues, and investor protection mechanisms.
+Liquidity must be engineered through market design, regulated venues, and investor protection mechanisms; tokenization alone is insufficient.
 
 This framework emphasizes liquidity engineering through the following components:
 
