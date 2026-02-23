@@ -48,6 +48,7 @@ See `03-references/sources.md` for a working list of source categories and place
 - Venues and fiat ramps overview: `02-figures/diagrams/venues-and-ramps-overview.md`
 - Stakeholder operating model: `02-figures/diagrams/stakeholder-operating-model.md`
 - Governance/audit/monitoring loop: `02-figures/diagrams/governance-audit-monitoring-loop.md`
+- Escrow reconciliation workflow: `02-figures/diagrams/escrow-reconciliation-workflow.md`
 - Constraint → control mapping: `02-figures/tables/regulatory-constraint-control-mapping.md`
 - Audit/monitoring metrics: `02-figures/tables/audit-monitoring-metrics.md`
 

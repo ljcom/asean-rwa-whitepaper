@@ -18,6 +18,7 @@ Reference diagrams:
 - `02-figures/diagrams/hybrid-compliance-architecture.md`
 - `02-figures/diagrams/whitelist-kyc-identity-flow.md`
 - `02-figures/diagrams/debt-escrow-close-flow.md`
+- `02-figures/diagrams/escrow-reconciliation-workflow.md`
 - `02-figures/diagrams/secondary-market-and-exit-pathways.md`
 
 The system is split into:
@@ -90,11 +91,64 @@ Issuance and lifecycle:
 - Compliance decisions must be attributable and auditable (who approved, when, under what policy).
 - Eligibility is identity-centric; wallet addresses are bound to verified identities.
 
+### Indonesia-First Retail Pilot (Parameterization)
+
+For an Indonesia-first pilot with early retail adoption (where permitted), the implementation should parameterize:
+
+- investor categories (institutional vs eligible retail vs capped retail, as applicable)
+- retail caps and suitability/appropriateness controls (policy-driven; enforced off-chain and reflected on-chain via restrictions)
+- disclosure acknowledgement requirements and refresh cadence
+- restrictions for re-sale/transfer (lock-ups, venue-only rules if used)
+
+Retail configurations should be treated as conservative defaults and require explicit governance approvals for any expansion of eligibility or caps.
+
 ### Integration Requirements (Non-Exhaustive)
 
 - Provider interface for verification outcomes and screening signals.
 - Standardized identity record model (pseudonymous investor ID, not PII as primary key).
 - Support periodic refresh workflows and revocation flows that update whitelist privileges.
+
+## Wallet Model (Adoption vs. Control)
+
+This program should support at least two wallet interaction modes to balance retail adoption and institutional requirements:
+
+### Mode A: Managed Wallet (Web3Auth/MPC/Social Login)
+
+Use cases:
+
+- retail onboarding and recovery-friendly UX
+- controlled device/account recovery flows
+
+Minimum requirements:
+
+- documented custody/operating posture (who controls what, recovery semantics)
+- RBAC for platform-side actions impacting wallet access (if any)
+- audit logs for key lifecycle events (creation, recovery, key-share rotation, lock/unlock)
+- clear disclosures on residual risks and support processes
+
+### Mode B: External Wallet (MetaMask / Hardware / Custodian Wallet)
+
+Use cases:
+
+- crypto-native users and institutions with their own custody stack
+- venue compatibility where external wallets are required
+
+Minimum requirements:
+
+- proof-of-control workflow for wallet binding
+- safe signing UX guidance and phishing-resistant flows (as applicable)
+- support for institution-grade custody addresses (including multi-sig where used)
+
+### Multi-Wallet Policy (Identity-Centric Controls)
+
+Allowing more than one wallet per investor can improve UX (device separation, custody options), but it increases compliance and operational risk. The system should therefore enforce:
+
+- a **wallet limit per investor** (pilot default: small number, e.g., 1–2) with controlled approvals for increases
+- **identity-centric caps/lock-ups** (enforced at the investor ID level, not per wallet address)
+- controlled wallet addition/removal workflows (proof-of-control + approvals + audit logs)
+- consolidated statements and entitlement calculations per investor ID across bound wallets
+
+This prevents cap circumvention (crowdfunding limits), reduces resale restriction leakage, and improves AML/monitoring effectiveness.
 
 ## Policy Engine (Jurisdiction-Aware Controls)
 
@@ -115,6 +169,35 @@ The policy engine is responsible for computing allow/deny outcomes for privilege
 - reason codes (machine-readable + human-readable)
 - applicable policy version reference
 - evidence references (e.g., KYC approval ID, disclosure acknowledgement ID)
+
+### Policy Rule Examples (Pilot-Oriented, Illustrative)
+
+These examples are intended to clarify how rules are implemented. Final rule sets are jurisdiction- and wrapper-specific.
+
+| Policy area | Example rule | Intended outcome |
+| --- | --- | --- |
+| Eligibility | retail category requires suitability acknowledgement + capped exposure | prevent mis-selling; enforce caps and disclosures |
+| Lock-up | no transfers for N days post-issuance except to regulated venue wallet (if used) | manage early resale risk and selling restrictions |
+| Crowdfunding caps | total exposure per investor ID cannot exceed cap across all bound wallets | prevent wallet-splitting to bypass caps |
+| Jurisdiction | cross-border transfers blocked until jurisdiction activated in rollout | enforce Indonesia-first pilot sequencing |
+| Exceptions | exception approvals are scoped (purpose, amount, expiry) | prevent open-ended overrides |
+
+### Reason Codes (Transfer / Action Decisioning)
+
+Minimum set (illustrative):
+
+- `NOT_WHITELISTED_SENDER`
+- `NOT_WHITELISTED_RECEIVER`
+- `KYC_EXPIRED_OR_REFRESH_REQUIRED`
+- `ELIGIBILITY_CLASS_MISMATCH`
+- `LOCKUP_ACTIVE`
+- `CAP_EXCEEDED`
+- `JURISDICTION_NOT_ACTIVE`
+- `VENUE_ONLY_REQUIRED`
+- `ENFORCEMENT_HOLD`
+- `POLICY_VERSION_NOT_APPROVED`
+
+Reason codes should be stable, reportable, and mapped to human-readable explanations for investor support and audit reviews.
 
 ### Versioning and Change Control
 
@@ -145,6 +228,29 @@ When expanding to other ASEAN jurisdictions:
 - escrow releases require a recorded close decision and approvals
 - refunds follow documented SLAs and evidence retention
 - daily reconciliation between escrow statements and subscription/allocation ledgers
+
+### Escrow Reconciliation Workflow (Illustrative)
+
+Goal: ensure allocations and releases are fully backed by fiat movements and that refunds are executed correctly when offerings cancel.
+
+Suggested daily workflow:
+
+1. Import escrow/bank statements (or statement feed) into the settlement module.
+2. Match deposits to subscriptions using payer references and timestamps.
+3. Flag unmatched deposits and unresolved subscriptions for operations review.
+4. Produce a reconciliation report:
+   - beginning balance, deposits, releases, refunds, ending balance
+   - matched vs unmatched items
+   - exceptions and remediation actions
+5. Close decisions (minimum close met / partial accepted / cancelled) are recorded and approved.
+6. Releases/refunds executed only after dual authorization; execution receipts are attached to evidence packs.
+
+Artifacts retained:
+
+- statement snapshots and import logs
+- matching results and exception tickets
+- reconciliation reports (daily and per-offering close)
+- release/refund approvals and execution receipts
 
 ## On-Chain Scope (Restricted Token Administration)
 
@@ -199,6 +305,17 @@ Evidence packs must be reproducible and structured. Each pack should include (as
 - escrow statements, release/refund approvals, reconciliation reports
 - on-chain transaction receipts and event exports
 - exception approvals and their scope/expiry
+
+## Pilot Configuration Summary (Indonesia-First)
+
+To reduce ambiguity during implementation, the pilot should explicitly declare:
+
+- **scope:** Indonesia-only distribution and settlement; cross-border disabled until later phase activation
+- **vehicle:** single Indonesian SPV for pilot validation
+- **investor category:** retail where permitted (conservative caps), plus institutional if included
+- **escrow:** single Indonesian escrow as close gate; dual authorization for releases/refunds
+- **wallets:** support managed wallets and external wallets; multi-wallet policy is identity-centric with strict limits
+- **secondary trading:** optional and venue-specific; not an assurance of exit; term-driven outcomes remain primary
 
 ## Non-Goals (Technical)
 
