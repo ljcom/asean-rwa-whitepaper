@@ -8,6 +8,8 @@ from pathlib import Path
 
 
 MERMAID_FENCE_RE = re.compile(r"```mermaid\s*\n(.*?)\n```", re.DOTALL)
+DEFAULT_HEIGHT = os.environ.get("MERMAID_HEIGHT", "50%")
+DEFAULT_ALIGN = os.environ.get("MERMAID_ALIGN", "center")
 
 
 def sha1(text: str) -> str:
@@ -69,7 +71,7 @@ def main() -> int:
                 pass
 
         rel = os.path.relpath(png_path, output_md.parent)
-        return f"![]({rel})"
+        return f"![]({rel}){{height={DEFAULT_HEIGHT} fig-align={DEFAULT_ALIGN}}}"
 
     rendered = MERMAID_FENCE_RE.sub(replace, md)
     output_md.write_text(rendered, encoding="utf-8")
