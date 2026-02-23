@@ -4,6 +4,16 @@
 
 The objective of the cross-border design is to enable **ASEAN-regulated participation** in Indonesian underlying real estate exposures while respecting jurisdiction-specific selling restrictions, investor eligibility rules, and data protection regimes. The framework does not assume regulatory harmonization across ASEAN and is not designed for regulatory arbitrage.
 
+## Jurisdictional Constraints Informing the Approach
+
+Cross-border design in ASEAN is shaped by three recurring realities:
+
+- **Classification variability:** the same economic rights may be treated differently depending on wrapper, distribution, and local categories.
+- **Channel dependency:** both primary distribution and secondary trading are typically constrained to regulated channels/venues (where permitted).
+- **Privacy and accountability:** personal data handling (including cross-border transfers) must be governed under UU PDP/PDPA obligations.
+
+As a result, the architecture prioritizes jurisdiction-aware controls and auditable evidence over assumptions of uniform cross-border portability.
+
 ## Cross-Border Operating Model
 
 ### Jurisdiction-Aware Participation
@@ -37,6 +47,18 @@ Secondary trading, where permitted, is mediated through regulated venues and ven
 - surveillance and reporting hooks (subject to venue capability)
 
 Liquidity fragmentation across ASEAN jurisdictions is expected and must be managed through venue-specific controls and rollout sequencing.
+
+## Regulatory Design Constraints (ASEAN Minimum, High-Level)
+
+The following high-level constraints are included to justify the design choices in this section. They are non-exhaustive and do not replace jurisdiction-specific legal analysis.
+
+| Constraint area | Cross-border impact | Design response |
+| --- | --- | --- |
+| Selling restrictions and investor eligibility | Eligibility may differ by jurisdiction; resale may be constrained | Jurisdiction-aware whitelist segmentation and policy-driven transfer controls |
+| Distribution channel requirements | Cross-border distribution often requires regulated intermediaries and evidence retention | Distributor integration patterns and disclosure acknowledgement tracking |
+| Venue access and market conduct | Trading access differs by venue; surveillance expectations apply where trading is permitted | Venue-specific controls, phased rollout, and auditable transfer enforcement |
+| Data protection and cross-border transfers | More parties and jurisdictions increase privacy risk surface | Off-chain personal data boundary; controlled access; accountable controller/processor roles |
+| Operational accountability across parties | Multi-party operations introduce control gaps if responsibilities are unclear | RBAC, sequential approvals, and standardized evidence packages |
 
 ## Compliance Control Mechanisms
 

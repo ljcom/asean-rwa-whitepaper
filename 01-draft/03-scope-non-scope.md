@@ -38,6 +38,21 @@ This whitepaper covers an ASEAN-minimum tokenization framework for Indonesian un
 - NAV reference data integration and pricing integrity approaches
 - Redemption mechanisms and liquidity windows (documented; not implied to be continuous)
 
+## Regulatory Design Constraints (ASEAN Minimum)
+
+This framework is designed around regulatory and operational constraints that commonly apply in ASEAN markets. The intent is to explain why the chosen approach (economic-rights-only tokens, hybrid compliance architecture, jurisdiction-aware whitelisting, and venue-specific controls) is necessary.
+
+The table below is a high-level constraint summary (non-exhaustive). Final requirements are jurisdiction- and venue-specific and depend on the chosen legal wrapper and licensing pathway.
+
+| Constraint area | Indonesia (OJK + UU PDP) | Singapore (MAS + PDPA) | Malaysia (SC + PDPA) | Design implication in this whitepaper |
+| --- | --- | --- | --- | --- |
+| Instrument perimeter and classification | Economic-rights instruments may fall within securities/collective investment perimeters depending on structure and distribution | Classification and perimeter depend on product features and distribution channel | Classification and perimeter depend on product features and distribution channel | Avoid regulatory arbitrage; structure disclosures and controls per model (debt/profit participation/sukuk/crowdfunding) |
+| Distribution and selling restrictions | Offering and distribution typically require regulated channels, eligibility controls, and documented disclosures | Marketing, distribution, and eligibility constraints apply; may require licensed intermediaries | Marketing, distribution, and eligibility constraints apply; may require licensed intermediaries | Off-chain onboarding + eligibility engine + evidence retention for disclosures |
+| Secondary trading and market conduct | Secondary trading pathways are venue-dependent; market conduct and surveillance expectations apply where trading is permitted | Trading is venue-dependent; market conduct and surveillance expectations apply | Trading is venue-dependent; market conduct and surveillance expectations apply | Venue-specific controls; no permissionless markets; liquidity engineering rather than implied liquidity |
+| KYC/AML and investor verification | KYC/AML and screening obligations require controlled workflows | KYC/AML and screening obligations require controlled workflows | KYC/AML and screening obligations require controlled workflows | KYC/AML remains off-chain; jurisdiction-aware whitelist required |
+| Personal data protection and cross-border data handling | UU PDP requires privacy-by-design, minimization, and accountable handling | PDPA requirements for minimization, protection, and accountable processing | PDPA requirements for minimization, protection, and accountable processing | Personal data kept off-chain; on-chain stores minimal integrity references |
+| Custody / safeguarding expectations | Safeguarding and governance expectations apply to client assets and operational controls | Safeguarding and governance expectations apply to client assets and operational controls | Safeguarding and governance expectations apply to client assets and operational controls | RBAC, sequential approvals, audit logs, and clear operational accountability |
+
 ## Non-Scope (Out-of-Scope)
 
 To maintain regulatory clarity and prevent misinterpretation, the following items are explicitly out of scope:
