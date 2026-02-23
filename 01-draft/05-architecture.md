@@ -70,6 +70,53 @@ Critical actions (e.g., mint/issue, corporate action execution, emergency freeze
 - Approved investors are assigned one or more permitted wallet addresses.
 - The whitelist is updated through a governed workflow with audit logs.
 
+## Whitelist, KYC, and Identity Controls (Off-Chain)
+
+This framework uses off-chain identity and eligibility verification to support jurisdiction-aware transfer controls without storing personal data on-chain. The whitelist is treated as a compliance control mechanism, not a convenience feature.
+
+Reference diagram: `02-figures/diagrams/whitelist-kyc-identity-flow.md`.
+
+### Identity and KYC/AML (Off-Chain)
+
+Identity verification and KYC/AML are performed off-chain, including (as applicable):
+
+- identity proofing and document validation
+- beneficial ownership and control checks for entities
+- sanctions/PEP screening and risk-based due diligence
+- ongoing monitoring and periodic refresh
+
+Off-chain systems assign an internal, pseudonymous investor identifier for recordkeeping. Personal data remains off-chain under UU PDP/PDPA-aligned access controls and retention policies.
+
+### Wallet Binding (Proof of Control)
+
+Because on-chain transfers are executed by wallets, the operating model binds verified investors to one or more permitted wallet addresses:
+
+- investor completes KYC/AML and eligibility assessment
+- investor proves control of a wallet address (method defined by the operator and documented)
+- the wallet is bound to the investor’s off-chain identity record and eligibility/jurisdiction tags
+- wallet additions/removals are governed as controlled changes with audit trails
+
+### Jurisdiction-Aware Whitelist Segmentation
+
+Whitelist entries are segmented by:
+
+- jurisdiction tags (investor jurisdiction, distribution jurisdiction, venue jurisdiction as applicable)
+- investor eligibility category (e.g., institutional/eligible categories; capped retail where permitted)
+- product constraints (debt/profit participation/sukuk/crowdfunding) and any lock-ups or resale limits
+
+### Transfer Decisioning and Exceptions
+
+Transfers (including venue-mediated trades where permitted) are allowed only if policy checks pass, typically requiring:
+
+- sender and receiver wallets are whitelisted; and
+- the transfer does not violate selling restrictions, lock-ups, caps, or venue-only rules.
+
+If an investor status changes (e.g., screening flags, expired documents), whitelist privileges can be revoked or restricted through governed enforcement actions (e.g., hold/freeze), with auditable rationale.
+
+### Auditability (Event-Sourced Evidence)
+
+Whitelist and identity decisions are logged as append-only events in the off-chain event store (e.g., onboarding approved, eligibility class set, wallet bound, whitelist granted/revoked, transfer blocked with reason). This supports deterministic reconstruction of registers and evidence packs for audits and regulator inquiries.
+
 ### 2) Issuance and Subscription
 
 - Subscriptions are accepted through regulated channels and documented.
