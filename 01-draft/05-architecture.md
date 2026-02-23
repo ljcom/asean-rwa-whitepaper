@@ -26,6 +26,7 @@ Primary objectives:
 
 ### Off-Chain Components (Compliance and Operations)
 
+- **Event-sourced system of record (append-only):** the off-chain operational ledger is implemented as an event store capturing onboarding, eligibility decisions, disclosures, approvals, allocations, escrow status changes, corporate actions, and reconciliations. Read models (projections) are derived from events for registers, statements, and reports.
 - **Investor onboarding and KYC/AML service:** identity verification, screening, ongoing monitoring.
 - **Eligibility engine:** jurisdiction-aware rules (investor type, residency, selling restrictions).
 - **Investor registry / transfer agent module:** authoritative register mapping investors to permitted wallet addresses.
@@ -108,6 +109,17 @@ The architecture separates:
 - **Integrity and operational signals (on-chain):** eligibility/whitelist status indicators, event logs, cryptographic references
 
 This separation supports ASEAN data protection requirements by preventing personal data leakage on-chain while retaining auditability.
+
+### Off-Chain Recordkeeping Requirement: Event Sourcing
+
+To support regulator-grade auditability in a hybrid system, the off-chain layer is structured as an **event-sourced, append-only system of record**:
+
+- Events are immutable; corrections are handled through compensating events under governed approval workflows.
+- Projections produce the investor register, allocation tables, escrow status views, and statements.
+- Evidence packs can be regenerated deterministically from the event log plus referenced documents.
+- Access to event data is governed via RBAC and data minimization; personal data remains off-chain and subject to retention policies.
+
+This requirement is intended to reduce reconciliation ambiguity between on-chain events and off-chain operations and to improve traceability for audits and regulator inquiries.
 
 ## Regulator Visibility (Principle)
 

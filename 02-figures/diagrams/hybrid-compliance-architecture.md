@@ -11,6 +11,7 @@ flowchart LR
 
   %% Off-chain compliance plane
   subgraph OFF["Off-chain Compliance & Operations Plane"]
+    EVENTSTORE["Event store (append-only system of record)"]
     KYC["KYC/AML + eligibility checks"]
     REGISTRY["Investor registry + wallet binding"]
     POLICY["Jurisdiction policy engine (selling restrictions)"]
@@ -31,11 +32,14 @@ flowchart LR
 
   %% Flows
   INV --> KYC
-  KYC --> REGISTRY
+  KYC --> EVENTSTORE
+  EVENTSTORE --> REGISTRY
   POLICY --> WHITELIST
   REGISTRY --> WHITELIST
   DISC --> INV
+  DISC --> EVENTSTORE
   INV --> ESCROW
+  ESCROW --> EVENTSTORE
 
   RBAC --> TOKEN
   WHITELIST --> TOKEN
@@ -43,8 +47,10 @@ flowchart LR
 
   %% Corporate actions and reporting
   VAL --> CORP
+  VAL --> EVENTSTORE
   CORP --> RBAC
   CORP --> TOKEN
+  CORP --> EVENTSTORE
 
   %% Asset side
   BOR --> VAL
@@ -52,6 +58,6 @@ flowchart LR
 
   %% Audit / regulator visibility
   EVENTS --> EVID
-  OFF --> EVID
+  EVENTSTORE --> EVID
   EVID --> REG
 ```
