@@ -44,4 +44,5 @@ See `03-references/sources.md` for a working list of source categories and place
 - Privacy boundary: `02-figures/diagrams/privacy-data-boundary.md`
 - Liquidity engineering: `02-figures/diagrams/liquidity-engineering-map.md`
 - Whitelist/KYC/identity flow: `02-figures/diagrams/whitelist-kyc-identity-flow.md`
+- Venues and fiat ramps overview: `02-figures/diagrams/venues-and-ramps-overview.md`
 - Constraint → control mapping: `02-figures/tables/regulatory-constraint-control-mapping.md`

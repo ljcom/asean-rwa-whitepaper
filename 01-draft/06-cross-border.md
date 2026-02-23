@@ -50,6 +50,52 @@ Secondary trading, where permitted, is mediated through regulated venues and ven
 
 Liquidity fragmentation across ASEAN jurisdictions is expected and must be managed through venue-specific controls and rollout sequencing.
 
+## Market Infrastructure: Venues, Exchanges, NFTs, and Fiat Ramps
+
+This framework distinguishes market infrastructure by **regulatory function**, because the same technology (tokens) may fall under different rules depending on the rights represented and the distribution/trading channel.
+
+### 1) Regulated Securities / Capital Markets Venues (Primary Target for Economic-Rights Tokens)
+
+Economic-rights tokens that represent investment entitlements (debt-like repayment claims, profit participation, sukuk participation, or regulated crowdfunding interests) are generally expected to sit within securities / capital markets perimeters depending on the wrapper and jurisdiction. As a result, the preferred trading and distribution pathways are regulated capital markets venues or regulated distribution channels that can:
+
+- enforce investor eligibility and selling restrictions
+- support market conduct controls and surveillance (where trading occurs)
+- provide auditable reporting and evidence retention
+
+This whitepaper therefore treats “exchange integration” as **venue-specific** and aligned with regulated market infrastructure, not as permissionless crypto trading.
+
+### 2) Crypto Exchanges / Digital Asset Exchanges (Contextual, Not Default)
+
+Crypto exchanges and digital asset exchanges are commonly regulated with a focus on AML/CFT and trading of crypto assets. They can be relevant to this program only if:
+
+- the venue is permitted to list/handle the relevant category of token under local rules; and
+- the venue can support jurisdiction-aware eligibility and transfer restrictions; and
+- listing and disclosure requirements are compatible with the product’s regulatory perimeter.
+
+Where those conditions cannot be met, crypto exchanges are not treated as appropriate venues for economic-rights tokens.
+
+### 3) NFT Marketplaces / NFT Exchanges (Only as a Technical Wrapper, Not a Regulatory Shortcut)
+
+NFTs can be used as a technical representation for unique positions (e.g., a specific debt note series or tranche) but they do not change the regulatory nature of the rights represented. If an NFT conveys investment/economic entitlements, it should be governed by the same controls as other economic-rights tokens:
+
+- off-chain identity and KYC/AML
+- jurisdiction-aware whitelist and policy enforcement
+- venue- and channel-specific selling restrictions
+
+This framework does not tokenize land title, and does not rely on NFT marketplaces as a compliance bypass.
+
+### 4) Fiat On/Off Ramps (Escrow, Settlement, and Local Currency Constraints)
+
+Fiat on/off ramps are treated as part of the off-chain compliance and settlement plane:
+
+- investor subscriptions are collected into segregated escrow accounts
+- disbursements occur only after documented conditions precedent and dual authorization
+- distributions/redemptions (if offered) return funds via controlled payout rails
+
+**Indonesia currency constraint:** domestic payment and settlement flows in Indonesia are designed around Rupiah usage requirements and central-bank payment system rules. This reinforces the hybrid approach: settlement for Indonesian flows is handled through regulated fiat rails and escrow, while on-chain components focus on controlled token administration and auditability.
+
+**ASEAN implication:** cross-border subscriptions may require local collection and FX processes via regulated intermediaries, with evidence retention and jurisdiction-aware eligibility controls.
+
 ## Regulatory Design Constraints (ASEAN Minimum, High-Level)
 
 The following high-level constraints are included to justify the design choices in this section. They are non-exhaustive and do not replace jurisdiction-specific legal analysis.
