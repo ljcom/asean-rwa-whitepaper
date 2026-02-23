@@ -20,6 +20,15 @@ This framework is not designed to bypass securities regulation through tokenizat
 
 The underlying asset jurisdiction is Indonesia. The token is structured to represent **economic rights** associated with an Indonesian real estate exposure (e.g., revenue participation, debt claim, rental yield participation, or other contractual cash flow rights), rather than ownership of land title or direct legal interest in the land registry.
 
+### Legal Wrapper vs. Token Representation
+
+This framework distinguishes between (i) the **legal wrapper** that creates and governs investor entitlements and (ii) the **token** that represents those entitlements for controlled administration:
+
+- **Legal wrapper (off-chain legal stack):** Indonesian structures and contractual documentation (e.g., SPV/DIRE/KIK and associated agreements) define cash flow rights, governance, disclosures, servicing, investor protections, and enforceability.
+- **Token (on-chain/off-chain administration layer):** represents the economic rights described in the documentation and enables controlled issuance, transfer restrictions, corporate actions, and tamper-evident event logs.
+
+Tokenization does not alter the underlying property jurisdiction or remove the need for licensing, disclosures, selling restrictions, and regulated distribution channels.
+
 Key legal and structural commitments:
 
 - No transfer of land title via blockchain.

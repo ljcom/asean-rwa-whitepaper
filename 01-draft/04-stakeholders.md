@@ -4,6 +4,27 @@
 
 Real estate tokenization for ASEAN distribution requires coordinated roles across legal, compliance, operational, market infrastructure, and technology domains. This section identifies the stakeholders assumed in this framework and their responsibilities in a hybrid on-chain/off-chain model for Indonesian underlying assets.
 
+## Operating Model Summary (Illustrative)
+
+The table below summarizes the operating roles typically required to run an ASEAN-distributed program with Indonesian underlying assets. Exact role allocation depends on the chosen legal wrapper, licensing pathway, and jurisdiction-specific requirements.
+
+| Function | Typical accountable party | Key responsibilities (high-level) | Evidence / outputs (illustrative) |
+| --- | --- | --- | --- |
+| Issuer / originator | Issuer/originator | product definition, disclosures, governance, ongoing obligations | disclosure pack, notices, approvals, periodic reporting |
+| Asset-holding and enforceability | Indonesian SPV / DIRE / KIK (as applicable) | hold/operate Indonesian property exposure; enforce contractual rights | legal docs, asset registers, servicing agreements |
+| Fund management / asset management (if applicable) | Fund manager / asset manager | asset oversight, performance monitoring, cash flow governance | asset reports, valuation inputs, governance minutes |
+| Valuation / appraisal | Independent valuer/appraiser | valuation inputs and methodology governance | valuation reports, NAV inputs, update logs |
+| KYC/AML + eligibility | Regulated/approved KYC provider + compliance function | identity verification, screening, eligibility classification, monitoring | onboarding records, screening logs, eligibility decisions |
+| Investor registry / transfer agent | Registry/transfer agent function | authoritative register; wallet binding; transfer restrictions evidence | registry snapshots, whitelist logs, reconciliation exports |
+| Escrow and fiat settlement rails | Bank/custodian/escrow agent (as applicable) | segregated accounts, controlled releases/refunds, payout rails | escrow statements, release approvals, refund logs |
+| Tokenization operator (technology) | Platform operator / technology provider | operate hybrid workflows, policy enforcement, audit logging | system logs, event store exports, control reports |
+| Trading venue (where permitted) | Regulated venue / exchange | venue onboarding coordination, surveillance, trade rule enforcement | trade reports, surveillance outputs, venue rule evidence |
+| Custody (where required) | Custodian | safeguarding, access controls, operational governance | custody policies, access logs, audit reports |
+| Audit / assurance | Auditor / assurance provider | audit evidence packs, control assurance, financial audit | audit reports, assurance statements, findings logs |
+| Regulator interface (read-only) | Program governance | structured reporting and evidence access | evidence packs, reconciliations, supervisory reports |
+
+Data controller/processor responsibilities for personal data must be explicitly assigned in the operating model, including for cross-border processing and evidence retention.
+
 ## Core Stakeholders
 
 ### Regulators and Supervisory Authorities
