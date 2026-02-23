@@ -4,6 +4,8 @@
 
 The objective of the cross-border design is to enable **ASEAN-regulated participation** in Indonesian underlying real estate exposures while respecting jurisdiction-specific selling restrictions, investor eligibility rules, and data protection regimes. The framework does not assume regulatory harmonization across ASEAN and is not designed for regulatory arbitrage.
 
+Reference diagram: `02-figures/diagrams/cross-border-jurisdiction-controls.md`.
+
 ## Jurisdictional Constraints Informing the Approach
 
 Cross-border design in ASEAN is shaped by three recurring realities:
@@ -51,6 +53,8 @@ Liquidity fragmentation across ASEAN jurisdictions is expected and must be manag
 ## Regulatory Design Constraints (ASEAN Minimum, High-Level)
 
 The following high-level constraints are included to justify the design choices in this section. They are non-exhaustive and do not replace jurisdiction-specific legal analysis.
+
+Related mapping table: `02-figures/tables/regulatory-constraint-control-mapping.md`.
 
 | Constraint area | Cross-border impact | Design response |
 | --- | --- | --- |

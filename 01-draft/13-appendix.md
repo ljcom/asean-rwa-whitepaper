@@ -36,3 +36,11 @@
 ## D. References and Sources
 
 See `03-references/sources.md` for a working list of source categories and placeholders.
+
+## E. Design Diagrams and Mapping Tables
+
+- Hybrid architecture: `02-figures/diagrams/hybrid-compliance-architecture.md`
+- Cross-border controls: `02-figures/diagrams/cross-border-jurisdiction-controls.md`
+- Privacy boundary: `02-figures/diagrams/privacy-data-boundary.md`
+- Liquidity engineering: `02-figures/diagrams/liquidity-engineering-map.md`
+- Constraint → control mapping: `02-figures/tables/regulatory-constraint-control-mapping.md`

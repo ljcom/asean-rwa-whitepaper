@@ -4,6 +4,8 @@
 
 This section describes a privacy model aligned with Indonesia’s UU PDP and ASEAN PDPA regimes (minimum scope: Singapore and Malaysia). The objective is to support regulated issuance and cross-border participation without placing personal data on-chain.
 
+Reference diagram: `02-figures/diagrams/privacy-data-boundary.md`.
+
 Key principles:
 
 - Data minimization and purpose limitation

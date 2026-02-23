@@ -4,6 +4,8 @@
 
 The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**, not compliance-bypassing.
 
+Reference diagram: `02-figures/diagrams/hybrid-compliance-architecture.md`.
+
 Primary objectives:
 
 - Enforce jurisdiction-aware eligibility and selling restrictions

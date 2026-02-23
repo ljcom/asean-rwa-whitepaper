@@ -1,5 +1,7 @@
 # Liquidity Engineering
 
+Reference diagram: `02-figures/diagrams/liquidity-engineering-map.md`.
+
 ## Two Liquidity Problems (Distinguish Clearly)
 
 In this program, “liquidity” refers to two distinct requirements that should not be conflated:
