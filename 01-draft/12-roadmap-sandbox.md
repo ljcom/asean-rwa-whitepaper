@@ -47,6 +47,7 @@ Readiness gates:
 Deliverables:
 
 - execute a pilot issuance with limited eligible investors (e.g., institutional) under a controlled distribution channel
+- validate escrow and closing procedures for debt offerings (minimum close thresholds, partial-close decision flow, refunds if cancelled)
 - produce evidence packages for issuance, onboarding, and corporate actions
 - test end-to-end reconciliation between on-chain logs and off-chain registry
 

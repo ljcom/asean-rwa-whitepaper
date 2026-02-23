@@ -26,6 +26,7 @@
 - token represents economic rights only; no land title transfer
 - underlying asset jurisdiction: Indonesia; governance and enforceability off-chain
 - funding model classification and risk disclosures (debt/equity/sukuk/crowdfunding)
+- for escrow-based debt offerings: minimum close threshold, deadline, partial-close borrower option, and refund mechanics if cancelled
 - liquidity disclosure: engineered pathways; no guarantee; fragmentation expected
 - fees, conflicts, and related-party arrangements
 - valuation/NAV methodology and reporting cadence

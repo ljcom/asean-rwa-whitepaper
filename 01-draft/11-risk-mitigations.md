@@ -40,6 +40,17 @@ Mitigations:
 - optional market making arrangements with governance and transparency
 - redemption mechanisms only where structurally supportable and clearly documented
 
+### Risk: Funding shortfall at primary close (debt offerings)
+
+Debt offerings may not reach their target size within the offering window. If the structure uses escrow and closing thresholds, the borrower may accept a partial close or cancel, which can delay funding or result in no disbursement.
+
+Mitigations:
+
+- define **minimum close** thresholds and deadlines in the offering documents
+- pre-agree borrower decision rules for partial close vs. cancellation
+- disclose best-efforts nature and cancellation/refund mechanics clearly
+- maintain auditable evidence of commitments, allocations, and close outcomes
+
 ### Risk: Pricing integrity and valuation mismatch
 
 Real estate valuation cadence may not match trading expectations.
@@ -71,6 +82,17 @@ Mitigations:
 - governed corporate action workflows with sequential approvals
 - dual controls and segregation of duties
 - exception handling and post-event reporting
+
+### Risk: Escrow operational and settlement failures
+
+Escrow-based funding introduces operational risks: misdirected funds, delayed releases, incorrect refunds, or disputes over conditions precedent.
+
+Mitigations:
+
+- use segregated escrow accounts with clear mandate (escrow agent/bank/custodian where appropriate)
+- dual authorization for release of funds and documented conditions precedent
+- reconciliation runbooks and time-bound refund procedures
+- dispute resolution process and evidence retention (subscription logs, notices, approvals)
 
 ## 4) Technology and Security Risks
 

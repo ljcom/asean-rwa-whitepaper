@@ -1,5 +1,14 @@
 # Liquidity Engineering
 
+## Two Liquidity Problems (Distinguish Clearly)
+
+In this program, “liquidity” refers to two distinct requirements that should not be conflated:
+
+- **Origination / drawdown liquidity:** whether borrower funding can be delivered on schedule.
+- **Investor exit liquidity:** whether token holders can sell or redeem their position after issuance.
+
+This whitepaper treats investor exit liquidity as market- and venue-dependent, while origination liquidity can be engineered through primary-market design and operating controls.
+
 ## Principle: Tokenization ≠ Automatic Liquidity
 
 Tokenization can improve transferability and operational efficiency, but it does not automatically create liquidity. Real estate exposures remain subject to:
@@ -27,6 +36,16 @@ The primary market is executed through regulated distribution channels, with:
 - off-chain KYC/AML and eligibility checks
 - documented subscriptions and allocations
 - controlled on-chain issuance (after approvals)
+
+#### Escrow + Close Threshold (Capital-Light Origination Liquidity)
+
+For debt-based offerings, origination liquidity can be engineered without relying on a platform balance sheet by using **segregated escrow accounts and defined closing thresholds**:
+
+- investor commitments are collected into escrow during the offering window;
+- closing proceeds only if the raise meets a documented **minimum close** (and other conditions precedent);
+- if the threshold is not met, the borrower may accept a partial close (if permitted) or cancel; if cancelled, escrow funds are refunded and the offering is void.
+
+This approach reduces the need for an open-ended backstop and makes funding certainty an explicit contractual outcome, supported by auditable escrow release controls.
 
 ### Secondary Market (Trading)
 

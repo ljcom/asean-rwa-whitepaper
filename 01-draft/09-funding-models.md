@@ -34,6 +34,21 @@ The token represents a debt claim and repayment waterfall defined in the issuanc
 - periodic payment calculations and distribution execution through governed workflows
 - event logging for payment dates, notices, and covenant-related actions
 
+### Origination Liquidity Without Platform Balance Sheet (Escrow + Close Threshold)
+
+To reduce dependence on platform capital while preserving borrower certainty, the debt model can be structured as a **best-efforts raise with escrow and defined closing thresholds**:
+
+1. Borrower requests financing terms and amount (e.g., up to 100% of the target size).
+2. Fund manager/appraisal and legal due diligence validate the collateral and proposed terms (Indonesia).
+3. The offering is distributed to eligible investors through regulated channels; investor funds are collected into a **segregated escrow account**.
+4. At a defined deadline, the raise outcome is assessed against documented thresholds:
+   - if the raise meets the **minimum close** (and any other conditions precedent), closing proceeds;
+   - if the raise does not meet the threshold, the borrower may be asked to **accept a partial close** (if permitted) or to cancel.
+5. If cancelled, escrow funds are returned to investors according to documented procedures; no token issuance is finalized.
+6. If closed, escrow releases funds to the borrower under dual authorization, and the debt economic-rights token is issued/allocated according to the final allocation.
+
+This approach engineers **origination liquidity** through disciplined closing mechanics rather than through an open-ended platform backstop. It should be disclosed explicitly as best-efforts, with clear cancellation and refund rules.
+
 ### Regulatory Alignment
 
 - categorize the instrument appropriately (debt/security perimeter)
