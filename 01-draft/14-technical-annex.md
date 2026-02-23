@@ -260,6 +260,47 @@ On-chain code should be intentionally minimal and focused on:
 - controlled issuance (mint/allocate) under privileged roles
 - event logs for issuance, transfer outcomes, and corporate action triggers (where used)
 
+### Smart Contract Scope and Minimal Interface (High-Level)
+
+This section defines the minimum on-chain surface area required to support compliance-by-design. It is intentionally non-prescriptive about specific standards or ABIs; it focuses on control outcomes and traceability.
+
+#### Contract Components (Illustrative)
+
+- **Economic-rights token contract:** represents balances/ownership of economic rights; emits lifecycle events.
+- **Access control / role manager:** enforces privileged roles and separation of duties.
+- **Transfer restriction hook:** enforces whitelist and restriction checks (directly on-chain or via controlled integration patterns).
+- **Corporate actions module (optional):** supports governed triggers for distributions/redemption windows where on-chain signaling is needed.
+- **Emergency controls module:** supports holds/freezes/unfreezes under governed circumstances with event logs.
+
+#### Role Model (Minimum)
+
+Roles should be explicit and mapped to off-chain governance:
+
+- `ISSUER_ADMIN` (propose actions; no unilateral critical execution)
+- `COMPLIANCE_APPROVER` (approve whitelist/policy-related privileged actions; approve exceptions)
+- `OPERATIONS_EXECUTOR` (execute approved actions; run reconciliations and corporate actions)
+- `EMERGENCY_OPERATOR` (apply holds/freezes under documented governance, ideally with dual control)
+- `VIEWER_AUDIT` (read-only in off-chain systems; on-chain is inherently readable, but privileged read methods should be avoided)
+
+Where feasible, critical actions should require sequential approvals off-chain and be executed on-chain only after an approval window is opened and evidenced.
+
+#### Minimal Function/Control Catalogue (Illustrative)
+
+| Capability | On-chain function family (illustrative) | Who can initiate | Preconditions (off-chain) | Required event logging |
+| --- | --- | --- | --- | --- |
+| Issuance (mint/allocate) | `mint`, `allocate`, `issue` | operations executor | escrow settled; close decision approved; disclosures acknowledged; whitelist ready | issuance event + doc/evidence reference ID |
+| Transfers (secondary or off-venue) | `transfer`, `transferFrom` (restricted) | token holder | sender/receiver whitelisted; lock-ups/caps satisfied | transfer allowed event; blocked attempts recorded where feasible |
+| Whitelist updates (on-chain mirror) | `setWhitelistStatus` (if mirrored) | compliance approver | KYC/eligibility approved; policy version active | whitelist change event + approval reference |
+| Holds/freezes | `freeze`, `hold`, `unfreeze` | emergency operator | documented trigger; approval workflow; time-bound where possible | enforcement event + reason code reference |
+| Corporate action signaling | `announceDistribution`, `recordSnapshot`, `openRedemptionWindow` | operations executor | calculation approved; funding confirmed; notices issued | corporate action event + policy/evidence reference |
+| Upgrade (if upgradeable) | `upgradeTo` / admin upgrade | change control + ops | change ticket approved; audit plan; time-delay; rollback plan | upgrade event + change ticket reference |
+
+Notes:
+
+- Any off-chain policy engine decisions should be traceable to the on-chain events via references (IDs/hashes) without exposing personal data on-chain.
+- “Blocked attempts” logging may be limited by standard token interfaces; at minimum, policy-controlled transfers should produce off-chain decision logs and on-chain logs for successful transfers.
+- The contract surface should avoid introducing permissionless liquidity mechanics (no AMM hooks assumed).
+
 ## Blockchain Network Selection (Implementation Choice)
 
 This whitepaper is intentionally chain-agnostic at the policy level. For implementation, network selection should be treated as an engineering and risk decision driven by control outcomes, partner constraints (custody/venue), and cost/performance requirements—especially for an Indonesia-first retail pilot.
