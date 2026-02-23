@@ -260,6 +260,52 @@ On-chain code should be intentionally minimal and focused on:
 - controlled issuance (mint/allocate) under privileged roles
 - event logs for issuance, transfer outcomes, and corporate action triggers (where used)
 
+## Blockchain Network Selection (Implementation Choice)
+
+This whitepaper is intentionally chain-agnostic at the policy level. For implementation, network selection should be treated as an engineering and risk decision driven by control outcomes, partner constraints (custody/venue), and cost/performance requirements—especially for an Indonesia-first retail pilot.
+
+### Default Target (Pilot): EVM-Compatible (Single Network)
+
+For the Indonesia-first retail pilot, an **EVM-compatible network** is a practical default implementation target, because it typically offers:
+
+- broad wallet compatibility (including external wallets such as MetaMask)
+- mature tooling for audits, monitoring, and smart contract assurance
+- wide ecosystem support for managed wallet integrations (e.g., MPC/social login patterns)
+
+This “EVM-first” posture is an implementation preference for pilot speed and ecosystem fit; it does not change the compliance requirements or imply that only one network family is acceptable. The pilot should remain **single-network** (avoid multi-chain complexity) unless a regulated venue/custody partner requires otherwise.
+
+### Network Architecture Options (Illustrative)
+
+- **Single network (public permissionless, with restricted token logic):** simplest integration and broad wallet support; requires careful governance and monitoring.
+- **Permissioned or consortium network:** stronger operational control; may reduce open ecosystem benefits; requires governance of validator set and access.
+- **Hybrid anchoring:** operational tokens and controls run on a controlled network, while periodic hashes/commitments are anchored to a public network for additional tamper-evidence.
+
+The choice should not change the legal boundary (economic rights only) or the requirement for off-chain compliance.
+
+### Selection Criteria (Retail Pilot + ASEAN Rollout)
+
+| Criterion | Why it matters | Minimum expectation (pilot) |
+| --- | --- | --- |
+| Security and finality | affects settlement integrity and audit confidence | stable finality assumptions and low reorg risk |
+| Cost predictability | retail usability depends on low, predictable fees | transaction costs are acceptable for retail activity |
+| Performance and congestion behavior | high volatility in latency/fees breaks operations | defined operational SLOs under peak conditions |
+| Control compatibility | restricted transfers, holds/freezes, role controls | supports required access control patterns and logging |
+| Upgrade/change governance | prevents arbitrary admin risk | upgrade path is governed, time-delayed where feasible, auditable |
+| Ecosystem support | custody, wallets, monitoring, audit tooling | supports managed wallets and external wallets; custody options exist |
+| Venue/channel constraints | venues/custodians may dictate supported chains | compatible with intended regulated channels (or roadmap) |
+| Data minimization | UU PDP/PDPA alignment | no PII on-chain; events are non-personal and minimal |
+| Operational resilience | incident response, key compromise containment | clear emergency controls and runbooks |
+
+### Practical Selection Process (Recommended)
+
+1. **Define non-negotiables:** restricted transfer model, auditability, emergency controls, upgrade governance, and wallet support.
+2. **List partner constraints:** custody provider(s), regulated venue roadmap (if any), and monitoring/audit tooling requirements.
+3. **Run a pilot benchmark:** fee simulation, latency, and operational flows (onboarding → issuance → transfer block/allow → corporate action).
+4. **Threat model review:** key management posture, admin risk, chain governance risks, and incident containment plan.
+5. **Document decision:** include rationale and residual risks in governance minutes and evidence packs.
+
+Network selection is expected to be revisited when moving from an Indonesia-only pilot to cross-border rollout, because venue/custody requirements may change.
+
 ### Required On-Chain Controls (Illustrative)
 
 - role-based privileged functions (issuer admin vs compliance approver vs operations)
