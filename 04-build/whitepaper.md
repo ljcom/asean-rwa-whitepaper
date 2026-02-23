@@ -17,6 +17,7 @@ This file is a build-oriented aggregation stub. The canonical draft sections liv
 11. Risks and Mitigations — `01-draft/11-risk-mitigations.md`
 12. Roadmap and Sandbox — `01-draft/12-roadmap-sandbox.md`
 13. Appendix — `01-draft/13-appendix.md`
+14. Technical Annex — `01-draft/14-technical-annex.md`
 
 ## Build Notes (Placeholder)
 

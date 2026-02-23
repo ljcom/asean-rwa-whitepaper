@@ -8,7 +8,7 @@ flowchart LR
     KYC["KYC/AML + eligibility"]
     WL["Jurisdiction-aware whitelist"]
     ESC["Escrow / fiat rails (on-ramp/off-ramp)"]
-    EVID["Evidence packs (event-sourced)"]
+    EVID["Evidence packs (audit logs + on-chain events)"]
   end
 
   subgraph ON["On-chain (controlled execution)"]

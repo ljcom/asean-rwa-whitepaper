@@ -44,6 +44,6 @@ flowchart LR
   PLAT --> REG
 
   %% Notes
-  PLAT --- NOTE1["Orchestration: policies, whitelist, approvals, evidence packs, event-sourced logs"]
+  PLAT --- NOTE1["Orchestration: policies, whitelist, approvals, evidence packs, audit logs + traceability"]
   ISS --- NOTE2["Single-SPV pilot; later multi-vehicle issuance using same orchestration standard"]
 ```

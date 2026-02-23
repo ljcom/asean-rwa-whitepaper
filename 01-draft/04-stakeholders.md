@@ -19,7 +19,7 @@ For the pilot stage, a **single Indonesian issuance vehicle (single SPV)** can b
 In this operating model, the platform is positioned primarily as:
 
 - **a compliance and operations orchestrator:** runs the off-chain control plane (KYC/eligibility, whitelist governance, escrow workflows, evidence packs, reporting), and coordinates with regulated intermediaries and venues; and
-- **a technology operator:** operates the hybrid system (policy enforcement, event-sourced recordkeeping, auditability).
+- **a technology operator:** operates the hybrid system (policy enforcement, audit logging/traceability, and auditability).
 
 The platform does not “set regulation” or override country rules. It implements **jurisdiction-specific policies** and selling restrictions derived from legal/compliance requirements and partner venue/channel rules, with auditable enforcement and evidence retention.
 

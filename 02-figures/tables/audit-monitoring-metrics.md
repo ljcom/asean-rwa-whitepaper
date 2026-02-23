@@ -1,6 +1,6 @@
 # Audit and Monitoring Metrics (Illustrative)
 
-This table provides example monitoring indicators suitable for a hybrid compliance architecture with event-sourced off-chain operations and restricted on-chain transfers. Metrics should be tailored per product model (debt/profit participation/sukuk/crowdfunding), jurisdiction, and venue.
+This table provides example monitoring indicators suitable for a hybrid compliance architecture with append-only audit logs/traceability off-chain and restricted on-chain transfers. Metrics should be tailored per product model (debt/profit participation/sukuk/crowdfunding), jurisdiction, and venue.
 
 | Monitoring domain | Metric (illustrative) | Why it matters | Typical governance owner |
 | --- | --- | --- | --- |

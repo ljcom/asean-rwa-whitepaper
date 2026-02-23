@@ -50,3 +50,7 @@ See `03-references/sources.md` for a working list of source categories and place
 - Governance/audit/monitoring loop: `02-figures/diagrams/governance-audit-monitoring-loop.md`
 - Constraint → control mapping: `02-figures/tables/regulatory-constraint-control-mapping.md`
 - Audit/monitoring metrics: `02-figures/tables/audit-monitoring-metrics.md`
+
+## F. Technical Annex
+
+See `01-draft/14-technical-annex.md` for an implementation-oriented specification (technical controls, logging, policy engine, escrow, on-chain scope, key management, monitoring, and evidence packs).

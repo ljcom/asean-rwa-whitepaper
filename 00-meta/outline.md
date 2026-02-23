@@ -64,3 +64,9 @@ This outline maps directly to the `01-draft/` files and is written for an ASEAN 
 - Control matrix (illustrative)
 - Token lifecycle event catalogue (illustrative)
 - Glossary pointers and reference placeholders
+
+## 14. Technical Annex (Implementation Specification)
+- Off-chain traceability and recommended event-sourced implementation
+- Policy engine and jurisdiction-aware controls
+- Escrow/ramp controls (Indonesia-first pilot; phased cross-border extension)
+- On-chain scope, admin security, monitoring, and evidence packs

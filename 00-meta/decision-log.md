@@ -20,11 +20,11 @@ This log captures major drafting and design decisions to support traceability fo
 - Rationale: Data protection, AML obligations, and regulator expectations require controlled workflows and minimal on-chain personal data.
 - Implication: Policy engine, whitelist, RBAC, and sequential approvals become core controls.
 
-## 2026-02-23 — Off-chain event-sourced system of record
+## 2026-02-23 — Off-chain audit logging and traceability baseline
 
-- Decision: Off-chain compliance and operations use an event-sourced, append-only database as the system of record.
-- Rationale: Hybrid systems require strong auditability and deterministic evidence regeneration to reduce reconciliation ambiguity and support regulator-grade reviews.
-- Implication: Read models (registers, statements, escrow views) are projections; corrections use compensating events under governed approvals.
+- Decision: Off-chain compliance and operations maintain an append-only audit trail and traceability model as a baseline requirement.
+- Rationale: Hybrid systems require strong auditability and reproducible evidence packs to reduce reconciliation ambiguity and support regulator-grade reviews.
+- Implication: Policy changes, whitelist updates, escrow states, approvals, and exceptions are time-stamped, attributable, and retained under governed access and retention policies. Database architecture choices (including event sourcing) are technical implementation details.
 
 ## 2026-02-23 — Multi-vehicle issuance (multi-SPV / series) as scaling baseline
 

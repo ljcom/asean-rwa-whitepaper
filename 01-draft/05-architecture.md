@@ -28,7 +28,7 @@ Primary objectives:
 
 ### Off-Chain Components (Compliance and Operations)
 
-- **Event-sourced system of record (append-only):** the off-chain operational ledger is implemented as an event store capturing onboarding, eligibility decisions, disclosures, approvals, allocations, escrow status changes, corporate actions, and reconciliations. Read models (projections) are derived from events for registers, statements, and reports.
+- **Operational audit logging and traceability ledger (append-only):** the off-chain operational layer maintains an append-only audit trail capturing onboarding, eligibility decisions, disclosures, approvals, allocations, escrow status changes, corporate actions, and reconciliations. This supports deterministic evidence packs, investigations, and audits.
 - **Investor onboarding and KYC/AML service:** identity verification, screening, ongoing monitoring.
 - **Eligibility engine:** jurisdiction-aware rules (investor type, residency, selling restrictions).
 - **Investor registry / transfer agent module:** authoritative register mapping investors to permitted wallet addresses.
@@ -164,16 +164,16 @@ The architecture separates:
 
 This separation supports ASEAN data protection requirements by preventing personal data leakage on-chain while retaining auditability.
 
-### Off-Chain Recordkeeping Requirement: Event Sourcing
+### Logging and Traceability (Off-Chain)
 
-To support regulator-grade auditability in a hybrid system, the off-chain layer is structured as an **event-sourced, append-only system of record**:
+To support regulator-grade auditability in a hybrid system, the off-chain layer maintains an **append-only audit trail** and traceability model:
 
-- Events are immutable; corrections are handled through compensating events under governed approval workflows.
-- Projections produce the investor register, allocation tables, escrow status views, and statements.
-- Evidence packs can be regenerated deterministically from the event log plus referenced documents.
-- Access to event data is governed via RBAC and data minimization; personal data remains off-chain and subject to retention policies.
+- decisions and approvals are time-stamped and attributable (RBAC + sequential approvals)
+- changes to policies, whitelists, and key operational states are versioned and traceable
+- evidence packs can be generated reproducibly from logs, documents, and on-chain event references
+- access to logs is governed via RBAC and data minimization; personal data remains off-chain and subject to retention policies
 
-This requirement is intended to reduce reconciliation ambiguity between on-chain events and off-chain operations and to improve traceability for audits and regulator inquiries.
+This approach is intended to reduce reconciliation ambiguity between on-chain events and off-chain operations and to improve traceability for audits and regulator inquiries. Detailed database architecture choices (including event sourcing) can be treated as part of the technical implementation.
 
 ## Regulator Visibility (Principle)
 
@@ -215,7 +215,7 @@ This supports auditability and reduces ambiguity during dispute resolution or re
 Auditability is implemented through a combination of:
 
 - on-chain tamper-evident event logs (issuance, transfers, corporate actions, enforcement actions)
-- off-chain event-sourced system of record (append-only) for compliance and operations decisions
+- off-chain append-only audit logs and traceability for compliance and operations decisions
 - reconciliations that tie the off-chain register to on-chain states and venue reports (where available)
 
 Evidence packs (illustrative contents):
