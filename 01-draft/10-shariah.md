@@ -1,0 +1,78 @@
+# Shariah Considerations (Sukuk and Shariah-Aligned Offerings)
+
+## Purpose
+
+This section outlines how Shariah-aligned funding (including sukuk structures) can be supported within the same compliance-by-design framework, without diluting regulatory controls or investor protections. The discussion is operational and structural; Shariah opinions must be provided by qualified Shariah supervisory oversight.
+
+## Principles (Structural and Writing Constraints)
+
+- Avoid framing returns as interest; use rental yield, participation return, or profit rate as appropriate.
+- Maintain asset-backing and documented cash flow linkages.
+- Support Shariah supervisory oversight, reporting, and evidence retention.
+- Preserve the legal boundary: token represents economic rights only; Indonesian underlying asset jurisdiction remains unchanged.
+
+## Structural Overview: Sukuk in an Indonesian Underlying Asset Context
+
+In a sukuk configuration, the token represents Shariah-aligned participation rights backed by an underlying asset or its usufruct (usage/lease), with cash flows derived from documented contractual arrangements. The hybrid architecture supports:
+
+- off-chain documentation and approvals (including Shariah documentation)
+- controlled issuance and transfer restrictions (whitelist and eligibility controls)
+- auditable corporate actions for distributions and notices
+
+## Illustrative Sukuk Types (Not Exhaustive)
+
+### Sukuk Ijarah (Lease-Based)
+
+**Problem addressed:** provide Shariah-aligned exposure to stable rental yield derived from Indonesian real estate usage.
+
+**Structural approach (illustrative):**
+
+- cash flows derived from lease/rental arrangements
+- distribution schedule and entitlement calculation governed and auditable
+- disclosures emphasize asset-backing, risks (vacancy, lease renewal, counterparty), and governance
+
+**Regulatory alignment:** ensure appropriate categorization and disclosures under applicable rules; coordinate with Shariah governance expectations.
+
+**Cross-border implication:** Shariah investor demand may vary across ASEAN; jurisdiction-specific approvals and disclosures are expected.
+
+### Other Sukuk Variants (High-Level)
+
+Depending on the asset and project needs, variants may be considered (e.g., partnership- or trade-based structures). Each variant requires:
+
+- clear documentation of underlying transactions
+- evidence of asset-backing and permitted cash flow use
+- supervisory oversight and periodic compliance confirmation
+
+## Shariah Governance and Oversight
+
+The framework assumes that Shariah-aligned offerings include:
+
+- Shariah supervisory oversight (board/advisors)
+- documented governance policies for permissible activities and cash flow handling
+- periodic reporting and, where required, Shariah audit/assurance artifacts
+
+The system supports these through:
+
+- versioned documentation storage off-chain
+- approval workflows with audit trails
+- distribution event logs linked to documentation references
+
+## Compliance-by-Design Alignment
+
+Shariah alignment does not reduce the need for securities regulation compliance. The offering remains subject to:
+
+- licensing and distribution controls
+- investor eligibility and selling restrictions
+- market conduct and surveillance rules where secondary trading is permitted
+
+Tokenization is not used to bypass regulation; it is used to improve administration and auditability within regulated constraints.
+
+## Liquidity Considerations
+
+Liquidity expectations for sukuk-style offerings must be stated conservatively:
+
+- secondary trading depends on venue availability and participant eligibility
+- market making (if used) is optional, governed, and disclosed
+- redemption mechanisms (if offered) require careful documentation and governance
+
+Cross-border liquidity fragmentation across ASEAN jurisdictions is expected and managed through venue-specific controls.

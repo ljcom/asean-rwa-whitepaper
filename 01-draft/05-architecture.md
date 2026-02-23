@@ -1,0 +1,118 @@
+# Architecture (Hybrid On-Chain / Off-Chain Compliance)
+
+## Architecture Objectives
+
+The architecture is designed to support regulated issuance and lifecycle administration of tokens representing **economic rights only** for Indonesian underlying real estate exposures, with ASEAN-minimum cross-border participation. The system is explicitly **compliance-enabling**, not compliance-bypassing.
+
+Primary objectives:
+
+- Enforce jurisdiction-aware eligibility and selling restrictions
+- Maintain an accurate, auditable investor register and transfer history
+- Enable controlled automation for corporate actions (distributions, redemptions)
+- Preserve privacy by keeping personal data off-chain
+- Support regulator-oriented reporting and supervision interfaces
+
+## Design Constraints (Non-Negotiables)
+
+- **Hybrid model mandatory:** critical compliance functions remain off-chain.
+- **KYC/AML always off-chain:** identity verification and screening are not performed on-chain.
+- **Personal data not stored on-chain:** on-chain stores only minimal references for integrity/audit.
+- **Jurisdiction-aware whitelist required:** cross-border transfers are policy-controlled.
+- **No permissionless DeFi:** distribution and secondary trading are through regulated pathways.
+
+## System Components
+
+### Off-Chain Components (Compliance and Operations)
+
+- **Investor onboarding and KYC/AML service:** identity verification, screening, ongoing monitoring.
+- **Eligibility engine:** jurisdiction-aware rules (investor type, residency, selling restrictions).
+- **Investor registry / transfer agent module:** authoritative register mapping investors to permitted wallet addresses.
+- **Document and disclosure vault:** offering docs, investor notices, certificates, versioned disclosures.
+- **Corporate actions engine:** schedules and executes distributions, redemptions, notices, and approvals.
+- **Valuation and reporting module:** NAV inputs, periodic statements, audit exports.
+- **Audit and regulator reporting interface:** read-only reports, event logs, and evidence packages.
+
+### On-Chain Components (Controlled Execution and Auditability)
+
+- **Token contract(s):** represent economic rights; implement transfer restrictions and lifecycle events.
+- **Policy hooks:** whitelist checks, jurisdiction tags, and configurable transfer controls.
+- **Corporate action functions:** controlled distribution/redemption triggers (subject to RBAC and approvals).
+- **Event log:** tamper-evident record of key lifecycle events and policy outcomes.
+
+## Roles, Controls, and Authorization Model
+
+The architecture uses RBAC and sequential approvals for privileged actions. Illustrative roles:
+
+- **Issuer admin:** proposes issuance and corporate actions (no unilateral execution).
+- **Compliance officer:** approves eligibility rules, whitelists, and restricted actions.
+- **Operations / transfer agent:** executes reconciliations, registry maintenance, and statements.
+- **Custodian / wallet admin (where applicable):** manages custody policies and access.
+- **Auditor / regulator viewer:** read-only visibility into logs and evidence packages.
+
+### Sequential Approval Pattern (Illustrative)
+
+Critical actions (e.g., mint/issue, corporate action execution, emergency freeze) follow a controlled sequence:
+
+1. Proposal created (off-chain workflow with evidence attachments)
+2. Compliance review and approval (off-chain, logged)
+3. On-chain execution enabled (time-bound, scope-bound)
+4. Execution performed (on-chain transaction)
+5. Post-event reconciliation and reporting (off-chain + on-chain event references)
+
+## Token Lifecycle and Control Points
+
+### 1) Onboarding and Wallet Binding (Off-Chain)
+
+- Investor completes KYC/AML and eligibility assessment off-chain.
+- Approved investors are assigned one or more permitted wallet addresses.
+- The whitelist is updated through a governed workflow with audit logs.
+
+### 2) Issuance and Subscription
+
+- Subscriptions are accepted through regulated channels and documented.
+- Issuance (minting) occurs only after approvals and receipt confirmation processes.
+- On-chain issuance events reference off-chain documentation identifiers (integrity references only).
+
+### 3) Transfers and Secondary Trading (Controlled)
+
+Transfers are permitted only when:
+
+- both sender and receiver wallet addresses are whitelisted; and
+- the transfer complies with jurisdiction-specific selling restrictions and investor classification rules.
+
+Where secondary trading is permitted, venue integration applies additional controls (venue onboarding, surveillance, trading rules).
+
+### 4) Corporate Actions (Distributions and Redemptions)
+
+Corporate actions are executed through controlled workflows:
+
+- distribution schedules and entitlements are calculated off-chain
+- execution is triggered on-chain only after approvals
+- results are reconciled and evidenced through statements and audit exports
+
+### 5) Exceptions and Enforcement
+
+The system supports enforcement actions under governed conditions:
+
+- freeze/hold actions (e.g., sanctions, dispute, court/regulator instructions)
+- clawback or reversal logic only if legally supported and disclosed (otherwise avoided)
+- incident response workflows with evidence preservation
+
+## Data Model and Privacy Boundary
+
+The architecture separates:
+
+- **Personal and compliance data (off-chain):** identity data, screening outcomes, residency, documentation
+- **Integrity and operational signals (on-chain):** eligibility/whitelist status indicators, event logs, cryptographic references
+
+This separation supports ASEAN data protection requirements by preventing personal data leakage on-chain while retaining auditability.
+
+## Regulator Visibility (Principle)
+
+Regulator visibility is supported through:
+
+- standardized evidence packages for issuances and corporate actions
+- event log exports and reconciliation reports
+- controlled access to audit trails (read-only) without exposing personal data on-chain
+
+This is designed to facilitate supervision and reduce ambiguity during regulator engagement.
