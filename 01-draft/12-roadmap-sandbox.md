@@ -15,7 +15,7 @@ This roadmap proposes a phased implementation approach for an ASEAN-minimum toke
 
 Deliverables:
 
-- define token economic rights per model (debt/equity/sukuk/crowdfunding)
+- define token economic rights per model (debt/profit participation/sukuk/crowdfunding)
 - select Indonesian asset-holding structure and servicing model
 - define disclosure package templates and evidence requirements
 - draft compliance control matrix (RBAC, sequential approvals, whitelist governance)

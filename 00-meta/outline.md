@@ -45,7 +45,7 @@ This outline maps directly to the `01-draft/` files and is written for an ASEAN 
 - Monitoring metrics and fragmentation management
 
 ## 09. Funding Models
-- Debt, equity, sukuk, crowdfunding configurations
+- Debt, profit participation, sukuk, crowdfunding configurations
 - Comparative regulatory implications and investor protections
 
 ## 10. Shariah Considerations

@@ -65,7 +65,7 @@ The framework supports multiple regulated funding models to reflect investor dem
 | Funding model | Token represents | Primary use | Key regulatory alignment considerations | Liquidity expectation |
 | --- | --- | --- | --- | --- |
 | Debt | Debt claim and repayment waterfall | Fixed-income style financing | Securities / debt instrument perimeter, disclosure, servicing, default handling | Engineered via exchange pathways and redemption terms; not guaranteed |
-| Equity | Profit participation and governance-linked entitlements (as permitted) | Growth / income participation | Securities perimeter, governance, information rights, related-party controls | Dependent on listing venue and market structure |
+| Profit participation (REIT-like) | Contractual participation in distributable cash flows (as permitted) | Income participation | Securities / collective investment perimeter (depending on wrapper), governance, information rights, related-party controls | Dependent on listing venue and market structure |
 | Sukuk | Asset-backed participation (e.g., ijarah-based rental yield participation) | Shariah-compliant financing | Shariah structuring and supervisory oversight, asset-backing, prohibition of riba | Dependent on venue adoption and market making arrangements |
 | Crowdfunding | Economic participation with caps and investor protections | Broader participation under regulated limits | Retail constraints (where applicable), caps, suitability, disclosures | Typically limited; must be engineered and may be periodic |
 

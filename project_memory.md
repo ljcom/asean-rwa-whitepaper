@@ -4,7 +4,7 @@
 - ASEAN-scale real estate tokenization
 - Data privacy compliance (UU PDP, PDPA, GDPR)
 - Liquidity engineering
-- Support multiple funding models: debt, equity, syariah, crowdfunding
+- Support multiple funding models: debt, profit participation, syariah, crowdfunding
 
 ## Whitepaper Structure Plan
 - Executive summary
@@ -18,6 +18,6 @@
 
 ## Funding Models Considered
 - Debt
-- Equity
+- Profit participation (REIT-like economic rights)
 - Sukuk (ijarah, musharakah, murabaha)
 - Crowdfunding

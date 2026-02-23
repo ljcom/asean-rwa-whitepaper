@@ -23,5 +23,5 @@ This document lists working assumptions used to draft the whitepaper. It is not 
 
 ## Funding Model Assumptions
 
-- The platform supports multiple configurations: debt, equity, sukuk, and crowdfunding.
+- The platform supports multiple configurations: debt, profit participation, sukuk, and crowdfunding.
 - Each configuration requires separate legal documentation, risk disclosures, and regulatory alignment.

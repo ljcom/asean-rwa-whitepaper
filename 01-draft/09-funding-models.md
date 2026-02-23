@@ -1,4 +1,4 @@
-# Funding Models (Debt, Equity, Sukuk, Crowdfunding)
+# Funding Models (Debt, Profit Participation, Sukuk, Crowdfunding)
 
 ## Purpose
 
@@ -15,7 +15,7 @@ Each model must be documented and categorized with appropriate disclosures and g
 | Model | Economic rights represented | Typical cash flow basis | Key governance needs | Investor protection and compliance focus |
 | --- | --- | --- | --- | --- |
 | Debt | repayment claim and waterfall | scheduled payments and servicing | servicing oversight, covenants, default process | disclosure, credit risk, transfer restrictions |
-| Equity | profit participation and entitlements | distributable income and asset performance | governance, reporting, related-party controls | disclosures, valuation, conflicts, eligibility |
+| Profit participation (REIT-like) | contractual participation in distributable cash flows | net operating income and asset performance | governance, reporting, valuation oversight, related-party controls | disclosures, valuation integrity, conflicts, eligibility |
 | Sukuk | asset-backed participation (e.g., ijarah) | rental yield / participation return | Shariah oversight, asset-backing governance | structure disclosure, Shariah compliance evidence |
 | Crowdfunding | capped participation rights | distributions per terms; may be periodic | platform controls, caps, suitability | retail limits (where permitted), transparency, reporting |
 
@@ -59,15 +59,15 @@ This approach engineers **origination liquidity** through disciplined closing me
 
 Debt tokens distributed across ASEAN require jurisdiction-aware selling restrictions and venue controls; secondary trading may be limited to eligible categories depending on the jurisdiction and venue.
 
-## 2) Equity Model (Profit Participation)
+## 2) Profit Participation Model (REIT-like Economic Rights)
 
 ### Problem Addressed
 
-Equity-like participation requires consistent information rights, valuation integrity, and governance—often difficult to administer across many investors and jurisdictions.
+Profit participation requires consistent reporting, valuation integrity, and governance—often difficult to administer across many investors and jurisdictions.
 
 ### Structural Solution
 
-The token represents profit participation and related entitlements (as permitted by the structure). The architecture supports:
+The token represents contractual participation in distributable cash flows (e.g., rental cash flows) and related economic entitlements (as permitted by the structure). This is an economic-rights instrument and does not represent land ownership or land title. The architecture supports:
 
 - controlled distributions linked to financial reporting cycles
 - disclosure delivery and acknowledgements
@@ -81,7 +81,7 @@ The token represents profit participation and related entitlements (as permitted
 
 ### Cross-Border Implications
 
-Equity-style participation may face stricter distribution constraints in some ASEAN jurisdictions. Whitelists and distributor controls are required, and liquidity is expected to fragment by venue and jurisdiction.
+Profit-participation structures may face stricter distribution constraints in some ASEAN jurisdictions (including collective investment style considerations depending on the wrapper). Whitelists and distributor controls are required, and liquidity is expected to fragment by venue and jurisdiction.
 
 ## 3) Sukuk Model (Shariah-Aligned, Asset-Backed Participation)
 

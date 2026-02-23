@@ -26,7 +26,7 @@ This whitepaper covers an ASEAN-minimum tokenization framework for Indonesian un
 ### Funding Models Supported
 
 - Debt
-- Equity (profit participation / entitlements as permitted by the structure)
+- Profit participation (REIT-like economic rights; contractual participation in distributable cash flows)
 - Sukuk (Shariah-aligned asset-backed participation)
 - Crowdfunding (with caps and investor protections, where permitted)
 
