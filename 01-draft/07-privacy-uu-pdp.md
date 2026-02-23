@@ -76,6 +76,17 @@ The framework therefore assumes:
 - immutable audit logs and periodic access reviews
 - incident response playbooks and evidence preservation
 
+## Retention, Access Governance, and Redaction
+
+Privacy compliance and auditability require explicit governance over how long records are kept, who can access them, and how data is minimized when shared across parties and jurisdictions.
+
+Minimum requirements (high-level):
+
+- **Retention schedules:** define retention periods for KYC artifacts, screening results, disclosures, audit logs, and evidence packs, aligned to applicable obligations and purpose limitation.
+- **Access governance:** enforce RBAC, least privilege, and periodic access reviews for personal data and compliance evidence.
+- **Redaction and minimization:** when providing evidence to auditors, venues, or cross-border partners, share only what is required (redacted where appropriate) and retain a record of what was shared.
+- **Cross-border evidence sharing:** treat evidence sharing as a governed process with accountability (controller/processor roles), logging, and secure transfer mechanisms.
+
 ## Regulator and Audit Support (Privacy-Preserving)
 
 Regulator and auditor support is implemented through:

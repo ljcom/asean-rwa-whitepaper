@@ -27,6 +27,17 @@ Mitigations:
 - regulated distribution channels and controlled secondary trading
 - auditable transfer restrictions and compliance logs
 
+### Risk: Retail mis-selling and investor protection failures (Indonesia-first pilot)
+
+Retail participation increases sensitivity to marketing practices, suitability controls, and complaint handling. If investor protections are not designed and evidenced, the program risks consumer harm, disputes, and regulatory action.
+
+Mitigations:
+
+- suitability/appropriateness workflows and clear eligibility categories
+- conservative retail caps (identity-centric) and strong disclosures (including liquidity limits and exit pathways)
+- marketing controls and evidence retention (what was communicated, when, and to whom)
+- complaint handling and dispute workflows with time-bound SLAs and governance oversight
+
 ## 2) Market and Liquidity Risks
 
 ### Risk: Illiquidity and fragmented markets
@@ -94,6 +105,17 @@ Mitigations:
 - governed corporate action workflows with sequential approvals
 - dual controls and segregation of duties
 - exception handling and post-event reporting
+
+### Risk: Default handling and enforcement ambiguity (later-stage requirement)
+
+If the program expands into products with credit/default exposure (especially debt-like instruments), unclear default triggers and enforcement procedures can create disputes, delays, and investor harm.
+
+Mitigations:
+
+- document default triggers, standstill rules (if any), and investor communication timelines in the wrapper documentation
+- define enforcement decision rights and governance (who can initiate, approve, and execute actions)
+- define asset disposition process under Indonesian law (e.g., sale/auction processes as applicable) and how proceeds flow through the recovery waterfall
+- retain complete evidence packs for default events (servicer reports, notices, approvals, asset sale evidence, and recovery calculations)
 
 ### Risk: Escrow operational and settlement failures
 

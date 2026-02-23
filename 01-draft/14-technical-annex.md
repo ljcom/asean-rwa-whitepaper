@@ -99,6 +99,8 @@ For an Indonesia-first pilot with early retail adoption (where permitted), the i
 - retail caps and suitability/appropriateness controls (policy-driven; enforced off-chain and reflected on-chain via restrictions)
 - disclosure acknowledgement requirements and refresh cadence
 - restrictions for re-sale/transfer (lock-ups, venue-only rules if used)
+- complaint and dispute workflows (intake, time-bound SLAs, evidence requirements)
+- marketing/comms evidence retention (what was communicated, when, and to which segment)
 
 Retail configurations should be treated as conservative defaults and require explicit governance approvals for any expansion of eligibility or caps.
 
@@ -381,6 +383,42 @@ Minimum monitoring capabilities:
 - privileged action alerts and approval bypass attempts
 
 Monitoring should produce retained artifacts suitable for governance review and audits.
+
+## Data Retention and Access Governance (Technical Controls)
+
+Retention and access governance must be implemented as technical controls, not only as policy statements.
+
+### Retention Schedule (Implementation Requirement)
+
+The system should implement configurable retention schedules for:
+
+- KYC/AML artifacts and screening results (PII-containing)
+- disclosure acknowledgements and notices
+- audit logs/traceability records and evidence packs
+- escrow, payout, and reconciliation artifacts
+
+Retention controls should support:
+
+- legal holds (preserve records for disputes/audits)
+- time-bound deletion or anonymization where permitted
+- complete deletion tracking (what was deleted, when, and by which authority)
+
+### Access Controls and Logging
+
+Minimum requirements:
+
+- RBAC with least privilege for all evidence systems
+- time-bound access grants for sensitive records (break-glass procedures for incidents)
+- immutable access logs for PII and evidence pack retrieval
+- periodic access reviews and automated alerts for anomalous access patterns
+
+### Redaction and Evidence Sharing
+
+When generating evidence packs for auditors, venues, or cross-border partners:
+
+- generate redacted variants where possible (remove PII, keep references and decision outcomes)
+- record the recipient, purpose, and scope of each shared evidence bundle
+- use secure transfer mechanisms and maintain integrity checks (hashes/signatures) for shared artifacts
 
 ## Evidence Packs (Audit Exports)
 

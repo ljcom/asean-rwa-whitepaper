@@ -119,3 +119,12 @@ After the Indonesia-first pilot and initial scaling controls are validated, Shar
 - Shariah supervisory governance and evidence retention
 - structure-specific disclosures and monitoring (asset-backing and cash flow constraints)
 - venue/distributor alignment for Shariah product distribution where applicable
+
+## Optional Phase — Default Handling and Enforcement (Later Stage)
+
+As the program expands into credit-bearing products and larger retail participation, default handling and enforcement procedures should be formalized and tested as a later stage. This phase adds:
+
+- documented default triggers, standstill (if any), and communication timelines
+- enforcement governance (decision rights, approvals, and evidence requirements)
+- asset disposition and recovery waterfall procedures consistent with Indonesian law and the chosen wrapper
+- operational runbooks and evidence pack templates for default events and recoveries

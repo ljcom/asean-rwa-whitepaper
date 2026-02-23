@@ -33,6 +33,8 @@
 - valuation/NAV methodology and reporting cadence
 - transfer restrictions and resale limitations by jurisdiction
 - privacy notice and data handling summary (UU PDP / PDPA alignment)
+- retail investor protection disclosures (where retail is permitted): suitability/appropriateness approach, caps, complaints/dispute process, and exit-pathway limitations
+- default and enforcement disclosures (for credit-bearing products): trigger definitions, servicing/enforcement governance, and recovery waterfall summary
 
 ## D. References and Sources
 
