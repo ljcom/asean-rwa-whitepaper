@@ -39,6 +39,7 @@ Mitigations:
 - venue strategy (regulated listings where feasible)
 - optional market making arrangements with governance and transparency
 - redemption mechanisms only where structurally supportable and clearly documented
+ - explicit exit-pathway disclosures per product model (secondary trading limits, maturity/termination outcomes, and any redemption windows)
 
 ### Risk: Funding shortfall at primary close (debt offerings)
 

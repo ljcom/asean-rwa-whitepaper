@@ -4,6 +4,12 @@
 
 This section outlines how Shariah-aligned funding (including sukuk structures) can be supported within the same compliance-by-design framework, without diluting regulatory controls or investor protections. The discussion is operational and structural; Shariah opinions must be provided by qualified Shariah supervisory oversight.
 
+## Phasing: Shariah as a Later Stage (After Pilot Validation)
+
+This whitepaper treats Shariah-aligned offerings as a **subsequent phase** following an Indonesia-first pilot that validates the core orchestration controls (KYC/whitelist/escrow/corporate actions/auditability). The rationale is to avoid introducing additional governance and documentation complexity before the baseline control plane is proven.
+
+When introduced, Shariah-aligned products should reuse the same hybrid compliance architecture and evidence model, while adding Shariah-specific governance, documentation, and monitoring requirements.
+
 ## Principles (Structural and Writing Constraints)
 
 - Avoid framing returns as interest; use rental yield, participation return, or profit rate as appropriate.
@@ -56,6 +62,15 @@ The system supports these through:
 - versioned documentation storage off-chain
 - approval workflows with audit trails
 - distribution event logs linked to documentation references
+
+### Additional Controls for Shariah Phase (Illustrative)
+
+When the Shariah phase is activated, additional controls typically include:
+
+- documented Shariah governance (supervisory oversight, scope, review cadence)
+- product-specific disclosure additions (structure, asset-backing, cash flow constraints)
+- monitoring for use-of-proceeds and cash flow adherence to disclosed parameters
+- evidence retention for periodic Shariah compliance confirmations
 
 ## Compliance-by-Design Alignment
 

@@ -52,6 +52,10 @@ Secondary trading, where permitted, is mediated through regulated venues and ven
 
 Liquidity fragmentation across ASEAN jurisdictions is expected and must be managed through venue-specific controls and rollout sequencing.
 
+### Secondary Trading vs. Exit Assurance (Clarification)
+
+Secondary trading is only one potential exit pathway and should not be interpreted as an assurance of exit. Exit planning must be disclosed per product model and jurisdiction, and may rely on term-driven outcomes (e.g., maturity repayment for debt-like instruments) and/or governed redemption windows (if offered).
+
 ## Market Infrastructure: Venues, Exchanges, NFTs, and Fiat Ramps
 
 This framework distinguishes market infrastructure by **regulatory function**, because the same technology (tokens) may fall under different rules depending on the rights represented and the distribution/trading channel.

@@ -43,6 +43,7 @@ See `03-references/sources.md` for a working list of source categories and place
 - Cross-border controls: `02-figures/diagrams/cross-border-jurisdiction-controls.md`
 - Privacy boundary: `02-figures/diagrams/privacy-data-boundary.md`
 - Liquidity engineering: `02-figures/diagrams/liquidity-engineering-map.md`
+- Secondary market & exit pathways: `02-figures/diagrams/secondary-market-and-exit-pathways.md`
 - Whitelist/KYC/identity flow: `02-figures/diagrams/whitelist-kyc-identity-flow.md`
 - Venues and fiat ramps overview: `02-figures/diagrams/venues-and-ramps-overview.md`
 - Stakeholder operating model: `02-figures/diagrams/stakeholder-operating-model.md`

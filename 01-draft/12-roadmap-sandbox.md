@@ -111,3 +111,11 @@ Roadmap sequencing must reflect that:
 - privacy and data protection governance must be designed for multi-party operations
 
 The roadmap therefore prioritizes a strong control plane and staged expansion over rapid scaling.
+
+## Optional Phase — Shariah Product Enablement (Later Stage)
+
+After the Indonesia-first pilot and initial scaling controls are validated, Shariah-aligned offerings (e.g., sukuk structures such as ijarah) can be enabled as an additional phase. This phase reuses the existing orchestration/control plane and adds:
+
+- Shariah supervisory governance and evidence retention
+- structure-specific disclosures and monitoring (asset-backing and cash flow constraints)
+- venue/distributor alignment for Shariah product distribution where applicable
