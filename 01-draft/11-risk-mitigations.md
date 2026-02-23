@@ -73,6 +73,17 @@ Mitigations:
 - event-driven reconciliations after issuance and corporate actions
 - independent audits of operational controls
 
+### Risk: Control drift and governance failures
+
+If policy rules, whitelists, approvals, and operational procedures are not governed and monitored, controls can drift over time (especially during cross-border scaling), undermining compliance and auditability.
+
+Mitigations:
+
+- versioned policies with approvals and time-bound change windows
+- continuous control monitoring (alerts on whitelist/policy anomalies, exception spikes, reconciliation breaks)
+- defined governance bodies (program/compliance/risk/change control) with documented minutes and action tracking
+- periodic independent assurance (operational controls, privacy/security readiness, smart contract reviews)
+
 ### Risk: Servicing and payment errors
 
 Distributions and redemptions require accurate calculations and approvals.
