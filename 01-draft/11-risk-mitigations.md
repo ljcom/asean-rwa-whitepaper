@@ -90,7 +90,7 @@ Escrow-based funding introduces operational risks: misdirected funds, delayed re
 Mitigations:
 
 - use segregated escrow accounts with clear mandate (escrow agent/bank/custodian where appropriate)
-- dual authorization for release of funds and documented conditions precedent
+- dual authorization for release of funds and documented conditions precedent (including collateral perfection steps such as notary/PPAT processes where applicable)
 - reconciliation runbooks and time-bound refund procedures
 - dispute resolution process and evidence retention (subscription logs, notices, approvals)
 

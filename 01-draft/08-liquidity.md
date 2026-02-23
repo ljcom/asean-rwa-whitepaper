@@ -44,7 +44,7 @@ The primary market is executed through regulated distribution channels, with:
 For debt-based offerings, origination liquidity can be engineered without relying on a platform balance sheet by using **segregated escrow accounts and defined closing thresholds**:
 
 - investor commitments are collected into escrow during the offering window;
-- closing proceeds only if the raise meets a documented **minimum close** (and other conditions precedent);
+- closing proceeds only if the raise meets a documented **minimum close** (and other conditions precedent, including Indonesian collateral/security documentation steps such as notary/PPAT processes where applicable);
 - if the threshold is not met, the borrower may accept a partial close (if permitted) or cancel; if cancelled, escrow funds are refunded and the offering is void.
 
 This approach reduces the need for an open-ended backstop and makes funding certainty an explicit contractual outcome, supported by auditable escrow release controls.

@@ -39,10 +39,10 @@ The token represents a debt claim and repayment waterfall defined in the issuanc
 To reduce dependence on platform capital while preserving borrower certainty, the debt model can be structured as a **best-efforts raise with escrow and defined closing thresholds**:
 
 1. Borrower requests financing terms and amount (e.g., up to 100% of the target size).
-2. Fund manager/appraisal and legal due diligence validate the collateral and proposed terms (Indonesia).
+2. Fund manager/appraisal and legal due diligence validate the collateral and proposed terms (Indonesia), including preparation for collateral perfection and security documentation (notary/PPAT as applicable).
 3. The offering is distributed to eligible investors through regulated channels; investor funds are collected into a **segregated escrow account**.
 4. At a defined deadline, the raise outcome is assessed against documented thresholds:
-   - if the raise meets the **minimum close** (and any other conditions precedent), closing proceeds;
+   - if the raise meets the **minimum close** (and any other conditions precedent, including collateral perfection steps where required), closing proceeds;
    - if the raise does not meet the threshold, the borrower may be asked to **accept a partial close** (if permitted) or to cancel.
 5. If cancelled, escrow funds are returned to investors according to documented procedures; no token issuance is finalized.
 6. If closed, escrow releases funds to the borrower under dual authorization, and the debt economic-rights token is issued/allocated according to the final allocation.
