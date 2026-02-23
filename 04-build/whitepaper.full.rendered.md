@@ -518,7 +518,7 @@ Because issuers, distributors, venues, auditors, and regulators may need to revi
 
 ### High-Level Architecture (Visual)
 
-![](diagrams/mermaid-a9e7cf4acc27d754.png)
+![](diagrams/mermaid-a9e7cf4acc27d754.png){height=50% fig-align=center}
 
 Primary objectives:
 
@@ -591,7 +591,7 @@ Critical actions (e.g., mint/issue, corporate action execution, emergency freeze
 
 Reference diagram: `02-figures/diagrams/issuance-lifecycle.md`.
 
-![](diagrams/mermaid-894999de44ffe543.png)
+![](diagrams/mermaid-894999de44ffe543.png){height=50% fig-align=center}
 
 ## Whitelist, KYC, and Identity Controls (Off-Chain)
 
@@ -791,7 +791,7 @@ This whitepaper assumes an **Indonesia-first pilot** (domestic distribution and 
 
 ## Cross-Border Control Flow (Visual)
 
-![](diagrams/mermaid-f03f5d7fda1f135a.png)
+![](diagrams/mermaid-f03f5d7fda1f135a.png){height=50% fig-align=center}
 
 ## Jurisdictional Constraints Informing the Approach
 
@@ -2657,7 +2657,7 @@ This section includes the diagram pack from `02-figures/diagrams/`. If Mermaid r
 
 This diagram illustrates how cross-border participation is managed via jurisdiction-aware policies, eligibility categories, and venue-specific controls. The goal is auditable compliance enforcement, not regulatory arbitrage.
 
-![](diagrams/mermaid-f03f5d7fda1f135a.png)
+![](diagrams/mermaid-f03f5d7fda1f135a.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2675,7 +2675,7 @@ This diagram illustrates how cross-border participation is managed via jurisdict
 
 This diagram illustrates a capital-light origination model where borrower drawdown depends on escrowed subscriptions meeting a documented close threshold. The token represents economic rights only; KYC/AML and eligibility are performed off-chain.
 
-![](diagrams/mermaid-69e1ee3e637685d1.png)
+![](diagrams/mermaid-69e1ee3e637685d1.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2693,7 +2693,7 @@ This diagram illustrates a capital-light origination model where borrower drawdo
 
 This diagram illustrates daily reconciliation and close-day controls for escrow-based offerings. It is designed to support auditability and investor protection (accurate allocations, timely refunds, and controlled releases).
 
-![](diagrams/mermaid-759e5ae192e7ce00.png)
+![](diagrams/mermaid-759e5ae192e7ce00.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2711,7 +2711,7 @@ This diagram illustrates daily reconciliation and close-day controls for escrow-
 
 This diagram shows how monitoring signals and audit evidence feed governance decisions and control improvements in a hybrid compliance architecture.
 
-![](diagrams/mermaid-eedd36fadcd827c4.png)
+![](diagrams/mermaid-eedd36fadcd827c4.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2729,7 +2729,7 @@ This diagram shows how monitoring signals and audit evidence feed governance dec
 
 This diagram shows the hybrid on-chain/off-chain compliance architecture used in this program. Personal data and regulated compliance operations remain off-chain; on-chain components focus on controlled execution and tamper-evident event logs.
 
-![](diagrams/mermaid-a9e7cf4acc27d754.png)
+![](diagrams/mermaid-a9e7cf4acc27d754.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2747,7 +2747,7 @@ This diagram shows the hybrid on-chain/off-chain compliance architecture used in
 
 This diagram summarizes the issuance lifecycle for an escrow-based offering with close thresholds and restricted token issuance.
 
-![](diagrams/mermaid-894999de44ffe543.png)
+![](diagrams/mermaid-894999de44ffe543.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2765,7 +2765,7 @@ This diagram summarizes the issuance lifecycle for an escrow-based offering with
 
 This diagram shows the engineered liquidity pathways: primary-market closing mechanics (including escrow + close threshold for debt), regulated venue strategy, optional market making, NAV reference governance, and documented redemption mechanisms (if offered).
 
-![](diagrams/mermaid-d0c063b716096062.png)
+![](diagrams/mermaid-d0c063b716096062.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2783,7 +2783,7 @@ This diagram shows the engineered liquidity pathways: primary-market closing mec
 
 This diagram summarizes the privacy boundary: personal data stays off-chain under controlled access; on-chain stores only minimal operational events and cryptographic references for integrity.
 
-![](diagrams/mermaid-2b5fd333f15f57e1.png)
+![](diagrams/mermaid-2b5fd333f15f57e1.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2801,7 +2801,7 @@ This diagram summarizes the privacy boundary: personal data stays off-chain unde
 
 This diagram summarizes how investors may exit within a regulated, hybrid compliance framework. Secondary trading is venue-specific and not an assurance of liquidity; term-driven outcomes (e.g., maturity repayment) remain primary for many debt-like exposures.
 
-![](diagrams/mermaid-4561027a237bd3c4.png)
+![](diagrams/mermaid-4561027a237bd3c4.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2819,7 +2819,7 @@ This diagram summarizes how investors may exit within a regulated, hybrid compli
 
 This diagram summarizes key stakeholders and interactions in the program. It reflects a single-SPV pilot that can later scale to multi-vehicle issuance under one standardized orchestration/control plane. The platform is positioned as an operator/orchestrator, not a regulator.
 
-![](diagrams/mermaid-b6b30624d66388bf.png)
+![](diagrams/mermaid-b6b30624d66388bf.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2837,7 +2837,7 @@ This diagram summarizes key stakeholders and interactions in the program. It ref
 
 This diagram summarizes how regulated venues and fiat on/off ramps relate to the economic-rights token lifecycle. It highlights that NFTs or crypto exchange rails do not change the regulatory perimeter of the economic rights represented.
 
-![](diagrams/mermaid-a5771a55b163d81f.png)
+![](diagrams/mermaid-a5771a55b163d81f.png){height=50% fig-align=center}
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -2855,4 +2855,4 @@ This diagram summarizes how regulated venues and fiat on/off ramps relate to the
 
 This diagram shows the compliance flow for onboarding, wallet binding, whitelist segmentation, and transfer decisioning. KYC/AML and personal data handling remain off-chain; on-chain stores only non-personal eligibility signals and event logs.
 
-![](diagrams/mermaid-681ab69548dd51dc.png)
+![](diagrams/mermaid-681ab69548dd51dc.png){height=50% fig-align=center}
