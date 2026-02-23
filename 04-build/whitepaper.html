@@ -177,6 +177,7 @@
 <p class="date">2026-02-23</p>
 </header>
 <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Daftar Isi</h2>
 <ul>
 <li><a href="#executive-summary" id="toc-executive-summary">Executive
 Summary</a>
@@ -538,6 +539,9 @@ Transfers (ASEAN Minimum)</a></li>
 <li><a href="#security-controls-illustrative"
 id="toc-security-controls-illustrative">Security Controls
 (Illustrative)</a></li>
+<li><a href="#retention-access-governance-and-redaction"
+id="toc-retention-access-governance-and-redaction">Retention, Access
+Governance, and Redaction</a></li>
 <li><a href="#regulator-and-audit-support-privacy-preserving"
 id="toc-regulator-and-audit-support-privacy-preserving">Regulator and
 Audit Support (Privacy-Preserving)</a></li>
@@ -766,6 +770,11 @@ Misclassification or inconsistent regulatory treatment</a></li>
 <li><a href="#risk-perception-of-regulatory-arbitrage"
 id="toc-risk-perception-of-regulatory-arbitrage">Risk: Perception of
 regulatory arbitrage</a></li>
+<li><a
+href="#risk-retail-mis-selling-and-investor-protection-failures-indonesia-first-pilot"
+id="toc-risk-retail-mis-selling-and-investor-protection-failures-indonesia-first-pilot">Risk:
+Retail mis-selling and investor protection failures (Indonesia-first
+pilot)</a></li>
 </ul></li>
 <li><a href="#market-and-liquidity-risks"
 id="toc-market-and-liquidity-risks">2) Market and Liquidity Risks</a>
@@ -794,6 +803,11 @@ and governance failures</a></li>
 <li><a href="#risk-servicing-and-payment-errors"
 id="toc-risk-servicing-and-payment-errors">Risk: Servicing and payment
 errors</a></li>
+<li><a
+href="#risk-default-handling-and-enforcement-ambiguity-later-stage-requirement"
+id="toc-risk-default-handling-and-enforcement-ambiguity-later-stage-requirement">Risk:
+Default handling and enforcement ambiguity (later-stage
+requirement)</a></li>
 <li><a href="#risk-escrow-operational-and-settlement-failures"
 id="toc-risk-escrow-operational-and-settlement-failures">Risk: Escrow
 operational and settlement failures</a></li>
@@ -861,6 +875,10 @@ id="toc-cross-border-implications-5">Cross-Border Implications</a></li>
 <li><a href="#optional-phase-shariah-product-enablement-later-stage"
 id="toc-optional-phase-shariah-product-enablement-later-stage">Optional
 Phase — Shariah Product Enablement (Later Stage)</a></li>
+<li><a
+href="#optional-phase-default-handling-and-enforcement-later-stage"
+id="toc-optional-phase-default-handling-and-enforcement-later-stage">Optional
+Phase — Default Handling and Enforcement (Later Stage)</a></li>
 </ul></li>
 <li><a href="#appendix-illustrative"
 id="toc-appendix-illustrative">Appendix (Illustrative)</a>
@@ -1002,6 +1020,20 @@ Administrative Security</a></li>
 <li><a href="#monitoring-and-alerting-control-monitoring"
 id="toc-monitoring-and-alerting-control-monitoring">Monitoring and
 Alerting (Control Monitoring)</a></li>
+<li><a href="#data-retention-and-access-governance-technical-controls"
+id="toc-data-retention-and-access-governance-technical-controls">Data
+Retention and Access Governance (Technical Controls)</a>
+<ul>
+<li><a href="#retention-schedule-implementation-requirement"
+id="toc-retention-schedule-implementation-requirement">Retention
+Schedule (Implementation Requirement)</a></li>
+<li><a href="#access-controls-and-logging"
+id="toc-access-controls-and-logging">Access Controls and
+Logging</a></li>
+<li><a href="#redaction-and-evidence-sharing"
+id="toc-redaction-and-evidence-sharing">Redaction and Evidence
+Sharing</a></li>
+</ul></li>
 <li><a href="#evidence-packs-audit-exports"
 id="toc-evidence-packs-audit-exports">Evidence Packs (Audit
 Exports)</a></li>
@@ -2638,6 +2670,27 @@ PDP and relevant PDPA regimes</li>
 <li>immutable audit logs and periodic access reviews</li>
 <li>incident response playbooks and evidence preservation</li>
 </ul>
+<h2 id="retention-access-governance-and-redaction">Retention, Access
+Governance, and Redaction</h2>
+<p>Privacy compliance and auditability require explicit governance over
+how long records are kept, who can access them, and how data is
+minimized when shared across parties and jurisdictions.</p>
+<p>Minimum requirements (high-level):</p>
+<ul>
+<li><strong>Retention schedules:</strong> define retention periods for
+KYC artifacts, screening results, disclosures, audit logs, and evidence
+packs, aligned to applicable obligations and purpose limitation.</li>
+<li><strong>Access governance:</strong> enforce RBAC, least privilege,
+and periodic access reviews for personal data and compliance
+evidence.</li>
+<li><strong>Redaction and minimization:</strong> when providing evidence
+to auditors, venues, or cross-border partners, share only what is
+required (redacted where appropriate) and retain a record of what was
+shared.</li>
+<li><strong>Cross-border evidence sharing:</strong> treat evidence
+sharing as a governed process with accountability (controller/processor
+roles), logging, and secure transfer mechanisms.</li>
+</ul>
 <h2 id="regulator-and-audit-support-privacy-preserving">Regulator and
 Audit Support (Privacy-Preserving)</h2>
 <p>Regulator and auditor support is implemented through:</p>
@@ -3480,6 +3533,25 @@ law.</p>
 trading</li>
 <li>auditable transfer restrictions and compliance logs</li>
 </ul>
+<h3
+id="risk-retail-mis-selling-and-investor-protection-failures-indonesia-first-pilot">Risk:
+Retail mis-selling and investor protection failures (Indonesia-first
+pilot)</h3>
+<p>Retail participation increases sensitivity to marketing practices,
+suitability controls, and complaint handling. If investor protections
+are not designed and evidenced, the program risks consumer harm,
+disputes, and regulatory action.</p>
+<p>Mitigations:</p>
+<ul>
+<li>suitability/appropriateness workflows and clear eligibility
+categories</li>
+<li>conservative retail caps (identity-centric) and strong disclosures
+(including liquidity limits and exit pathways)</li>
+<li>marketing controls and evidence retention (what was communicated,
+when, and to whom)</li>
+<li>complaint handling and dispute workflows with time-bound SLAs and
+governance oversight</li>
+</ul>
 <h2 id="market-and-liquidity-risks">2) Market and Liquidity Risks</h2>
 <h3 id="risk-illiquidity-and-fragmented-markets">Risk: Illiquidity and
 fragmented markets</h3>
@@ -3561,6 +3633,26 @@ approvals.</p>
 <li>governed corporate action workflows with sequential approvals</li>
 <li>dual controls and segregation of duties</li>
 <li>exception handling and post-event reporting</li>
+</ul>
+<h3
+id="risk-default-handling-and-enforcement-ambiguity-later-stage-requirement">Risk:
+Default handling and enforcement ambiguity (later-stage
+requirement)</h3>
+<p>If the program expands into products with credit/default exposure
+(especially debt-like instruments), unclear default triggers and
+enforcement procedures can create disputes, delays, and investor
+harm.</p>
+<p>Mitigations:</p>
+<ul>
+<li>document default triggers, standstill rules (if any), and investor
+communication timelines in the wrapper documentation</li>
+<li>define enforcement decision rights and governance (who can initiate,
+approve, and execute actions)</li>
+<li>define asset disposition process under Indonesian law (e.g.,
+sale/auction processes as applicable) and how proceeds flow through the
+recovery waterfall</li>
+<li>retain complete evidence packs for default events (servicer reports,
+notices, approvals, asset sale evidence, and recovery calculations)</li>
 </ul>
 <h3 id="risk-escrow-operational-and-settlement-failures">Risk: Escrow
 operational and settlement failures</h3>
@@ -3816,6 +3908,22 @@ cash flow constraints)</li>
 <li>venue/distributor alignment for Shariah product distribution where
 applicable</li>
 </ul>
+<h2
+id="optional-phase-default-handling-and-enforcement-later-stage">Optional
+Phase — Default Handling and Enforcement (Later Stage)</h2>
+<p>As the program expands into credit-bearing products and larger retail
+participation, default handling and enforcement procedures should be
+formalized and tested as a later stage. This phase adds:</p>
+<ul>
+<li>documented default triggers, standstill (if any), and communication
+timelines</li>
+<li>enforcement governance (decision rights, approvals, and evidence
+requirements)</li>
+<li>asset disposition and recovery waterfall procedures consistent with
+Indonesian law and the chosen wrapper</li>
+<li>operational runbooks and evidence pack templates for default events
+and recoveries</li>
+</ul>
 <p>ewpage</p>
 <h1 id="appendix-illustrative">Appendix (Illustrative)</h1>
 <h2 id="a.-control-matrix-high-level-illustrative">A. Control Matrix
@@ -3908,6 +4016,12 @@ combinations and fee setting/review governance)</li>
 <li>transfer restrictions and resale limitations by jurisdiction</li>
 <li>privacy notice and data handling summary (UU PDP / PDPA
 alignment)</li>
+<li>retail investor protection disclosures (where retail is permitted):
+suitability/appropriateness approach, caps, complaints/dispute process,
+and exit-pathway limitations</li>
+<li>default and enforcement disclosures (for credit-bearing products):
+trigger definitions, servicing/enforcement governance, and recovery
+waterfall summary</li>
 </ul>
 <h2 id="d.-references-and-sources">D. References and Sources</h2>
 <p>See <code>03-references/sources.md</code> for a working list of
@@ -4086,6 +4200,10 @@ enforced off-chain and reflected on-chain via restrictions)</li>
 <li>disclosure acknowledgement requirements and refresh cadence</li>
 <li>restrictions for re-sale/transfer (lock-ups, venue-only rules if
 used)</li>
+<li>complaint and dispute workflows (intake, time-bound SLAs, evidence
+requirements)</li>
+<li>marketing/comms evidence retention (what was communicated, when, and
+to which segment)</li>
 </ul>
 <p>Retail configurations should be treated as conservative defaults and
 require explicit governance approvals for any expansion of eligibility
@@ -4608,6 +4726,48 @@ Alerting (Control Monitoring)</h2>
 </ul>
 <p>Monitoring should produce retained artifacts suitable for governance
 review and audits.</p>
+<h2 id="data-retention-and-access-governance-technical-controls">Data
+Retention and Access Governance (Technical Controls)</h2>
+<p>Retention and access governance must be implemented as technical
+controls, not only as policy statements.</p>
+<h3 id="retention-schedule-implementation-requirement">Retention
+Schedule (Implementation Requirement)</h3>
+<p>The system should implement configurable retention schedules for:</p>
+<ul>
+<li>KYC/AML artifacts and screening results (PII-containing)</li>
+<li>disclosure acknowledgements and notices</li>
+<li>audit logs/traceability records and evidence packs</li>
+<li>escrow, payout, and reconciliation artifacts</li>
+</ul>
+<p>Retention controls should support:</p>
+<ul>
+<li>legal holds (preserve records for disputes/audits)</li>
+<li>time-bound deletion or anonymization where permitted</li>
+<li>complete deletion tracking (what was deleted, when, and by which
+authority)</li>
+</ul>
+<h3 id="access-controls-and-logging">Access Controls and Logging</h3>
+<p>Minimum requirements:</p>
+<ul>
+<li>RBAC with least privilege for all evidence systems</li>
+<li>time-bound access grants for sensitive records (break-glass
+procedures for incidents)</li>
+<li>immutable access logs for PII and evidence pack retrieval</li>
+<li>periodic access reviews and automated alerts for anomalous access
+patterns</li>
+</ul>
+<h3 id="redaction-and-evidence-sharing">Redaction and Evidence
+Sharing</h3>
+<p>When generating evidence packs for auditors, venues, or cross-border
+partners:</p>
+<ul>
+<li>generate redacted variants where possible (remove PII, keep
+references and decision outcomes)</li>
+<li>record the recipient, purpose, and scope of each shared evidence
+bundle</li>
+<li>use secure transfer mechanisms and maintain integrity checks
+(hashes/signatures) for shared artifacts</li>
+</ul>
 <h2 id="evidence-packs-audit-exports">Evidence Packs (Audit
 Exports)</h2>
 <p>Evidence packs must be reproducible and structured. Each pack should

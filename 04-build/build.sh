@@ -53,6 +53,7 @@ pandoc "${OUT_MD}" \
   --standalone \
   --toc \
   --toc-depth=3 \
+  --metadata toc-title="Daftar Isi" \
   -o "${OUT_DOCX}"
 
 echo "Generating HTML..."
@@ -62,6 +63,7 @@ pandoc "${OUT_MD}" \
   --standalone \
   --toc \
   --toc-depth=3 \
+  --metadata toc-title="Daftar Isi" \
   -o "${OUT_HTML}"
 
 cat <<EOF
@@ -73,4 +75,3 @@ Build complete:
 Note:
 - PDF generation requires a PDF engine (e.g., xelatex). Mermaid diagrams remain as code blocks unless rendered separately.
 EOF
-

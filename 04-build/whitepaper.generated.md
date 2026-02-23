@@ -949,6 +949,17 @@ The framework therefore assumes:
 - immutable audit logs and periodic access reviews
 - incident response playbooks and evidence preservation
 
+## Retention, Access Governance, and Redaction
+
+Privacy compliance and auditability require explicit governance over how long records are kept, who can access them, and how data is minimized when shared across parties and jurisdictions.
+
+Minimum requirements (high-level):
+
+- **Retention schedules:** define retention periods for KYC artifacts, screening results, disclosures, audit logs, and evidence packs, aligned to applicable obligations and purpose limitation.
+- **Access governance:** enforce RBAC, least privilege, and periodic access reviews for personal data and compliance evidence.
+- **Redaction and minimization:** when providing evidence to auditors, venues, or cross-border partners, share only what is required (redacted where appropriate) and retain a record of what was shared.
+- **Cross-border evidence sharing:** treat evidence sharing as a governed process with accountability (controller/processor roles), logging, and secure transfer mechanisms.
+
 ## Regulator and Audit Support (Privacy-Preserving)
 
 Regulator and auditor support is implemented through:
@@ -1531,6 +1542,17 @@ Mitigations:
 - regulated distribution channels and controlled secondary trading
 - auditable transfer restrictions and compliance logs
 
+### Risk: Retail mis-selling and investor protection failures (Indonesia-first pilot)
+
+Retail participation increases sensitivity to marketing practices, suitability controls, and complaint handling. If investor protections are not designed and evidenced, the program risks consumer harm, disputes, and regulatory action.
+
+Mitigations:
+
+- suitability/appropriateness workflows and clear eligibility categories
+- conservative retail caps (identity-centric) and strong disclosures (including liquidity limits and exit pathways)
+- marketing controls and evidence retention (what was communicated, when, and to whom)
+- complaint handling and dispute workflows with time-bound SLAs and governance oversight
+
 ## 2) Market and Liquidity Risks
 
 ### Risk: Illiquidity and fragmented markets
@@ -1598,6 +1620,17 @@ Mitigations:
 - governed corporate action workflows with sequential approvals
 - dual controls and segregation of duties
 - exception handling and post-event reporting
+
+### Risk: Default handling and enforcement ambiguity (later-stage requirement)
+
+If the program expands into products with credit/default exposure (especially debt-like instruments), unclear default triggers and enforcement procedures can create disputes, delays, and investor harm.
+
+Mitigations:
+
+- document default triggers, standstill rules (if any), and investor communication timelines in the wrapper documentation
+- define enforcement decision rights and governance (who can initiate, approve, and execute actions)
+- define asset disposition process under Indonesian law (e.g., sale/auction processes as applicable) and how proceeds flow through the recovery waterfall
+- retain complete evidence packs for default events (servicer reports, notices, approvals, asset sale evidence, and recovery calculations)
 
 ### Risk: Escrow operational and settlement failures
 
@@ -1795,6 +1828,15 @@ After the Indonesia-first pilot and initial scaling controls are validated, Shar
 - structure-specific disclosures and monitoring (asset-backing and cash flow constraints)
 - venue/distributor alignment for Shariah product distribution where applicable
 
+## Optional Phase — Default Handling and Enforcement (Later Stage)
+
+As the program expands into credit-bearing products and larger retail participation, default handling and enforcement procedures should be formalized and tested as a later stage. This phase adds:
+
+- documented default triggers, standstill (if any), and communication timelines
+- enforcement governance (decision rights, approvals, and evidence requirements)
+- asset disposition and recovery waterfall procedures consistent with Indonesian law and the chosen wrapper
+- operational runbooks and evidence pack templates for default events and recoveries
+
 
 
 ewpage
@@ -1834,6 +1876,8 @@ ewpage
 - valuation/NAV methodology and reporting cadence
 - transfer restrictions and resale limitations by jurisdiction
 - privacy notice and data handling summary (UU PDP / PDPA alignment)
+- retail investor protection disclosures (where retail is permitted): suitability/appropriateness approach, caps, complaints/dispute process, and exit-pathway limitations
+- default and enforcement disclosures (for credit-bearing products): trigger definitions, servicing/enforcement governance, and recovery waterfall summary
 
 ## D. References and Sources
 
@@ -1963,6 +2007,8 @@ For an Indonesia-first pilot with early retail adoption (where permitted), the i
 - retail caps and suitability/appropriateness controls (policy-driven; enforced off-chain and reflected on-chain via restrictions)
 - disclosure acknowledgement requirements and refresh cadence
 - restrictions for re-sale/transfer (lock-ups, venue-only rules if used)
+- complaint and dispute workflows (intake, time-bound SLAs, evidence requirements)
+- marketing/comms evidence retention (what was communicated, when, and to which segment)
 
 Retail configurations should be treated as conservative defaults and require explicit governance approvals for any expansion of eligibility or caps.
 
@@ -2245,6 +2291,42 @@ Minimum monitoring capabilities:
 - privileged action alerts and approval bypass attempts
 
 Monitoring should produce retained artifacts suitable for governance review and audits.
+
+## Data Retention and Access Governance (Technical Controls)
+
+Retention and access governance must be implemented as technical controls, not only as policy statements.
+
+### Retention Schedule (Implementation Requirement)
+
+The system should implement configurable retention schedules for:
+
+- KYC/AML artifacts and screening results (PII-containing)
+- disclosure acknowledgements and notices
+- audit logs/traceability records and evidence packs
+- escrow, payout, and reconciliation artifacts
+
+Retention controls should support:
+
+- legal holds (preserve records for disputes/audits)
+- time-bound deletion or anonymization where permitted
+- complete deletion tracking (what was deleted, when, and by which authority)
+
+### Access Controls and Logging
+
+Minimum requirements:
+
+- RBAC with least privilege for all evidence systems
+- time-bound access grants for sensitive records (break-glass procedures for incidents)
+- immutable access logs for PII and evidence pack retrieval
+- periodic access reviews and automated alerts for anomalous access patterns
+
+### Redaction and Evidence Sharing
+
+When generating evidence packs for auditors, venues, or cross-border partners:
+
+- generate redacted variants where possible (remove PII, keep references and decision outcomes)
+- record the recipient, purpose, and scope of each shared evidence bundle
+- use secure transfer mechanisms and maintain integrity checks (hashes/signatures) for shared artifacts
 
 ## Evidence Packs (Audit Exports)
 
