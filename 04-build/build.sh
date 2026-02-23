@@ -6,6 +6,9 @@ BUILD_DIR="${ROOT_DIR}/04-build"
 DRAFT_DIR="${ROOT_DIR}/01-draft"
 
 OUT_MD="${BUILD_DIR}/whitepaper.generated.md"
+OUT_FIGPACK_SRC="${BUILD_DIR}/figures-pack.generated.md"
+OUT_MD_FULL="${BUILD_DIR}/whitepaper.full.md"
+OUT_MD_FULL_RENDERED="${BUILD_DIR}/whitepaper.full.rendered.md"
 OUT_DOCX="${BUILD_DIR}/whitepaper.docx"
 OUT_HTML="${BUILD_DIR}/whitepaper.html"
 OUT_PDF="${BUILD_DIR}/whitepaper.pdf"
@@ -61,8 +64,70 @@ EOF
   cat "${file}" >> "${OUT_MD}"
 done
 
+echo "Generating Figure Pack source..."
+cat > "${OUT_FIGPACK_SRC}" <<EOF
+# Figure Pack (Diagrams)
+
+This section includes the diagram pack from \`02-figures/diagrams/\`. If Mermaid rendering is available, diagrams are embedded as images. Otherwise, Mermaid code blocks are retained.
+EOF
+
+for fig in "${ROOT_DIR}/02-figures/diagrams/"*.md; do
+  [[ -f "${fig}" ]] || continue
+  cat >> "${OUT_FIGPACK_SRC}" <<'EOF'
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+```{=latex}
+\newpage
+```
+
+```{=html}
+<div style="page-break-before: always;"></div>
+```
+
+EOF
+  cat "${fig}" >> "${OUT_FIGPACK_SRC}"
+done
+
+echo "Assembling full Markdown..."
+cat "${OUT_MD}" > "${OUT_MD_FULL}"
+cat >> "${OUT_MD_FULL}" <<'EOF'
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+```{=latex}
+\newpage
+```
+
+```{=html}
+<div style="page-break-before: always;"></div>
+```
+
+EOF
+cat "${OUT_FIGPACK_SRC}" >> "${OUT_MD_FULL}"
+
+RENDER_SOURCE="${OUT_MD_FULL}"
+
+if command -v mmdc >/dev/null 2>&1; then
+  echo "Rendering Mermaid diagrams (full document)..."
+  rm -rf "${BUILD_DIR}/diagrams"
+  mkdir -p "${BUILD_DIR}/diagrams"
+  if MERMAID_PUPPETEER_CONFIG="${BUILD_DIR}/puppeteer-config.json" \
+    python3 "${BUILD_DIR}/render_mermaid.py" "${OUT_MD_FULL}" "${OUT_MD_FULL_RENDERED}" "${BUILD_DIR}/diagrams"; then
+    RENDER_SOURCE="${OUT_MD_FULL_RENDERED}"
+  else
+    echo "Mermaid rendering failed; continuing with Mermaid code blocks."
+  fi
+else
+  echo "Skipping Mermaid rendering: mmdc not found."
+fi
+
 echo "Generating DOCX..."
-pandoc "${OUT_MD}" \
+pandoc "${RENDER_SOURCE}" \
   --from=markdown \
   --to=docx \
   --standalone \
@@ -72,7 +137,7 @@ pandoc "${OUT_MD}" \
   -o "${OUT_DOCX}"
 
 echo "Generating HTML..."
-pandoc "${OUT_MD}" \
+pandoc "${RENDER_SOURCE}" \
   --from=markdown \
   --to=html \
   --standalone \
@@ -90,7 +155,7 @@ fi
 
 if [[ -n "${PDF_ENGINE}" ]]; then
   echo "Generating PDF..."
-  pandoc "${OUT_MD}" \
+  pandoc "${RENDER_SOURCE}" \
     --from=markdown \
     --pdf-engine="${PDF_ENGINE}" \
     --toc \
@@ -103,6 +168,9 @@ fi
 cat <<EOF
 Build complete:
 - ${OUT_MD}
+- ${OUT_FIGPACK_SRC}
+- ${OUT_MD_FULL}
+- ${OUT_MD_FULL_RENDERED}
 - ${OUT_DOCX}
 - ${OUT_HTML}
 - ${OUT_PDF}

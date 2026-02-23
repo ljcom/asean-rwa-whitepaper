@@ -7,10 +7,15 @@ This file is a build-oriented aggregation stub. The canonical draft sections liv
 - Build script: `04-build/build.sh`
 - Outputs:
   - `04-build/whitepaper.generated.md`
+  - `04-build/whitepaper.rendered.md`
   - `04-build/whitepaper.docx`
   - `04-build/whitepaper.html`
 
 PDF output is generated when a PDF engine is available (the build script uses `xelatex` if found).
+
+## Mermaid Rendering
+
+If `mmdc` is installed, the build script attempts to render Mermaid code blocks into PNG files under `04-build/diagrams/` and embed them into `04-build/whitepaper.rendered.md`. If rendering fails, the build continues and diagrams remain as code blocks.
 
 ## Draft Sections
 

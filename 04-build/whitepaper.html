@@ -1106,6 +1106,44 @@ Summary (Indonesia-First)</a></li>
 <li><a href="#non-goals-technical"
 id="toc-non-goals-technical">Non-Goals (Technical)</a></li>
 </ul></li>
+<li><a href="#figure-pack-diagrams" id="toc-figure-pack-diagrams">Figure
+Pack (Diagrams)</a></li>
+<li><a href="#cross-border-jurisdiction-controls-asean-minimum"
+id="toc-cross-border-jurisdiction-controls-asean-minimum">Cross-Border
+Jurisdiction Controls (ASEAN Minimum)</a></li>
+<li><a href="#debt-offering-flow-escrow-closing-threshold"
+id="toc-debt-offering-flow-escrow-closing-threshold">Debt Offering Flow
+(Escrow + Closing Threshold)</a></li>
+<li><a href="#escrow-reconciliation-workflow-high-level"
+id="toc-escrow-reconciliation-workflow-high-level">Escrow Reconciliation
+Workflow (High-Level)</a></li>
+<li><a href="#governance-audit-and-monitoring-loop-high-level"
+id="toc-governance-audit-and-monitoring-loop-high-level">Governance,
+Audit, and Monitoring Loop (High-Level)</a></li>
+<li><a href="#hybrid-compliance-architecture-high-level"
+id="toc-hybrid-compliance-architecture-high-level">Hybrid Compliance
+Architecture (High-Level)</a></li>
+<li><a href="#issuance-lifecycle-high-level"
+id="toc-issuance-lifecycle-high-level">Issuance Lifecycle
+(High-Level)</a></li>
+<li><a href="#liquidity-engineering-map-not-automatic-liquidity"
+id="toc-liquidity-engineering-map-not-automatic-liquidity">Liquidity
+Engineering Map (Not Automatic Liquidity)</a></li>
+<li><a href="#privacy-data-boundary-uu-pdp-pdpa"
+id="toc-privacy-data-boundary-uu-pdp-pdpa">Privacy Data Boundary (UU PDP
+/ PDPA)</a></li>
+<li><a href="#secondary-market-and-exit-pathways-high-level"
+id="toc-secondary-market-and-exit-pathways-high-level">Secondary Market
+and Exit Pathways (High-Level)</a></li>
+<li><a href="#stakeholder-and-operating-model-high-level"
+id="toc-stakeholder-and-operating-model-high-level">Stakeholder and
+Operating Model (High-Level)</a></li>
+<li><a href="#venues-and-fiat-ramps-high-level-overview"
+id="toc-venues-and-fiat-ramps-high-level-overview">Venues and Fiat Ramps
+(High-Level Overview)</a></li>
+<li><a href="#whitelist-kyc-and-identity-flow-off-chain-control-plane"
+id="toc-whitelist-kyc-and-identity-flow-off-chain-control-plane">Whitelist,
+KYC, and Identity Flow (Off-Chain Control Plane)</a></li>
 </ul>
 </nav>
 <p><strong>Disclaimer:</strong> This document is a working draft
@@ -2053,63 +2091,7 @@ providing stable, verifiable anchors that can be shared without
 disclosing personal data on-chain.</p>
 <h3 id="high-level-architecture-visual">High-Level Architecture
 (Visual)</h3>
-<pre class="mermaid"><code>flowchart LR
-  %% Actors
-  INV[&quot;Investor (ASEAN eligible)&quot;]
-  BOR[&quot;Borrower / Project SPV (Indonesia)&quot;]
-  REG[&quot;Regulator / Auditor (read-only)&quot;]
-
-  %% Off-chain compliance plane
-  subgraph OFF[&quot;Off-chain Compliance &amp; Operations Plane&quot;]
-    AUDITLOG[&quot;Audit logs + traceability ledger (append-only)&quot;]
-    KYC[&quot;KYC/AML + eligibility checks&quot;]
-    REGISTRY[&quot;Investor registry + wallet binding&quot;]
-    POLICY[&quot;Jurisdiction policy engine (selling restrictions)&quot;]
-    DISC[&quot;Disclosure vault + acknowledgement logs&quot;]
-    ESCROW[&quot;Escrow / segregated accounts (subscription &amp; release controls)&quot;]
-    CORP[&quot;Corporate actions engine (distributions, redemption windows)&quot;]
-    VAL[&quot;Valuation/NAV + reporting module&quot;]
-    EVID[&quot;Evidence pack generator (audit exports)&quot;]
-    RBAC[&quot;RBAC + sequential approvals&quot;]
-  end
-
-  %% On-chain execution plane
-  subgraph ON[&quot;On-chain Execution Plane&quot;]
-    TOKEN[&quot;Economic-rights token contract(s)&quot;]
-    WHITELIST[&quot;Whitelist / transfer restriction hooks&quot;]
-    EVENTS[&quot;Event log (issuance, transfers, corporate actions)&quot;]
-  end
-
-  %% Flows
-  INV --&gt; KYC
-  KYC --&gt; AUDITLOG
-  AUDITLOG --&gt; REGISTRY
-  POLICY --&gt; WHITELIST
-  REGISTRY --&gt; WHITELIST
-  DISC --&gt; INV
-  DISC --&gt; AUDITLOG
-  INV --&gt; ESCROW
-  ESCROW --&gt; AUDITLOG
-
-  RBAC --&gt; TOKEN
-  WHITELIST --&gt; TOKEN
-  TOKEN --&gt; EVENTS
-
-  %% Corporate actions and reporting
-  VAL --&gt; CORP
-  VAL --&gt; AUDITLOG
-  CORP --&gt; RBAC
-  CORP --&gt; TOKEN
-  CORP --&gt; AUDITLOG
-
-  %% Asset side
-  BOR --&gt; VAL
-  ESCROW --&gt; BOR
-
-  %% Audit / regulator visibility
-  EVENTS --&gt; EVID
-  AUDITLOG --&gt; EVID
-  EVID --&gt; REG</code></pre>
+<p><img src="diagrams/mermaid-a9e7cf4acc27d754.png" /></p>
 <p>Primary objectives:</p>
 <ul>
 <li>Enforce jurisdiction-aware eligibility and selling restrictions</li>
@@ -2232,24 +2214,7 @@ logs.</li>
 </ul>
 <p>Reference diagram:
 <code>02-figures/diagrams/issuance-lifecycle.md</code>.</p>
-<pre class="mermaid"><code>flowchart TD
-  A[&quot;Product terms + disclosures prepared (wrapper)&quot;] --&gt; B[&quot;Investor onboarding (KYC/AML + eligibility)&quot;]
-  B --&gt; C[&quot;Wallet binding + whitelist segmentation&quot;]
-  C --&gt; D[&quot;Offering window (subscriptions)&quot;]
-  D --&gt; E[&quot;Funds to segregated escrow&quot;]
-  E --&gt; F{&quot;Minimum close threshold met?&quot;}
-
-  F -- &quot;No&quot; --&gt; G[&quot;Borrower: accept partial close or cancel&quot;]
-  G -- &quot;Cancel&quot; --&gt; H[&quot;Refund from escrow; offering void&quot;]
-
-  G -- &quot;Partial accepted&quot; --&gt; I[&quot;Finalize allocation (partial)&quot;]
-  F -- &quot;Yes&quot; --&gt; J[&quot;Finalize allocation (full)&quot;]
-
-  I --&gt; K[&quot;Conditions precedent satisfied (incl. collateral/security docs as applicable)&quot;]
-  J --&gt; K
-  K --&gt; L[&quot;Dual authorization: escrow release to borrower&quot;]
-  L --&gt; M[&quot;Issuance executed (mint/allocate) with transfer restrictions&quot;]
-  M --&gt; N[&quot;Statements + corporate actions + monitoring + evidence packs&quot;]</code></pre>
+<p><img src="diagrams/mermaid-894999de44ffe543.png" /></p>
 <h2 id="whitelist-kyc-and-identity-controls-off-chain">Whitelist, KYC,
 and Identity Controls (Off-Chain)</h2>
 <p>This framework uses off-chain identity and eligibility verification
@@ -2512,23 +2477,7 @@ jurisdiction-by-jurisdiction once legal pathways and operating partners
 are in place.</p>
 <h2 id="cross-border-control-flow-visual">Cross-Border Control Flow
 (Visual)</h2>
-<pre class="mermaid"><code>flowchart TD
-  A[&quot;Investor onboarding (off-chain)&quot;] --&gt; B[&quot;Jurisdiction tagging + investor classification&quot;]
-  B --&gt; C[&quot;Jurisdiction-aware whitelist segmentation&quot;]
-  C --&gt; D[&quot;Policy-controlled transfer rules&quot;]
-
-  D --&gt; E{&quot;Transfer / trade request&quot;}
-  E --&gt; F[&quot;Allowed (meets eligibility + selling restrictions)&quot;]
-  E --&gt; G[&quot;Blocked (policy violation)&quot;]
-
-  F --&gt; H[&quot;Venue-specific controls (where trading permitted)&quot;]
-  H --&gt; I[&quot;Regulated venue surveillance + reporting hooks&quot;]
-
-  D --&gt; J[&quot;Evidence retention (disclosures, approvals, logs)&quot;]
-  G --&gt; J
-  I --&gt; J
-
-  J --&gt; K[&quot;Audit / regulator review (read-only)&quot;]</code></pre>
+<p><img src="diagrams/mermaid-f03f5d7fda1f135a.png" /></p>
 <h2
 id="jurisdictional-constraints-informing-the-approach">Jurisdictional
 Constraints Informing the Approach</h2>
@@ -5164,5 +5113,105 @@ an assurance of exit; term-driven outcomes remain primary</li>
 <li>provide legal categorization or licensing advice</li>
 <li>assume global permissionless distribution</li>
 </ul>
+<div style="page-break-before: always;"></div>
+<h1 id="figure-pack-diagrams">Figure Pack (Diagrams)</h1>
+<p>This section includes the diagram pack from
+<code>02-figures/diagrams/</code>. If Mermaid rendering is available,
+diagrams are embedded as images. Otherwise, Mermaid code blocks are
+retained.</p>
+<div style="page-break-before: always;"></div>
+<h1 id="cross-border-jurisdiction-controls-asean-minimum">Cross-Border
+Jurisdiction Controls (ASEAN Minimum)</h1>
+<p>This diagram illustrates how cross-border participation is managed
+via jurisdiction-aware policies, eligibility categories, and
+venue-specific controls. The goal is auditable compliance enforcement,
+not regulatory arbitrage.</p>
+<p><img src="diagrams/mermaid-f03f5d7fda1f135a.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="debt-offering-flow-escrow-closing-threshold">Debt Offering Flow
+(Escrow + Closing Threshold)</h1>
+<p>This diagram illustrates a capital-light origination model where
+borrower drawdown depends on escrowed subscriptions meeting a documented
+close threshold. The token represents economic rights only; KYC/AML and
+eligibility are performed off-chain.</p>
+<p><img src="diagrams/mermaid-69e1ee3e637685d1.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="escrow-reconciliation-workflow-high-level">Escrow Reconciliation
+Workflow (High-Level)</h1>
+<p>This diagram illustrates daily reconciliation and close-day controls
+for escrow-based offerings. It is designed to support auditability and
+investor protection (accurate allocations, timely refunds, and
+controlled releases).</p>
+<p><img src="diagrams/mermaid-759e5ae192e7ce00.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="governance-audit-and-monitoring-loop-high-level">Governance,
+Audit, and Monitoring Loop (High-Level)</h1>
+<p>This diagram shows how monitoring signals and audit evidence feed
+governance decisions and control improvements in a hybrid compliance
+architecture.</p>
+<p><img src="diagrams/mermaid-eedd36fadcd827c4.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="hybrid-compliance-architecture-high-level">Hybrid Compliance
+Architecture (High-Level)</h1>
+<p>This diagram shows the hybrid on-chain/off-chain compliance
+architecture used in this program. Personal data and regulated
+compliance operations remain off-chain; on-chain components focus on
+controlled execution and tamper-evident event logs.</p>
+<p><img src="diagrams/mermaid-a9e7cf4acc27d754.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="issuance-lifecycle-high-level">Issuance Lifecycle
+(High-Level)</h1>
+<p>This diagram summarizes the issuance lifecycle for an escrow-based
+offering with close thresholds and restricted token issuance.</p>
+<p><img src="diagrams/mermaid-894999de44ffe543.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="liquidity-engineering-map-not-automatic-liquidity">Liquidity
+Engineering Map (Not Automatic Liquidity)</h1>
+<p>This diagram shows the engineered liquidity pathways: primary-market
+closing mechanics (including escrow + close threshold for debt),
+regulated venue strategy, optional market making, NAV reference
+governance, and documented redemption mechanisms (if offered).</p>
+<p><img src="diagrams/mermaid-d0c063b716096062.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="privacy-data-boundary-uu-pdp-pdpa">Privacy Data Boundary (UU PDP
+/ PDPA)</h1>
+<p>This diagram summarizes the privacy boundary: personal data stays
+off-chain under controlled access; on-chain stores only minimal
+operational events and cryptographic references for integrity.</p>
+<p><img src="diagrams/mermaid-2b5fd333f15f57e1.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="secondary-market-and-exit-pathways-high-level">Secondary Market
+and Exit Pathways (High-Level)</h1>
+<p>This diagram summarizes how investors may exit within a regulated,
+hybrid compliance framework. Secondary trading is venue-specific and not
+an assurance of liquidity; term-driven outcomes (e.g., maturity
+repayment) remain primary for many debt-like exposures.</p>
+<p><img src="diagrams/mermaid-4561027a237bd3c4.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="stakeholder-and-operating-model-high-level">Stakeholder and
+Operating Model (High-Level)</h1>
+<p>This diagram summarizes key stakeholders and interactions in the
+program. It reflects a single-SPV pilot that can later scale to
+multi-vehicle issuance under one standardized orchestration/control
+plane. The platform is positioned as an operator/orchestrator, not a
+regulator.</p>
+<p><img src="diagrams/mermaid-b6b30624d66388bf.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1 id="venues-and-fiat-ramps-high-level-overview">Venues and Fiat Ramps
+(High-Level Overview)</h1>
+<p>This diagram summarizes how regulated venues and fiat on/off ramps
+relate to the economic-rights token lifecycle. It highlights that NFTs
+or crypto exchange rails do not change the regulatory perimeter of the
+economic rights represented.</p>
+<p><img src="diagrams/mermaid-a5771a55b163d81f.png" /></p>
+<div style="page-break-before: always;"></div>
+<h1
+id="whitelist-kyc-and-identity-flow-off-chain-control-plane">Whitelist,
+KYC, and Identity Flow (Off-Chain Control Plane)</h1>
+<p>This diagram shows the compliance flow for onboarding, wallet
+binding, whitelist segmentation, and transfer decisioning. KYC/AML and
+personal data handling remain off-chain; on-chain stores only
+non-personal eligibility signals and event logs.</p>
+<p><img src="diagrams/mermaid-681ab69548dd51dc.png" /></p>
 </body>
 </html>
