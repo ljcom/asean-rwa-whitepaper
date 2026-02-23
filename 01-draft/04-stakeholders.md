@@ -8,6 +8,17 @@ Real estate tokenization for ASEAN distribution requires coordinated roles acros
 
 The table below summarizes the operating roles typically required to run an ASEAN-distributed program with Indonesian underlying assets. Exact role allocation depends on the chosen legal wrapper, licensing pathway, and jurisdiction-specific requirements.
 
+### Platform Positioning (Operator / Orchestrator, Not the Regulator)
+
+For ASEAN or national scale, this whitepaper assumes the program should remain open to **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) rather than a single “mega SPV”. This improves ring-fencing, disclosure clarity, and operational governance across different projects and funding models.
+
+In this operating model, the platform is positioned primarily as:
+
+- **a compliance and operations orchestrator:** runs the off-chain control plane (KYC/eligibility, whitelist governance, escrow workflows, evidence packs, reporting), and coordinates with regulated intermediaries and venues; and
+- **a technology operator:** operates the hybrid system (policy enforcement, event-sourced recordkeeping, auditability).
+
+The platform does not “set regulation” or override country rules. It implements **jurisdiction-specific policies** and selling restrictions derived from legal/compliance requirements and partner venue/channel rules, with auditable enforcement and evidence retention.
+
 | Function | Typical accountable party | Key responsibilities (high-level) | Evidence / outputs (illustrative) |
 | --- | --- | --- | --- |
 | Issuer / originator | Issuer/originator | product definition, disclosures, governance, ongoing obligations | disclosure pack, notices, approvals, periodic reporting |

@@ -25,3 +25,15 @@ This log captures major drafting and design decisions to support traceability fo
 - Decision: Off-chain compliance and operations use an event-sourced, append-only database as the system of record.
 - Rationale: Hybrid systems require strong auditability and deterministic evidence regeneration to reduce reconciliation ambiguity and support regulator-grade reviews.
 - Implication: Read models (registers, statements, escrow views) are projections; corrections use compensating events under governed approvals.
+
+## 2026-02-23 — Multi-vehicle issuance (multi-SPV / series) as scaling baseline
+
+- Decision: Scale is achieved through multiple issuance vehicles (e.g., multi-SPV or series/compartment structures), not a single mega vehicle.
+- Rationale: Improves ring-fencing, disclosure clarity, and governance across heterogeneous projects and funding models.
+- Implication: The platform operates a common compliance control plane and evidence framework across issuers; issuer-specific terms and disclosures remain tied to each vehicle.
+
+## 2026-02-23 — Platform role as orchestrator, not regulator
+
+- Decision: The platform is positioned as a compliance/operations orchestrator and technology operator, not as a regulator or rule-setter.
+- Rationale: Cross-border constraints are jurisdiction- and venue-specific; compliance must be derived from legal requirements and implemented with auditable enforcement.
+- Implication: Policies are versioned and approved; whitelists and selling restrictions are enforced as documented controls with evidence retention.

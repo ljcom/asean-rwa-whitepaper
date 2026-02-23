@@ -6,6 +6,8 @@ The architecture is designed to support regulated issuance and lifecycle adminis
 
 Reference diagram: `02-figures/diagrams/hybrid-compliance-architecture.md`.
 
+This whitepaper assumes scale is achieved through **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) under Indonesian jurisdiction, with the platform operating a common compliance control plane rather than concentrating all exposures into a single vehicle.
+
 Primary objectives:
 
 - Enforce jurisdiction-aware eligibility and selling restrictions
@@ -35,6 +37,8 @@ Primary objectives:
 - **Fiat settlement and ramp integration (escrow plane):** segregated escrow accounts, controlled releases (dual authorization), refunds, and payout rails; supports local currency constraints (e.g., Rupiah settlement for Indonesian flows) and cross-border collection via regulated intermediaries.
 - **Valuation and reporting module:** NAV inputs, periodic statements, audit exports.
 - **Audit and regulator reporting interface:** read-only reports, event logs, and evidence packages.
+
+Off-chain policies enforced by these components are derived from documented legal/compliance requirements (including jurisdiction- and venue-specific rules). They are versioned, approved, and auditable; they are not discretionary “platform rules”.
 
 ### On-Chain Components (Controlled Execution and Auditability)
 
