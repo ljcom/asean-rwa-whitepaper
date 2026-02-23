@@ -15,6 +15,7 @@ This document lists working assumptions used to draft the whitepaper. It is not 
 - Personal data is not stored on-chain; on-chain records use cryptographic references for integrity.
 - Jurisdiction-aware whitelisting is mandatory for cross-border participation.
 - The architecture supports regulator visibility via reporting and audit interfaces, subject to confidentiality and data protection requirements.
+- Pilot may begin with a single Indonesian issuance vehicle (single SPV) to validate controls; scaling is achieved by reusing the same orchestration layer across multiple issuance vehicles (multi-SPV / series) without weakening controls.
 
 ## Liquidity Assumptions
 

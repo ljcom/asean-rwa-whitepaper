@@ -32,6 +32,12 @@ This log captures major drafting and design decisions to support traceability fo
 - Rationale: Improves ring-fencing, disclosure clarity, and governance across heterogeneous projects and funding models.
 - Implication: The platform operates a common compliance control plane and evidence framework across issuers; issuer-specific terms and disclosures remain tied to each vehicle.
 
+## 2026-02-23 — Single-SPV pilot, standardized orchestration
+
+- Decision: The pilot phase may use a single Indonesian issuance vehicle (single SPV) to validate end-to-end controls and auditability.
+- Rationale: Reduces complexity while proving compliance-by-design workflows (KYC/whitelist/escrow/corporate actions/evidence packs) under controlled scope.
+- Implication: If pilot readiness gates are met, the same orchestration layer (policies, approval workflows, evidence model) is reused to scale across multiple issuance vehicles.
+
 ## 2026-02-23 — Platform role as orchestrator, not regulator
 
 - Decision: The platform is positioned as a compliance/operations orchestrator and technology operator, not as a regulator or rule-setter.

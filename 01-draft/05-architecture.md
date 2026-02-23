@@ -6,7 +6,7 @@ The architecture is designed to support regulated issuance and lifecycle adminis
 
 Reference diagram: `02-figures/diagrams/hybrid-compliance-architecture.md`.
 
-This whitepaper assumes scale is achieved through **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) under Indonesian jurisdiction, with the platform operating a common compliance control plane rather than concentrating all exposures into a single vehicle.
+This whitepaper assumes scale is achieved through **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) under Indonesian jurisdiction, with the platform operating a common compliance control plane rather than concentrating all exposures into a single vehicle. For the pilot stage, a single-SPV deployment can be used to validate the orchestration and evidence model before expanding to multiple vehicles.
 
 Primary objectives:
 
@@ -182,3 +182,67 @@ Regulator visibility is supported through:
 - controlled access to audit trails (read-only) without exposing personal data on-chain
 
 This is designed to facilitate supervision and reduce ambiguity during regulator engagement.
+
+## Governance, Audit, and Monitoring (Program-Level)
+
+This program assumes that “compliance-by-design” must be supported by formal governance, continuous monitoring, and independent audit/assurance. The governance model is designed to be compatible with a single-SPV pilot and reusable for multi-vehicle scaling under one orchestration/control plane.
+
+Reference diagram: `02-figures/diagrams/governance-audit-monitoring-loop.md`.
+
+### Governance Structure (Illustrative)
+
+Typical governance bodies and responsibilities:
+
+- **Program governance (steering):** approves product scope, jurisdiction rollout sequencing, and control baseline; reviews key incidents and remediation plans.
+- **Compliance committee:** approves policy rules (selling restrictions, eligibility, whitelist governance), exception handling, and jurisdiction-specific control changes.
+- **Risk committee:** reviews credit/market/operational risk posture, concentration limits, liquidity disclosures, and stress indicators (as applicable).
+- **Change control board:** approves system changes that affect controls (smart contract changes, policy engine updates, data model changes), including rollback and evidence impacts.
+
+### Policy and Control Versioning
+
+Because cross-border rules and venue requirements can evolve, policies are treated as controlled artifacts:
+
+- policy sets are versioned by jurisdiction, venue/channel, and product model
+- changes require approvals (RBAC + sequential approvals) and are time-stamped
+- each issuance and transfer decision can be traced to the applicable policy version
+
+This supports auditability and reduces ambiguity during dispute resolution or regulator inquiries.
+
+### Auditability and Evidence Packs
+
+Auditability is implemented through a combination of:
+
+- on-chain tamper-evident event logs (issuance, transfers, corporate actions, enforcement actions)
+- off-chain event-sourced system of record (append-only) for compliance and operations decisions
+- reconciliations that tie the off-chain register to on-chain states and venue reports (where available)
+
+Evidence packs (illustrative contents):
+
+- onboarding and eligibility approvals (off-chain)
+- disclosure delivery/acknowledgement logs (off-chain)
+- whitelist change logs and policy versions (off-chain)
+- escrow statements and release approvals (off-chain)
+- on-chain transaction receipts and event exports (on-chain)
+- reconciliation reports and exception handling records (hybrid)
+
+### Continuous Monitoring (Control Monitoring)
+
+Monitoring focuses on detecting control drift and operational issues, including:
+
+- whitelist and policy change anomalies (unusual volumes, out-of-hours changes)
+- blocked transfer spikes and exception rates (potential misconfiguration or misuse)
+- escrow release and refund SLA breaches
+- reconciliation breaks between on-chain balances and off-chain registers
+- key management and privileged action alerts (RBAC violations, approval bypass attempts)
+
+Monitoring outputs feed governance review and are retained as audit artifacts.
+
+### Independent Assurance (Illustrative)
+
+Independent assurance can include:
+
+- operational controls audit (RBAC, approvals, evidence retention, reconciliations)
+- privacy/security assessments (data boundary, access controls, incident response readiness)
+- smart contract security review (before production use; after material changes)
+
+Assurance scope and cadence depend on product scale, investor category, and jurisdiction/venue expectations.

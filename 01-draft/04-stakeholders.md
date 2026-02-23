@@ -4,6 +4,8 @@
 
 Real estate tokenization for ASEAN distribution requires coordinated roles across legal, compliance, operational, market infrastructure, and technology domains. This section identifies the stakeholders assumed in this framework and their responsibilities in a hybrid on-chain/off-chain model for Indonesian underlying assets.
 
+Reference diagram: `02-figures/diagrams/stakeholder-operating-model.md`.
+
 ## Operating Model Summary (Illustrative)
 
 The table below summarizes the operating roles typically required to run an ASEAN-distributed program with Indonesian underlying assets. Exact role allocation depends on the chosen legal wrapper, licensing pathway, and jurisdiction-specific requirements.
@@ -11,6 +13,8 @@ The table below summarizes the operating roles typically required to run an ASEA
 ### Platform Positioning (Operator / Orchestrator, Not the Regulator)
 
 For ASEAN or national scale, this whitepaper assumes the program should remain open to **multiple issuance vehicles** (e.g., multi-SPV or series/compartment structures) rather than a single “mega SPV”. This improves ring-fencing, disclosure clarity, and operational governance across different projects and funding models.
+
+For the pilot stage, a **single Indonesian issuance vehicle (single SPV)** can be used to validate end-to-end controls (KYC/whitelist/escrow/corporate actions/auditability) in a constrained setting. If the pilot meets readiness gates, the same orchestration layer is reused to scale across additional issuance vehicles without weakening controls.
 
 In this operating model, the platform is positioned primarily as:
 

@@ -35,6 +35,7 @@ Deliverables:
 - implement on-chain token contract(s) with transfer restrictions and event logging
 - implement corporate actions engine (distributions, notices, optional redemption workflows)
 - integrate valuation/NAV reporting module and audit exports
+- define a standardized orchestration layer (policies, approval workflows, evidence packs) that can later be reused across multiple issuance vehicles
 
 Readiness gates:
 
@@ -46,7 +47,8 @@ Readiness gates:
 
 Deliverables:
 
-- execute a pilot issuance with limited eligible investors (e.g., institutional) under a controlled distribution channel
+- execute a pilot issuance using a **single Indonesian issuance vehicle (single SPV)** to validate end-to-end controls before scaling
+- limit participation to eligible investors (e.g., institutional) under a controlled distribution channel
 - validate escrow and closing procedures for debt offerings (minimum close thresholds, partial-close decision flow, refunds if cancelled)
 - produce evidence packages for issuance, onboarding, and corporate actions
 - test end-to-end reconciliation between on-chain logs and off-chain registry
@@ -56,6 +58,7 @@ Success metrics (illustrative):
 - onboarding throughput with low exception rates
 - accurate registers and timely statements
 - successful controlled corporate actions with full audit trails
+- repeatable orchestration runbooks that can be applied to additional vehicles without weakening controls
 
 ## Phase 3 — ASEAN Expansion (Jurisdiction-by-Jurisdiction)
 
@@ -65,6 +68,7 @@ Deliverables:
 - integrate distributor and/or venue partners per target jurisdiction
 - update disclosure packages for jurisdiction-specific requirements
 - implement cross-border privacy governance and data transfer controls
+- extend issuance from the single-SPV pilot to **multi-vehicle issuance** (e.g., multi-SPV or series/compartment structures) while keeping a single standardized orchestration/control plane
 
 Readiness gates:
 
