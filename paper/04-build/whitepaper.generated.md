@@ -1,5 +1,6 @@
-% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN
-% (Working Draft)
+% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)
+% Surjo Santosa Sastroharjono (PT Liberty Jaya) surjo.sastro@libertyjaya.com; 
+% Gunawan Wang (Binus University) gwang@binus.edu
 % 2026-02-24
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.

@@ -17,6 +17,12 @@ PDF output is generated when a PDF engine is available (the build script uses `x
 
 If `mmdc` is installed, the build script attempts to render Mermaid code blocks into PNG files under `04-build/diagrams/` and embed them into `04-build/whitepaper.rendered.md`. If rendering fails, the build continues and diagrams remain as code blocks.
 
+If the rendered images are not sharp enough (especially in PDF), try a higher scale:
+
+```bash
+MERMAID_SCALE=6 ./04-build/build.sh
+```
+
 ## Draft Sections
 
 1. Executive Summary — `01-draft/01-executive-summary.md`

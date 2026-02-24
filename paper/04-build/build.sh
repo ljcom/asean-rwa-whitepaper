@@ -17,8 +17,9 @@ DATE_STR="$(date +%Y-%m-%d)"
 STRICT_MERMAID="${STRICT_MERMAID:-0}"
 
 cat > "${OUT_MD}" <<EOF
-% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN
-% (Working Draft)
+% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)
+% Surjo Santosa Sastroharjono (PT Liberty Jaya) surjo.sastro@libertyjaya.com; 
+% Gunawan Wang (Binus University) gwang@binus.edu
 % ${DATE_STR}
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
@@ -69,7 +70,7 @@ echo "Generating Figure Pack source..."
 cat > "${OUT_FIGPACK_SRC}" <<EOF
 # Figure Pack (Diagrams)
 
-This section includes the diagram pack from \`02-figures/diagrams/\`. If Mermaid rendering is available, diagrams are embedded as images. Otherwise, Mermaid code blocks are retained.
+This section includes the diagram pack from \`02-figures/diagrams/\`.
 EOF
 
 for fig in "${ROOT_DIR}/02-figures/diagrams/"*.md; do

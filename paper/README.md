@@ -44,6 +44,18 @@ Notes:
 
 If `mmdc` is installed, the build script will attempt to render Mermaid code blocks into PNG images under `04-build/diagrams/` and embed them into `04-build/whitepaper.rendered.md`.
 
+If the diagrams look blurry, increase the render resolution:
+
+```bash
+MERMAID_SCALE=6 ./04-build/build.sh
+```
+
+Supported environment variables for `04-build/render_mermaid.py`:
+
+- `MERMAID_SCALE` (default: `2`)
+- `MERMAID_RENDER_WIDTH` / `MERMAID_RENDER_HEIGHT` (pixels; optional)
+- `MERMAID_FORMAT` (default: `png`; `svg` is useful for HTML but may require conversion for DOCX/PDF)
+
 If rendering fails in your environment, you can still build outputs (diagrams remain as code blocks), or rerun rendering manually:
 
 ```bash
