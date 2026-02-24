@@ -1,6 +1,6 @@
 # Figure Pack (Diagrams)
 
-This section includes the diagram pack from `02-figures/diagrams/`.
+This section includes the diagram pack from \`02-figures/diagrams/\`.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

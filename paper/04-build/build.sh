@@ -15,15 +15,40 @@ OUT_PDF="${BUILD_DIR}/whitepaper.pdf"
 
 DATE_STR="$(date +%Y-%m-%d)"
 STRICT_MERMAID="${STRICT_MERMAID:-0}"
+SKIP_PANDOC="${SKIP_PANDOC:-0}"
 
 cat > "${OUT_MD}" <<EOF
-% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)
-% Surjo Santosa Sastroharjono (PT Liberty Jaya) surjo.sastro@libertyjaya.com; 
-% Gunawan Wang (Binus University) gwang@binus.edu
-% ${DATE_STR}
+---
+title: "A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)"
+author:
+  - "Surjo Santosa Sastroharjono (PT Liberty Jaya)"
+  - "surjo.sastro@libertyjaya.com"
+  - "Gunawan Wang (Binus University)"
+  - "gwang@binus.edu"
+date: "${DATE_STR}"
+---
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
 
+EOF
+
+cat >> "${OUT_MD}" <<'EOF'
+```{=openxml}
+<w:p>
+  <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:t>Daftar Isi</w:t></w:r>
+</w:p>
+<w:p>
+  <w:r><w:fldSimple w:instr="TOC \o &quot;1-3&quot; \h \z \u"/></w:r>
+</w:p>
+```
+
+```{=latex}
+\tableofcontents
+```
+
+```{=html}
+<div id="TOC"></div>
+```
 EOF
 
 SECTION_FILES=(
@@ -67,7 +92,7 @@ EOF
 done
 
 echo "Generating Figure Pack source..."
-cat > "${OUT_FIGPACK_SRC}" <<EOF
+cat > "${OUT_FIGPACK_SRC}" <<'EOF'
 # Figure Pack (Diagrams)
 
 This section includes the diagram pack from \`02-figures/diagrams/\`.
@@ -114,6 +139,13 @@ cat "${OUT_FIGPACK_SRC}" >> "${OUT_MD_FULL}"
 
 RENDER_SOURCE="${OUT_MD_FULL}"
 
+if [[ "${SKIP_PANDOC}" != "1" ]] && ! command -v pandoc >/dev/null 2>&1; then
+  echo "Error: pandoc not found." >&2
+  echo "Install (macOS): brew install pandoc" >&2
+  echo "Or run with SKIP_PANDOC=1 to only generate Markdown outputs." >&2
+  exit 1
+fi
+
 if command -v mmdc >/dev/null 2>&1; then
   echo "Rendering Mermaid diagrams (full document)..."
   rm -rf "${BUILD_DIR}/diagrams"
@@ -128,57 +160,63 @@ else
   echo "Skipping Mermaid rendering: mmdc not found."
 fi
 
+if [[ "${SKIP_PANDOC}" == "1" ]]; then
+  echo "Skipping pandoc outputs: SKIP_PANDOC=1"
+else
 echo "Generating DOCX..."
 pandoc "${RENDER_SOURCE}" \
   --from=markdown \
   --to=docx \
   --standalone \
-  --toc \
-  --toc-depth=3 \
-  --metadata toc-title="Daftar Isi" \
   --resource-path="${BUILD_DIR}" \
   -o "${OUT_DOCX}"
 
-echo "Generating HTML..."
-pandoc "${RENDER_SOURCE}" \
-  --from=markdown \
-  --to=html \
-  --standalone \
-  --toc \
-  --toc-depth=3 \
-  --metadata toc-title="Daftar Isi" \
-  --resource-path="${BUILD_DIR}" \
-  -o "${OUT_HTML}"
-
-PDF_ENGINE=""
-if command -v xelatex >/dev/null 2>&1; then
-  PDF_ENGINE="xelatex"
-elif [[ -x "/Library/TeX/texbin/xelatex" ]]; then
-  PDF_ENGINE="/Library/TeX/texbin/xelatex"
-fi
-
-if [[ -n "${PDF_ENGINE}" ]]; then
-  echo "Generating PDF..."
+  echo "Generating HTML..."
   pandoc "${RENDER_SOURCE}" \
     --from=markdown \
-    --pdf-engine="${PDF_ENGINE}" \
+    --to=html \
+    --standalone \
     --toc \
     --toc-depth=3 \
-    -o "${OUT_PDF}"
-else
-  echo "Skipping PDF: xelatex not found."
+    --metadata toc-title="Daftar Isi" \
+    --resource-path="${BUILD_DIR}" \
+    -o "${OUT_HTML}"
+
+  PDF_ENGINE=""
+  if command -v xelatex >/dev/null 2>&1; then
+    PDF_ENGINE="xelatex"
+  elif [[ -x "/Library/TeX/texbin/xelatex" ]]; then
+    PDF_ENGINE="/Library/TeX/texbin/xelatex"
+  fi
+
+  if [[ -n "${PDF_ENGINE}" ]]; then
+    echo "Generating PDF..."
+    pandoc "${RENDER_SOURCE}" \
+      --from=markdown \
+      --pdf-engine="${PDF_ENGINE}" \
+      --toc \
+      --toc-depth=3 \
+      -o "${OUT_PDF}"
+  else
+    echo "Skipping PDF: xelatex not found."
+  fi
 fi
 
-cat <<EOF
-Build complete:
-- ${OUT_MD}
-- ${OUT_FIGPACK_SRC}
-- ${OUT_MD_FULL}
-- ${OUT_MD_FULL_RENDERED}
-- ${OUT_DOCX}
-- ${OUT_HTML}
-- ${OUT_PDF}
-
-Note:
-- Mermaid diagrams remain as code blocks unless rendered separately.
-EOF
+echo "Build complete:"
+echo "- ${OUT_MD}"
+echo "- ${OUT_FIGPACK_SRC}"
+echo "- ${OUT_MD_FULL}"
+echo "- ${OUT_MD_FULL_RENDERED}"
+if [[ "${SKIP_PANDOC}" == "1" ]]; then
+  echo
+  echo "Note:"
+  echo "- Pandoc outputs skipped (SKIP_PANDOC=1)."
+  echo "- Mermaid diagrams remain as code blocks unless rendered separately."
+else
+  echo "- ${OUT_DOCX}"
+  echo "- ${OUT_HTML}"
+  echo "- ${OUT_PDF}"
+  echo
+  echo "Note:"
+  echo "- Mermaid diagrams remain as code blocks unless rendered separately."
+fi

@@ -1,10 +1,31 @@
-% A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)
-% Surjo Santosa Sastroharjono (PT Liberty Jaya) surjo.sastro@libertyjaya.com; 
-% Gunawan Wang (Binus University) gwang@binus.edu
-% 2026-02-24
+---
+title: "A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)"
+author:
+  - "Surjo Santosa Sastroharjono (PT Liberty Jaya)"
+  - "surjo.sastro@libertyjaya.com"
+  - "Gunawan Wang (Binus University)"
+  - "gwang@binus.edu"
+date: "2026-02-24"
+---
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
 
+```{=openxml}
+<w:p>
+  <w:r><w:rPr><w:sz w:val="18"/></w:rPr><w:t>Daftar Isi</w:t></w:r>
+</w:p>
+<w:p>
+  <w:r><w:fldSimple w:instr="TOC \o &quot;1-3&quot; \h \z \u"/></w:r>
+</w:p>
+```
+
+```{=latex}
+\tableofcontents
+```
+
+```{=html}
+<div id="TOC"></div>
+```
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
