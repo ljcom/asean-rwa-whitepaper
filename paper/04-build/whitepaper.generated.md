@@ -5,7 +5,7 @@ author:
   - "surjo.sastro@libertyjaya.com"
   - "Gunawan Wang (Binus University)"
   - "gwang@binus.edu"
-date: "2026-02-24"
+date: "2026-02-27"
 ---
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
@@ -1466,7 +1466,7 @@ The table below is illustrative and intentionally high-level. The same economic 
 | --- | --- | --- | --- |
 | Debt | Project/loan SPV with contractual debt documentation; note/participation documentation tied to servicing | repayment waterfall and credit monitoring | servicing discipline, covenants, default process, escrow close controls |
 | Profit participation (REIT-like) | Collective investment style wrapper (e.g., DIRE/KIK-like patterns) or structured participation agreements (as applicable) | distributable cash flows (e.g., rental income) and reporting | valuation/NAV governance, disclosures cadence, conflicts and related-party controls |
-| Sukuk | Sukuk documentation set (e.g., ijarah-based) with Shariah governance artifacts | asset-backed participation return (rental yield / participation return) | Shariah oversight, use-of-proceeds governance, structure-specific evidence retention |
+| Sukuk / MMQ (later phase) | Sukuk documentation set (e.g., ijarah-based) or MMQ documentation with Shariah governance artifacts | asset-backed participation return (rental yield / participation return) | Shariah oversight, use-of-proceeds governance, structure-specific evidence retention |
 | Crowdfunding | Regulated crowdfunding wrapper patterns (platform/channel dependent) with caps and investor protections | capped participation rights (debt-like or profit-participation-like) | strict cap enforcement, suitability/disclosure controls, restricted transferability |
 
 Wrapper selection does not remove the need for:
@@ -1714,6 +1714,20 @@ Depending on the asset and project needs, variants may be considered (e.g., part
 - clear documentation of underlying transactions
 - evidence of asset-backing and permitted cash flow use
 - supervisory oversight and periodic compliance confirmation
+
+### MMQ (Musharakah Mutanaqisah / Diminishing Partnership)
+
+**Problem addressed:** provide a Shariah-aligned path for gradual ownership transfer with asset-backed cash flows.
+
+**Structural approach (illustrative):**
+
+- co-ownership structure with scheduled buy-out of the platform/investor share
+- cash flows sourced from rental yield and agreed participation return (not interest)
+- clear documentation of ownership ratios, buy-out schedule, and asset-usage rights
+
+**Regulatory alignment:** classify and disclose appropriately under applicable securities/capital markets rules; align with Shariah governance expectations.
+
+**Cross-border implication:** investor eligibility and venue access remain jurisdiction-specific; distribution constraints apply as with other Shariah-aligned offerings.
 
 ## Shariah Governance and Oversight
 

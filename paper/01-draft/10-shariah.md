@@ -49,6 +49,20 @@ Depending on the asset and project needs, variants may be considered (e.g., part
 - evidence of asset-backing and permitted cash flow use
 - supervisory oversight and periodic compliance confirmation
 
+### MMQ (Musharakah Mutanaqisah / Diminishing Partnership)
+
+**Problem addressed:** provide a Shariah-aligned path for gradual ownership transfer with asset-backed cash flows.
+
+**Structural approach (illustrative):**
+
+- co-ownership structure with scheduled buy-out of the platform/investor share
+- cash flows sourced from rental yield and agreed participation return (not interest)
+- clear documentation of ownership ratios, buy-out schedule, and asset-usage rights
+
+**Regulatory alignment:** classify and disclose appropriately under applicable securities/capital markets rules; align with Shariah governance expectations.
+
+**Cross-border implication:** investor eligibility and venue access remain jurisdiction-specific; distribution constraints apply as with other Shariah-aligned offerings.
+
 ## Shariah Governance and Oversight
 
 The framework assumes that Shariah-aligned offerings include:
