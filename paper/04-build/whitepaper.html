@@ -8,7 +8,7 @@
   <meta name="author" content="surjo.sastro@libertyjaya.com" />
   <meta name="author" content="Gunawan Wang (Binus University)" />
   <meta name="author" content="gwang@binus.edu" />
-  <meta name="dcterms.date" content="2026-03-01" />
+  <meta name="dcterms.date" content="2026-03-02" />
   <title>A Regulatory-Aligned Framework for Cross-Border Real Estate Economic Rights Tokenization in ASEAN (Working Draft)</title>
   <style>
     html {
@@ -181,7 +181,7 @@ Estate Economic Rights Tokenization in ASEAN (Working Draft)</h1>
 <p class="author">surjo.sastro@libertyjaya.com</p>
 <p class="author">Gunawan Wang (Binus University)</p>
 <p class="author">gwang@binus.edu</p>
-<p class="date">2026-03-01</p>
+<p class="date">2026-03-02</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Daftar Isi</h2>
@@ -945,10 +945,13 @@ id="toc-purpose-and-audience">Purpose and Audience</a></li>
 id="toc-system-overview-hybrid-architecture">System Overview (Hybrid
 Architecture)</a></li>
 <li><a
-href="#off-chain-recordkeeping-recommended-event-sourced-implementation"
-id="toc-off-chain-recordkeeping-recommended-event-sourced-implementation">Off-Chain
-Recordkeeping (Recommended: Event-Sourced Implementation)</a>
+href="#off-chain-recordkeeping-eventdb-core-offline-integrity-database"
+id="toc-off-chain-recordkeeping-eventdb-core-offline-integrity-database">Off-Chain
+Recordkeeping (EventDB Core – Offline Integrity Database)</a>
 <ul>
+<li><a href="#eventdb-core-integrity-requirements"
+id="toc-eventdb-core-integrity-requirements">EventDB Core Integrity
+Requirements</a></li>
 <li><a href="#event-store-system-of-record"
 id="toc-event-store-system-of-record">Event Store (System of
 Record)</a></li>
@@ -1243,6 +1246,9 @@ off-chain.</p>
 <li>Off-chain KYC/AML and investor verification are mandatory.</li>
 <li>On-chain records store only the minimum necessary references (e.g.,
 cryptographic commitments) to support auditability and integrity.</li>
+<li>Off-chain auditability is provided by an <strong>offline EventDB
+Core integrity layer</strong> (append-only Event history, hash-linked
+Chain continuity, and periodic Seal checkpoints).</li>
 <li>Personal data is not stored on-chain; data minimization is the
 default.</li>
 <li>Role-based access control (RBAC) governs privileged actions
@@ -2075,11 +2081,14 @@ Architecture?</h2>
 <p>This framework uses blockchain selectively to strengthen traceability
 and control outcomes within a regulated operating model.</p>
 <h3 id="tamper-evident-audit-trail">Tamper-Evident Audit Trail</h3>
-<p>On-chain event logs provide an immutable, tamper-evident record of
-key lifecycle events (issuance, transfers, corporate actions signaling,
-and enforcement actions where applicable). This reduces ambiguity during
-audits and dispute resolution by providing a consistent reference that
-can be reconciled against off-chain records.</p>
+<p>The program uses <strong>EventDB Core as an offline integrity
+database</strong> for the authoritative audit trail. EventDB Core
+provides append-only Event recording, hash-linked Chain continuity,
+accountable signatures, and periodic Seal checkpoints. On-chain event
+logs act as a <strong>secondary reference surface</strong> for issuance
+and transfer execution. This reduces ambiguity during audits and dispute
+resolution by providing consistent, verifiable references that can be
+reconciled against off-chain evidence.</p>
 <h3 id="enforceable-transfer-restrictions">Enforceable Transfer
 Restrictions</h3>
 <p>Transfer restrictions are enforced through a combination of off-chain
@@ -2131,12 +2140,13 @@ trading are through regulated pathways.</li>
 <h3 id="off-chain-components-compliance-and-operations">Off-Chain
 Components (Compliance and Operations)</h3>
 <ul>
-<li><strong>Operational audit logging and traceability ledger
-(append-only):</strong> the off-chain operational layer maintains an
-append-only audit trail capturing onboarding, eligibility decisions,
+<li><strong>EventDB Core audit ledger (append-only, offline):</strong>
+the off-chain operational layer uses EventDB Core to maintain an
+append-only Event history capturing onboarding, eligibility decisions,
 disclosures, approvals, allocations, escrow status changes, corporate
-actions, and reconciliations. This supports deterministic evidence
-packs, investigations, and audits.</li>
+actions, and reconciliations. EventDB Core enforces hash-linked Chain
+continuity, accountable signing, and Seal checkpoints to support
+deterministic evidence packs, investigations, and audits.</li>
 <li><strong>Investor onboarding and KYC/AML service:</strong> identity
 verification, screening, ongoing monitoring.</li>
 <li><strong>Eligibility engine:</strong> jurisdiction-aware rules
@@ -2360,11 +2370,26 @@ and on-chain event references</li>
 <li>access to logs is governed via RBAC and data minimization; personal
 data remains off-chain and subject to retention policies</li>
 </ul>
+<p>EventDB Core provides the integrity layer for these logs:</p>
+<ul>
+<li><strong>Event:</strong> immutable record unit for each
+compliance/operations change.</li>
+<li><strong>Chain:</strong> deterministic ordering and continuity for
+each ledger boundary.</li>
+<li><strong>Account:</strong> accountable signer context for Event and
+Seal issuance.</li>
+<li><strong>Seal:</strong> periodic checkpoint over bounded Event
+windows to reduce verification scope.</li>
+<li><strong>Snapshot:</strong> derived checkpoint for operational
+efficiency without rewriting history.</li>
+<li><strong>Anchor (optional):</strong> external publication of bounded
+commitments if cross-boundary proof is required.</li>
+</ul>
 <p>This approach is intended to reduce reconciliation ambiguity between
 on-chain events and off-chain operations and to improve traceability for
-audits and regulator inquiries. Detailed database architecture choices
-(including event sourcing) can be treated as part of the technical
-implementation.</p>
+audits and regulator inquiries. Detailed storage layout, indexing, and
+vendor-specific persistence remain implementation choices, provided
+EventDB Core verification semantics are preserved.</p>
 <h2 id="regulator-visibility-principle">Regulator Visibility
 (Principle)</h2>
 <p>Regulator visibility is supported through:</p>
@@ -4332,24 +4357,43 @@ tamper-evident event logs.</li>
 evidenced through append-only logs. On-chain components provide
 controlled execution and immutable event trails.</p>
 <h2
-id="off-chain-recordkeeping-recommended-event-sourced-implementation">Off-Chain
-Recordkeeping (Recommended: Event-Sourced Implementation)</h2>
+id="off-chain-recordkeeping-eventdb-core-offline-integrity-database">Off-Chain
+Recordkeeping (EventDB Core – Offline Integrity Database)</h2>
 <p>Main-paper requirement: append-only audit logs + traceability. For
-implementation, an <strong>event-sourced architecture</strong> is
-recommended to achieve deterministic reconstructions and auditability at
-scale.</p>
-<h3 id="event-store-system-of-record">Event Store (System of
-Record)</h3>
+implementation, <strong>EventDB Core</strong> is recommended as the
+offline integrity database to achieve deterministic reconstructions and
+auditability at scale without requiring external consensus
+infrastructure.</p>
+<h3 id="eventdb-core-integrity-requirements">EventDB Core Integrity
+Requirements</h3>
 <p>Design requirements:</p>
 <ul>
-<li>Append-only event store; no in-place mutation of historical
-events.</li>
-<li>Every state change is an event with a unique ID, timestamp, actor
-identity (RBAC principal), and evidence references.</li>
-<li>Corrections are handled via compensating events under governed
+<li>Append-only Event history; no in-place mutation of historical
+Events.</li>
+<li>Deterministic Chain continuity using hash linkage
+(<code>prev_hash</code>) across Events.</li>
+<li>Account-bound signatures for Event and Seal issuance to support
+accountable audit trails.</li>
+<li>Periodic Seal checkpoints over bounded Event windows to reduce
+verification scope.</li>
+<li>Snapshot checkpoints for operational efficiency, derived from
+verified Chain/Seal state.</li>
+<li>Canonical serialization rules for Event envelopes to ensure
+reproducible verification.</li>
+<li>Optional external anchoring only if cross-boundary proof publication
+is required.</li>
+</ul>
+<h3 id="event-store-system-of-record">Event Store (System of
+Record)</h3>
+<p>Operational requirements:</p>
+<ul>
+<li>Every state change is recorded as an Event with unique ID,
+timestamp, account identity (RBAC principal), and evidence
+references.</li>
+<li>Corrections are handled via compensating Events under governed
 approvals.</li>
-<li>Strong integrity: write-once semantics (or equivalent controls),
-hashing of event streams, and tamper detection.</li>
+<li>Offline verification MUST remain possible without any external
+Anchor.</li>
 </ul>
 <h3 id="projections-read-models">Projections (Read Models)</h3>
 <p>Derived read models (non-exhaustive):</p>

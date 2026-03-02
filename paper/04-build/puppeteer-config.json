@@ -6,7 +6,6 @@
     "--disable-setuid-sandbox",
     "--disable-dev-shm-usage",
     "--disable-gpu",
-    "--disable-features=site-per-process",
-    "--user-data-dir=/tmp/mmdc-profile"
+    "--disable-features=site-per-process"
   ]
 }
