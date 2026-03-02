@@ -55,6 +55,8 @@ The proposed architecture is **hybrid by design**. It uses on-chain components f
 
 The token is treated as part of a broader regulated workflow rather than an autonomous instrument. Transfers, redemptions, and corporate actions are executed subject to policy rules, whitelists, and event approvals that reflect jurisdictional constraints and investor eligibility requirements.
 
+For minimum viable implementation (Indonesia-first pilot and ASEAN-minimum deployment), the on-chain layer is defined as an **ERC-1155 + jurisdiction-aware whitelist + anchor commitment** architecture. Minting and transfers are restricted to jurisdiction-aware whitelisted wallets, and each issuance is cryptographically linked to an anchored commitment derived from an off-chain approval package (notary approval, fund manager approval, and KYC snapshot hash). Minting is programmatically disabled unless a valid anchored commitment exists. **Anchor provides tamper-evident integrity, not legal substitution.**
+
 ## Cross-Border Distribution Within ASEAN
 
 ASEAN distribution introduces jurisdictional fragmentation across securities regulation, investor eligibility, marketing constraints, and data protection. This framework treats cross-border as a first-class requirement and proposes a jurisdiction-aware access model:

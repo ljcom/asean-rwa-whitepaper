@@ -269,33 +269,36 @@ Artifacts retained:
 
 On-chain code should be intentionally minimal and focused on:
 
-- restricted transfers (whitelist/policy hooks)
-- controlled issuance (mint/allocate) under privileged roles
-- event logs for issuance, transfer outcomes, and corporate action triggers (where used)
+- ERC-1155 multi-series economic-rights issuance
+- jurisdiction-aware whitelist enforcement for mint and transfer
+- commitment anchoring and anchor-linked mint precondition checks
+- event logs for issuance, transfer outcomes, and anchor-linked control outcomes
 
-### Smart Contract Scope and Minimal Interface (High-Level)
+### Smart Contract Scope and Minimal Interface (Normative MVP)
 
-This section defines the minimum on-chain surface area required to support compliance-by-design. It is intentionally non-prescriptive about specific standards or ABIs; it focuses on control outcomes and traceability.
+This section defines the minimum on-chain surface required for compliance-by-design in the Indonesia-first pilot and ASEAN-minimum rollout.
 
-#### Contract Components (Illustrative)
+Minimum interface (illustrative signature level):
 
-- **Economic-rights token contract:** represents balances/ownership of economic rights; emits lifecycle events.
-- **Access control / role manager:** enforces privileged roles and separation of duties.
-- **Transfer restriction hook:** enforces whitelist and restriction checks (directly on-chain or via controlled integration patterns).
-- **Corporate actions module (optional):** supports governed triggers for distributions/redemption windows where on-chain signaling is needed.
-- **Emergency controls module:** supports holds/freezes/unfreezes under governed circumstances with event logs.
+- `addToWhitelist(address user, string jurisdictionTag)`
+- `removeFromWhitelist(address user)`
+- `anchor(bytes32 commitment, string tag)`
+- `mint(address to, uint256 id, uint256 amount, bytes32 commitment)`
+- `safeTransferFrom(...)` with whitelist restriction checks
 
-#### Role Model (Minimum)
+Minimum contract requirements:
 
-Roles should be explicit and mapped to off-chain governance:
+- `mint` MUST validate `anchored[commitment] == true`.
+- Duplicate commitment anchoring MUST revert.
+- Whitelist enforcement MUST apply to mint and transfer.
+- Privileged functions MUST use explicit access control roles.
+- Freeze/hold control is OPTIONAL but RECOMMENDED under governed emergency procedures.
 
-- `ISSUER_ADMIN` (propose actions; no unilateral critical execution)
-- `COMPLIANCE_APPROVER` (approve whitelist/policy-related privileged actions; approve exceptions)
-- `OPERATIONS_EXECUTOR` (execute approved actions; run reconciliations and corporate actions)
-- `EMERGENCY_OPERATOR` (apply holds/freezes under documented governance, ideally with dual control)
-- `VIEWER_AUDIT` (read-only in off-chain systems; on-chain is inherently readable, but privileged read methods should be avoided)
+Implementation boundary:
 
-Where feasible, critical actions should require sequential approvals off-chain and be executed on-chain only after an approval window is opened and evidenced.
+- Anchor is an integrity seal that links off-chain approvals to on-chain issuance conditions.
+- Anchor does not replace legal approvals, licensing obligations, or contractual enforceability.
+- Off-chain policy decisions (eligibility, selling restrictions, exceptions) must remain traceable through EventDB and reconciliation artifacts.
 
 #### Compliance Enforcement Layer (Conceptual)
 
@@ -360,10 +363,13 @@ The choice should not change the legal boundary (economic rights only) or the re
 
 Network selection is expected to be revisited when moving from an Indonesia-only pilot to cross-border rollout, because venue/custody requirements may change.
 
-### Required On-Chain Controls (Illustrative)
+### Required On-Chain Controls (MVP Baseline)
 
-- role-based privileged functions (issuer admin vs compliance approver vs operations)
-- ability to freeze/hold under governed circumstances (with event logging)
+- role-based privileged functions (admin, minter, whitelist admin)
+- jurisdiction-aware whitelist enforcement on mint and transfer
+- commitment anchoring with duplicate-prevention
+- mint precondition requiring anchored commitment validation
+- freeze/hold capability under governed circumstances (recommended)
 - explicit prevention of permissionless liquidity mechanics (no AMM integration assumptions)
 
 ### Upgradeability and Change Management

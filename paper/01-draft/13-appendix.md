@@ -5,7 +5,7 @@
 | Control area | Control objective | Implementation approach (hybrid) | Evidence artifact (illustrative) |
 | --- | --- | --- | --- |
 | Onboarding and KYC/AML | Verify identity and eligibility off-chain | KYC provider + eligibility engine + audit logs | onboarding report, screening logs, approval records |
-| Jurisdiction-aware restrictions | Enforce selling restrictions and eligibility | whitelist segmentation + policy checks + venue controls | whitelist change log, policy versioning, transfer logs |
+| Jurisdiction-aware restrictions and issuance gating | Enforce selling restrictions, eligibility, and anchor-linked issuance integrity | ERC-1155 + jurisdiction-aware whitelist + anchored commitment required for mint | whitelist change log, anchor events, policy versioning, transfer/mint logs |
 | Privileged actions governance | Prevent unilateral execution | RBAC + sequential approval workflow + logging | approval trail, execution receipts, reconciliation report |
 | Corporate actions integrity | Accurate distributions/redemptions | off-chain calculation + governed on-chain execution | calculation file hash, event logs, investor statements |
 | Privacy compliance | Avoid on-chain personal data | off-chain storage + cryptographic references on-chain | data map, access logs, incident playbook |
@@ -15,7 +15,10 @@
 
 - investor onboarding approved (off-chain)
 - wallet address bound/unbound (off-chain + on-chain reference)
-- issuance proposed / approved / executed (hybrid)
+- issuance proposed / approved (off-chain)
+- approval package recorded in EventDB (off-chain)
+- commitment anchored on-chain (anchor event)
+- mint enabled only after valid anchor, then issuance executed (hybrid)
 - transfer attempted / allowed / blocked (on-chain event + off-chain policy evidence)
 - distribution proposed / approved / executed (hybrid)
 - redemption window opened / requests recorded / executed (hybrid, if applicable)

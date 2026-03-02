@@ -126,10 +126,11 @@ Off-chain policies enforced by these components are derived from documented lega
 
 ### On-Chain Components (Controlled Execution and Auditability)
 
-- **Token contract(s):** represent economic rights; implement transfer restrictions and lifecycle events.
-- **Policy hooks:** whitelist checks, jurisdiction tags, and configurable transfer controls.
-- **Corporate action functions:** controlled distribution/redemption triggers (subject to RBAC and approvals).
-- **Event log:** tamper-evident record of key lifecycle events and policy outcomes.
+- **ERC-1155 economic-rights token contract:** supports multi-series issuance under a single controlled contract surface.
+- **Jurisdiction-aware whitelist enforcement:** minting and transfer execution are restricted to approved wallets under jurisdiction-segmented eligibility.
+- **Commitment anchoring mechanism:** records integrity commitments derived from off-chain approval packages.
+- **Mint precondition control:** issuance requires a valid anchored commitment; without anchor, the mint transaction reverts.
+- **Event log:** tamper-evident record of issuance, transfer outcomes, and anchor-linked control events.
 
 ## Roles, Controls, and Authorization Model
 
@@ -147,9 +148,24 @@ Critical actions (e.g., mint/issue, corporate action execution, emergency freeze
 
 1. Proposal created (off-chain workflow with evidence attachments)
 2. Compliance review and approval (off-chain, logged)
-3. On-chain execution enabled (time-bound, scope-bound)
-4. Execution performed (on-chain transaction)
-5. Post-event reconciliation and reporting (off-chain + on-chain event references)
+3. EventDB record finalized for the approved decision package
+4. Commitment anchored on-chain (integrity seal)
+5. On-chain mint execution enabled (time-bound, scope-bound)
+6. Execution performed (on-chain transaction)
+7. Post-event reconciliation and reporting (off-chain + on-chain event references)
+
+Issuance governance sequence (minimum): **Off-chain approval -> EventDB record -> Anchor -> Mint enabled -> Issue token**. No mint without anchor.
+
+### Anchor-Linked Issuance Control
+
+The minimum issuance control for Indonesia-first and ASEAN-minimum deployment is anchor-linked:
+
+1. Off-chain approvals generate a canonical approval package.
+2. A package hash (or Merkle root commitment) is anchored on-chain.
+3. The issuance transaction references the anchored commitment.
+4. If no valid anchor exists, mint reverts by contract rule.
+
+This mechanism is designed to support regulatory engagement and reduce reconciliation ambiguity, while preserving the legal boundary that approvals and enforceability remain in the off-chain legal stack.
 
 ## Token Lifecycle and Control Points
 
@@ -178,7 +194,8 @@ flowchart TD
   I --> K["Conditions precedent satisfied (incl. collateral/security docs as applicable)"]
   J --> K
   K --> L["Dual authorization: escrow release to borrower"]
-  L --> M["Issuance executed (mint/allocate) with transfer restrictions"]
+  L --> A1["Anchor commitment on-chain (from approval package hash/Merkle root)"]
+  A1 --> M["Issuance executed (mint/allocate) only if anchor is valid + whitelist checks pass"]
   M --> N["Statements + corporate actions + monitoring + evidence packs"]
 ```
 
@@ -232,8 +249,9 @@ Whitelist and identity decisions are logged as append-only events in the off-cha
 ### 2) Issuance and Subscription
 
 - Subscriptions are accepted through regulated channels and documented.
-- Issuance (minting) occurs only after approvals and receipt confirmation processes.
-- On-chain issuance events reference off-chain documentation identifiers (integrity references only).
+- Issuance (minting) occurs only after approvals, receipt confirmation, EventDB recording, and on-chain anchor commitment.
+- Minting is blocked by default unless the referenced commitment has been anchored on-chain.
+- On-chain issuance events reference off-chain documentation identifiers and anchored commitments (integrity references only).
 
 ### 3) Transfers and Secondary Trading (Controlled)
 
@@ -315,6 +333,8 @@ Typical governance bodies and responsibilities:
 - **Change control board:** approves system changes that affect controls (smart contract changes, policy engine updates, data model changes), including rollback and evidence impacts.
 
 Accountability is treated explicitly. See the legal accountability mapping in `01-draft/04-stakeholders.md`.
+
+For issuance governance, the minimum control sequence is mandatory: **Off-chain approval -> EventDB record -> Anchor -> Mint enabled -> Issue token**. No mint without anchor.
 
 ### Policy and Control Versioning
 

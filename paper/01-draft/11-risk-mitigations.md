@@ -85,6 +85,17 @@ Mitigations:
 - event-driven reconciliations after issuance and corporate actions
 - independent audits of operational controls
 
+### Risk: Anchor misinterpreted as legal approval substitution
+
+Anchor commitments can be misread as replacing legal validity, licensing requirements, or contractual enforceability.
+
+Mitigations:
+
+- state explicitly in disclosures and governance materials that anchor provides tamper-evident integrity, not legal substitution
+- preserve off-chain legal documentation and approval controls as the primary enforceability layer
+- require EventDB-to-chain reconciliation for anchored commitments and issuance events
+- enforce anchor-linked mint preconditions to reduce backend override risk in issuance workflows
+
 ### Risk: Control drift and governance failures
 
 If policy rules, whitelists, approvals, and operational procedures are not governed and monitored, controls can drift over time (especially during cross-border scaling), undermining compliance and auditability.
