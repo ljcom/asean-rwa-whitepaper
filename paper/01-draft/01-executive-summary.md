@@ -45,6 +45,7 @@ The proposed architecture is **hybrid by design**. It uses on-chain components f
 
 - Off-chain KYC/AML and investor verification are mandatory.
 - On-chain records store only the minimum necessary references (e.g., cryptographic commitments) to support auditability and integrity.
+- Off-chain auditability is provided by an **offline EventDB Core integrity layer** (append-only Event history, hash-linked Chain continuity, and periodic Seal checkpoints).
 - Personal data is not stored on-chain; data minimization is the default.
 - Role-based access control (RBAC) governs privileged actions (issuance, corporate actions, freezes, redemptions).
 - Sequential / dual authorization supports separation of duties for critical actions.

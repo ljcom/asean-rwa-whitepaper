@@ -28,18 +28,29 @@ The system is split into:
 
 The authoritative compliance decisions occur off-chain and are evidenced through append-only logs. On-chain components provide controlled execution and immutable event trails.
 
-## Off-Chain Recordkeeping (Recommended: Event-Sourced Implementation)
+## Off-Chain Recordkeeping (EventDB Core – Offline Integrity Database)
 
-Main-paper requirement: append-only audit logs + traceability. For implementation, an **event-sourced architecture** is recommended to achieve deterministic reconstructions and auditability at scale.
+Main-paper requirement: append-only audit logs + traceability. For implementation, **EventDB Core** is recommended as the offline integrity database to achieve deterministic reconstructions and auditability at scale without requiring external consensus infrastructure.
 
-### Event Store (System of Record)
+### EventDB Core Integrity Requirements
 
 Design requirements:
 
-- Append-only event store; no in-place mutation of historical events.
-- Every state change is an event with a unique ID, timestamp, actor identity (RBAC principal), and evidence references.
-- Corrections are handled via compensating events under governed approvals.
-- Strong integrity: write-once semantics (or equivalent controls), hashing of event streams, and tamper detection.
+- Append-only Event history; no in-place mutation of historical Events.
+- Deterministic Chain continuity using hash linkage (`prev_hash`) across Events.
+- Account-bound signatures for Event and Seal issuance to support accountable audit trails.
+- Periodic Seal checkpoints over bounded Event windows to reduce verification scope.
+- Snapshot checkpoints for operational efficiency, derived from verified Chain/Seal state.
+- Canonical serialization rules for Event envelopes to ensure reproducible verification.
+- Optional external anchoring only if cross-boundary proof publication is required.
+
+### Event Store (System of Record)
+
+Operational requirements:
+
+- Every state change is recorded as an Event with unique ID, timestamp, account identity (RBAC principal), and evidence references.
+- Corrections are handled via compensating Events under governed approvals.
+- Offline verification MUST remain possible without any external Anchor.
 
 ### Projections (Read Models)
 

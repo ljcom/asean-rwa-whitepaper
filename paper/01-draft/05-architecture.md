@@ -14,7 +14,7 @@ This framework uses blockchain selectively to strengthen traceability and contro
 
 ### Tamper-Evident Audit Trail
 
-On-chain event logs provide an immutable, tamper-evident record of key lifecycle events (issuance, transfers, corporate actions signaling, and enforcement actions where applicable). This reduces ambiguity during audits and dispute resolution by providing a consistent reference that can be reconciled against off-chain records.
+The program uses **EventDB Core as an offline integrity database** for the authoritative audit trail. EventDB Core provides append-only Event recording, hash-linked Chain continuity, accountable signatures, and periodic Seal checkpoints. On-chain event logs act as a **secondary reference surface** for issuance and transfer execution. This reduces ambiguity during audits and dispute resolution by providing consistent, verifiable references that can be reconciled against off-chain evidence.
 
 ### Enforceable Transfer Restrictions
 
@@ -110,7 +110,7 @@ Primary objectives:
 
 ### Off-Chain Components (Compliance and Operations)
 
-- **Operational audit logging and traceability ledger (append-only):** the off-chain operational layer maintains an append-only audit trail capturing onboarding, eligibility decisions, disclosures, approvals, allocations, escrow status changes, corporate actions, and reconciliations. This supports deterministic evidence packs, investigations, and audits.
+- **EventDB Core audit ledger (append-only, offline):** the off-chain operational layer uses EventDB Core to maintain an append-only Event history capturing onboarding, eligibility decisions, disclosures, approvals, allocations, escrow status changes, corporate actions, and reconciliations. EventDB Core enforces hash-linked Chain continuity, accountable signing, and Seal checkpoints to support deterministic evidence packs, investigations, and audits.
 - **Investor onboarding and KYC/AML service:** identity verification, screening, ongoing monitoring.
 - **Eligibility engine:** jurisdiction-aware rules (investor type, residency, selling restrictions).
 - **Investor registry / transfer agent module:** authoritative register mapping investors to permitted wallet addresses.
@@ -278,7 +278,16 @@ To support regulator-grade auditability in a hybrid system, the off-chain layer 
 - evidence packs can be generated reproducibly from logs, documents, and on-chain event references
 - access to logs is governed via RBAC and data minimization; personal data remains off-chain and subject to retention policies
 
-This approach is intended to reduce reconciliation ambiguity between on-chain events and off-chain operations and to improve traceability for audits and regulator inquiries. Detailed database architecture choices (including event sourcing) can be treated as part of the technical implementation.
+EventDB Core provides the integrity layer for these logs:
+
+- **Event:** immutable record unit for each compliance/operations change.
+- **Chain:** deterministic ordering and continuity for each ledger boundary.
+- **Account:** accountable signer context for Event and Seal issuance.
+- **Seal:** periodic checkpoint over bounded Event windows to reduce verification scope.
+- **Snapshot:** derived checkpoint for operational efficiency without rewriting history.
+- **Anchor (optional):** external publication of bounded commitments if cross-boundary proof is required.
+
+This approach is intended to reduce reconciliation ambiguity between on-chain events and off-chain operations and to improve traceability for audits and regulator inquiries. Detailed storage layout, indexing, and vendor-specific persistence remain implementation choices, provided EventDB Core verification semantics are preserved.
 
 ## Regulator Visibility (Principle)
 

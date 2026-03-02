@@ -5,7 +5,7 @@ author:
   - "surjo.sastro@libertyjaya.com"
   - "Gunawan Wang (Binus University)"
   - "gwang@binus.edu"
-date: "2026-02-27"
+date: "2026-03-01"
 ---
 
 **Disclaimer:** This document is a working draft intended for discussion. It is not legal, financial, or regulatory advice. Tokenized instruments described herein represent economic rights only and do not transfer Indonesian land title.
